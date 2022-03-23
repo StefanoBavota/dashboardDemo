@@ -15,18 +15,27 @@ export class AuthService {
   constructor(
     private data: DataService
   ) {
-    let local = window.localStorage.getItem('sports-board');
-    if(local) this.token = local;
+
+    let localString = window.localStorage.getItem('sports-board');
+    if(localString) {
+      this.token = JSON.parse(localString).token;
+      this.admin = JSON.parse(localString).admin;
+    }
   }
 
   login(email: string, password: string, remember: boolean): Observable<boolean> {
     return this.data.login(email, password).pipe(
       tap((res) => {
-        if(res.hasOwnProperty('token') && res.token) {
+        if(res.token !== '') {
           this.token = res.token;
           this.admin = res.admin || false;
           if(remember) {
-            window.localStorage.setItem('sports-board', this.token);
+            window.localStorage.setItem('sports-board', JSON.stringify(
+              {
+                token: res.token,
+                admin: res.admin
+              }
+            ));
           }
         }
       }),

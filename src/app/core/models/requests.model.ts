@@ -1,6 +1,7 @@
 export interface BaseRequest {
   page?: number,
-  elementsNum?: number
+  skip?: number,
+  take?: number
 }
 
 export interface PaymentRequest extends BaseRequest {
