@@ -6,15 +6,9 @@ import { AppComponent } from './app.component';
 import { DemoComponent } from './features/pages/demo/demo.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DemoComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  declarations: [AppComponent, DemoComponent],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
