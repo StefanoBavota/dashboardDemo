@@ -5,12 +5,11 @@ const routes: Routes = [
   {
     path: 'demo',
     loadChildren: () => import('./features/demo/demo.module').then(m => m.DemoModule),
-    canActivate: [AuthLoginGuard]
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
