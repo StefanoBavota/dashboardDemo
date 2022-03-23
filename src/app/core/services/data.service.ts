@@ -1,7 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { BaseRequest, Page, PaymentRequest } from '../models';
+import { BaseRequest, LoginResponse, Page, PaymentRequest } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,19 @@ export class DataService {
         params: this.getParams(request)
       }
     );
+  }
+
+  /*
+    LOGIN
+  */
+
+  login(email: string, password: string): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(
+      `${environment.restApiBasePathUrl}/${environment.endpoints.payment.url}`,
+      {
+        email: email,
+        password: password
+      }
+    )
   }
 }

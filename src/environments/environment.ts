@@ -7,7 +7,8 @@ export const environment = {
   restApiBasePathUrl: '',
   endpoints: {
     payment: { url: '' },
-    client: { url: '' }
+    client: { url: '' },
+    login: { url: '' }
   }
 }
 
