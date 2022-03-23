@@ -8,7 +8,8 @@ export const environment = {
   endpoints: {
     payment: { url: '' },
     client: { url: '' },
-    login: { url: '' }
+    login: { url: '' },
+    area: { url: '' }
   }
 }
 
