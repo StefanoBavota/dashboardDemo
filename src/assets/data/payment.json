@@ -1,0 +1,207 @@
+{
+  "data": [
+    {
+      "id": "P1",
+      "clientId": "C1",
+      "societyId": "S1",
+      "total": 100,
+      "annualFee": 100,
+      "paymentDate": "15/02/2022",
+      "paymentAreas": [
+        {
+          "areaId": "A1",
+          "total": 50,
+          "type": "BOH"
+        },
+        {
+          "areaId": "A2",
+          "total": 50,
+          "type": "BOH"
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "clientId": "C1",
+      "societyId": "S1",
+      "total": 100,
+      "annualFee": 100,
+      "paymentDate": "15/02/2022",
+      "paymentAreas": [
+        {
+          "areaId": "A1",
+          "total": 50,
+          "type": "BOH"
+        },
+        {
+          "areaId": "A2",
+          "total": 50,
+          "type": "BOH"
+        }
+      ]
+    },
+    {
+      "id": "P3",
+      "clientId": "C1",
+      "societyId": "S1",
+      "total": 100,
+      "annualFee": 100,
+      "paymentDate": "15/02/2022",
+      "paymentAreas": [
+        {
+          "areaId": "A1",
+          "total": 50,
+          "type": "BOH"
+        },
+        {
+          "areaId": "A2",
+          "total": 50,
+          "type": "BOH"
+        }
+      ]
+    },
+    {
+      "id": "P4",
+      "clientId": "C1",
+      "societyId": "S1",
+      "total": 100,
+      "annualFee": 100,
+      "paymentDate": "15/02/2022",
+      "paymentAreas": [
+        {
+          "areaId": "A1",
+          "total": 50,
+          "type": "BOH"
+        },
+        {
+          "areaId": "A2",
+          "total": 50,
+          "type": "BOH"
+        }
+      ]
+    },
+    {
+      "id": "P5",
+      "clientId": "C1",
+      "societyId": "S1",
+      "total": 100,
+      "annualFee": 100,
+      "paymentDate": "15/02/2022",
+      "paymentAreas": [
+        {
+          "areaId": "A1",
+          "total": 50,
+          "type": "BOH"
+        },
+        {
+          "areaId": "A2",
+          "total": 50,
+          "type": "BOH"
+        }
+      ]
+    },
+    {
+      "id": "P6",
+      "clientId": "C1",
+      "societyId": "S1",
+      "total": 100,
+      "annualFee": 100,
+      "paymentDate": "15/02/2022",
+      "paymentAreas": [
+        {
+          "areaId": "A1",
+          "total": 50,
+          "type": "BOH"
+        },
+        {
+          "areaId": "A2",
+          "total": 50,
+          "type": "BOH"
+        }
+      ]
+    },
+    {
+      "id": "P7",
+      "clientId": "C1",
+      "societyId": "S1",
+      "total": 100,
+      "annualFee": 100,
+      "paymentDate": "15/02/2022",
+      "paymentAreas": [
+        {
+          "areaId": "A1",
+          "total": 50,
+          "type": "BOH"
+        },
+        {
+          "areaId": "A2",
+          "total": 50,
+          "type": "BOH"
+        }
+      ]
+    },
+    {
+      "id": "P8",
+      "clientId": "C1",
+      "societyId": "S1",
+      "total": 100,
+      "annualFee": 100,
+      "paymentDate": "15/02/2022",
+      "paymentAreas": [
+        {
+          "areaId": "A1",
+          "total": 50,
+          "type": "BOH"
+        },
+        {
+          "areaId": "A2",
+          "total": 50,
+          "type": "BOH"
+        }
+      ]
+    },
+    {
+      "id": "P9",
+      "clientId": "C1",
+      "societyId": "S1",
+      "total": 100,
+      "annualFee": 100,
+      "paymentDate": "15/02/2022",
+      "paymentAreas": [
+        {
+          "areaId": "A1",
+          "total": 50,
+          "type": "BOH"
+        },
+        {
+          "areaId": "A2",
+          "total": 50,
+          "type": "BOH"
+        }
+      ]
+    },
+    {
+      "id": "P10",
+      "clientId": "C1",
+      "societyId": "S1",
+      "total": 100,
+      "annualFee": 100,
+      "paymentDate": "15/02/2022",
+      "paymentAreas": [
+        {
+          "areaId": "A1",
+          "total": 50,
+          "type": "BOH"
+        },
+        {
+          "areaId": "A2",
+          "total": 50,
+          "type": "BOH"
+        }
+      ]
+    }
+  ],
+  "pageNum":  1,
+  "totalPages": 10,
+  "elementsNum": 10
+}
