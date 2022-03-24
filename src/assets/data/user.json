@@ -1,0 +1,75 @@
+{
+  "data": [
+    {
+      "id": "U1",
+      "name": "Ernesto",
+      "surname": "Beccalossi",
+      "email": "ernesto.beccalossi@mail.com",
+      "role": "Operator"
+    },
+    {
+      "id": "U2",
+      "name": "Ernesto",
+      "surname": "Beccalossi",
+      "email": "ernesto.beccalossi@mail.com",
+      "role": "Operator"
+    },
+    {
+      "id": "U3",
+      "name": "Ernesto",
+      "surname": "Beccalossi",
+      "email": "ernesto.beccalossi@mail.com",
+      "role": "Operator"
+    },
+    {
+      "id": "U4",
+      "name": "Ernesto",
+      "surname": "Beccalossi",
+      "email": "ernesto.beccalossi@mail.com",
+      "role": "Operator"
+    },
+    {
+      "id": "U5",
+      "name": "Ernesto",
+      "surname": "Beccalossi",
+      "email": "ernesto.beccalossi@mail.com",
+      "role": "Operator"
+    },
+    {
+      "id": "U6",
+      "name": "Ernesto",
+      "surname": "Beccalossi",
+      "email": "ernesto.beccalossi@mail.com",
+      "role": "Operator"
+    },
+    {
+      "id": "U7",
+      "name": "Ernesto",
+      "surname": "Beccalossi",
+      "email": "ernesto.beccalossi@mail.com",
+      "role": "Operator"
+    },
+    {
+      "id": "U8",
+      "name": "Ernesto",
+      "surname": "Beccalossi",
+      "email": "ernesto.beccalossi@mail.com",
+      "role": "Operator"
+    },
+    {
+      "id": "U9",
+      "name": "Ernesto",
+      "surname": "Beccalossi",
+      "email": "ernesto.beccalossi@mail.com",
+      "role": "Operator"
+    },
+    {
+      "id": "U10",
+      "name": "Ernesto",
+      "surname": "Beccalossi",
+      "email": "ernesto.beccalossi@mail.com",
+      "role": "Operator"
+    }
+  ],
+  "total": 100
+}

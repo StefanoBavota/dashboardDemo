@@ -5,6 +5,8 @@ export const environment = {
     payment: { url: 'payment.json' },
     client: { url: 'client.json' },
     login: { url: 'login.json' },
-    area: { url: 'area.json' }
+    area: { url: 'area.json' },
+    society: { url: 'society.json' },
+    user: { url: 'user.json'}
   }
 };

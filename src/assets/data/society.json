@@ -1,0 +1,105 @@
+{
+  "data": [
+    {
+      "id": "S1",
+      "ragioneSociale": "ragione",
+      "type": "tipo",
+      "address": "corso Vittorio Emanuele 1",
+      "city": "Pescara",
+      "cf": "AAA123CCC",
+      "albo": "Panini",
+      "affiliazione": "ma"
+    },
+    {
+      "id": "S2",
+      "ragioneSociale": "ragione",
+      "type": "tipo",
+      "address": "corso Vittorio Emanuele 1",
+      "city": "Pescara",
+      "cf": "AAA123CCC",
+      "albo": "Panini",
+      "affiliazione": "ma"
+    },
+    {
+      "id": "S3",
+      "ragioneSociale": "ragione",
+      "type": "tipo",
+      "address": "corso Vittorio Emanuele 1",
+      "city": "Pescara",
+      "cf": "AAA123CCC",
+      "albo": "Panini",
+      "affiliazione": "ma"
+    },
+    {
+      "id": "S4",
+      "ragioneSociale": "ragione",
+      "type": "tipo",
+      "address": "corso Vittorio Emanuele 1",
+      "city": "Pescara",
+      "cf": "AAA123CCC",
+      "albo": "Panini",
+      "affiliazione": "ma"
+    },
+    {
+      "id": "S5",
+      "ragioneSociale": "ragione",
+      "type": "tipo",
+      "address": "corso Vittorio Emanuele 1",
+      "city": "Pescara",
+      "cf": "AAA123CCC",
+      "albo": "Panini",
+      "affiliazione": "ma"
+    },
+    {
+      "id": "S6",
+      "ragioneSociale": "ragione",
+      "type": "tipo",
+      "address": "corso Vittorio Emanuele 1",
+      "city": "Pescara",
+      "cf": "AAA123CCC",
+      "albo": "Panini",
+      "affiliazione": "ma"
+    },
+    {
+      "id": "S7",
+      "ragioneSociale": "ragione",
+      "type": "tipo",
+      "address": "corso Vittorio Emanuele 1",
+      "city": "Pescara",
+      "cf": "AAA123CCC",
+      "albo": "Panini",
+      "affiliazione": "ma"
+    },
+    {
+      "id": "S8",
+      "ragioneSociale": "ragione",
+      "type": "tipo",
+      "address": "corso Vittorio Emanuele 1",
+      "city": "Pescara",
+      "cf": "AAA123CCC",
+      "albo": "Panini",
+      "affiliazione": "ma"
+    },
+    {
+      "id": "S9",
+      "ragioneSociale": "ragione",
+      "type": "tipo",
+      "address": "corso Vittorio Emanuele 1",
+      "city": "Pescara",
+      "cf": "AAA123CCC",
+      "albo": "Panini",
+      "affiliazione": "ma"
+    },
+    {
+      "id": "S10",
+      "ragioneSociale": "ragione",
+      "type": "tipo",
+      "address": "corso Vittorio Emanuele 1",
+      "city": "Pescara",
+      "cf": "AAA123CCC",
+      "albo": "Panini",
+      "affiliazione": "ma"
+    }
+  ],
+  "total": 100
+}
