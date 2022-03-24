@@ -1,0 +1,37 @@
+.wrap-nav {
+  width: 280px;
+  height: 100vh;
+}
+
+.logo {
+  width: 200px;
+}
+
+.side-item {
+  margin-bottom: 5%;
+}
+
+.label-link:hover {
+  background-color: var(--gray-background);
+  color: var(--black) !important;
+
+  i {
+    color: var(--black) !important;
+  }
+}
+
+.side-icon {
+  color: var(--white);
+  width: 16px;
+  height: 16px;
+  margin-right: 0.5rem;
+}
+
+.active {
+  background-color: var(--gray-background) !important;
+  color: var(--black) !important;
+
+  i {
+    color: var(--black) !important;
+  }
+}
