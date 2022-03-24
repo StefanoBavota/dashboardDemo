@@ -1,13 +1,18 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { TablePaginationComponent } from './components/table-pagination/table-pagination.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    TablePaginationComponent
+  ],
   imports: [
     CommonModule
   ],
-  exports: []
+  exports: [
+    TablePaginationComponent
+  ]
 })
 export class SharedModule { }
