@@ -1,0 +1,7 @@
+<nav>
+  <ul class="pagination" >
+    <li class="page-item" *ngFor="let button of buttons" [ngClass]="{'active': button.active, 'disabled': button.disabled}">
+      <a class="page-link" (click)="onClick(button.click)">{{button.text}}</a>
+    </li>
+  </ul>
+</nav>
