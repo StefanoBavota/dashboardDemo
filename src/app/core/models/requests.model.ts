@@ -22,3 +22,8 @@ export interface AreaRequest extends BaseRequest {
   name?: string,
   description?: string
 }
+
+export interface UserRequest extends BaseRequest {
+  search?: string,
+  role?: string,
+}
