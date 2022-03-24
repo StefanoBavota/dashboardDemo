@@ -1,4 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,6 +14,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
   @Input() isOpen: boolean = false;
+  pathName: string = '';
 
   menuItems = [
     { linkIcon: 'house-door', linkName: 'Home', linkUrl: '' },
@@ -17,7 +25,12 @@ export class SidebarComponent implements OnInit {
     { linkIcon: 'person-lines-fill', linkName: 'Utenti', linkUrl: 'user' },
   ];
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  refreshLink(url: string) {
+    this.pathName = url;
+    this.router.navigate([url])
+  }
 }

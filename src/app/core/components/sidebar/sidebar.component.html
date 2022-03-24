@@ -21,17 +21,19 @@
     <li class="side-item" *ngFor="let item of menuItems">
       <a
         *ngIf="!isOpen"
-        [routerLink]="item.linkUrl"
+        (click) = "refreshLink(item.linkUrl)"
         class="nav-link text-white label-link"
+        [class.active]="pathName === item.linkUrl"
       >
         <i class="bi bi-{{ item.linkIcon }} side-icon"></i>
         {{ item.linkName }}
       </a>
       <a
         *ngIf="isOpen"
-        [routerLink]="item.linkUrl"
+        (click) = "refreshLink(item.linkUrl)"
         class="nav-link text-white label-link"
         [class.sideClosed_link]="isOpen"
+        [class.active]="pathName === item.linkUrl"
       >
         <i class="bi bi-{{ item.linkIcon }} side-icon"></i>
       </a>
