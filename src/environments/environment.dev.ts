@@ -6,5 +6,7 @@ export const environment = {
     client: { url: '' },
     login: { url: '' },
     area: { url: '' },
+    society: { url: '' },
+    user: { url: '' }
   },
 };

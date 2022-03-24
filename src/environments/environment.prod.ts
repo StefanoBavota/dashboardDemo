@@ -5,6 +5,8 @@ export const environment = {
     payment: { url: '' },
     client: { url: '' },
     login: { url: '' },
-    area: { url: '' }
+    area: { url: '' },
+    society: { url: '' },
+    user: { url: '' }
   }
 };
