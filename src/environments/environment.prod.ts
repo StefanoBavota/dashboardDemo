@@ -1,3 +1,10 @@
 export const environment = {
-  production: true
+  production: true,
+  restApiBasePathUrl: '',
+  endpoints: {
+    payment: { url: '' },
+    client: { url: '' },
+    login: { url: '' },
+    area: { url: '' }
+  }
 };
