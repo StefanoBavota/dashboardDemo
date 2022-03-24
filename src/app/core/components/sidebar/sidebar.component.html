@@ -1,0 +1,14 @@
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark wrap-nav">
+  <a href="/" class="d-flex justify-content-center">
+    <img class="logo" src="../../../../assets/icons/logo.png" />
+  </a>
+  <hr />
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="side-item" *ngFor="let item of menuItems">
+      <a href="{{ item.linkUrl }}" class="nav-link text-white label-link">
+        <i class="bi bi-{{ item.linkIcon }} side-icon"></i>
+        {{ item.linkName }}
+      </a>
+    </li>
+  </ul>
+</div>

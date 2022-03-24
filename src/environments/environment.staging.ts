@@ -3,6 +3,8 @@ export const environment = {
   restApiBasePathUrl: 'assets/data',
   endpoints: {
     payment: { url: 'payment.json' },
-    client: { url: 'client.json' }
+    client: { url: 'client.json' },
+    login: { url: 'login.json' },
+    area: { url: 'area.json' }
   }
 };
