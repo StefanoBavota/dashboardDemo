@@ -1,0 +1,16 @@
+<div class="size-selection-parent">
+  <div class="title">
+    Elementi visualizzati
+  </div>
+  <div class="dropdown">
+    <button class="btn dropdown-toggle" type="button" id="dropdownSizeButton" data-bs-toggle="dropdown" aria-expanded="false" (click)="onClickShow()">
+      {{actualSize}}
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownSizeButton" [class.show]="show">
+      <li *ngFor="let size of sizes" >
+        <a class="dropdown-item" [ngClass]="{active: size === actualSize}" (click)="onClick(size)">{{size}}</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
