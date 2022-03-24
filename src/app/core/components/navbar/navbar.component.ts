@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   show: boolean = false;
+  sideShow: boolean= false;
+  @Output() openSide: EventEmitter<boolean> = new EventEmitter();
 
   constructor() { }
 
@@ -15,6 +17,11 @@ export class NavbarComponent implements OnInit {
 
   onShow() {
     console.log("here", this.show)
-    this.show = this.show ? false : true;
+    this.show = !this.show;
+  }
+
+  onOpenSide() {
+    this.sideShow = !this.sideShow
+    this.openSide.emit(this.sideShow)
   }
 }

@@ -1,13 +1,17 @@
-<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark wrap-nav">
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark wrap-nav" [class.sideClosed]="isOpen">
   <a href="/" class="d-flex justify-content-center">
-    <img class="logo" src="../../../../assets/icons/logo.png" />
+    <img *ngIf="!isOpen" [class.sideClosed_img]="false" class="logo" src="../../../../assets/icons/logo.png" />
+    <img *ngIf="isOpen" [class.sideClosed_img]="true" class="logo" src="../../../../assets/icons/logo-small.png" />
   </a>
   <hr />
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="side-item" *ngFor="let item of menuItems">
-      <a href="{{ item.linkUrl }}" class="nav-link text-white label-link">
+      <a *ngIf="!isOpen" [routerLink]="item.linkUrl" class="nav-link text-white label-link">
         <i class="bi bi-{{ item.linkIcon }} side-icon"></i>
         {{ item.linkName }}
+      </a>
+      <a *ngIf="isOpen" [routerLink]="item.linkUrl" class="nav-link text-white label-link" [class.sideClosed_link]="isOpen">
+        <i class="bi bi-{{ item.linkIcon }} side-icon"></i>
       </a>
     </li>
   </ul>
