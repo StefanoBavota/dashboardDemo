@@ -1,0 +1,32 @@
+<nav class="navbar navbar-light bg-light justify-content-between">
+  <i
+    class="bi bi-list ms-2 fs-1 icon d-flex justify-content-center align-items-center"
+  ></i>
+  <form class="form-inline">
+    <!-- DROPDOWN -->
+    <div class="dropdown">
+      <button
+        (click)="onShow()"
+        class="btn dropdown-toggle me-5"
+        type="button"
+        id="dropdownMenuButton1"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <img
+          src="https://picsum.photos/id/237/200/300"
+          class="me-2"
+          style="width: 40px; height: 40px; border-radius: 50%"
+        />
+      </button>
+      <ul
+        [class.show]="show"
+        class="dropdown-menu dropdown-menu-left menu-list"
+        aria-labelledby="dropdownMenuButton1"
+      >
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><a class="dropdown-item" href="#">Logout</a></li>
+      </ul>
+    </div>
+  </form>
+</nav>
