@@ -17,11 +17,14 @@
     />
   </a>
   <hr />
-  <ul class="nav nav-pills flex-column mb-auto">
-    <li class="side-item" *ngFor="let item of menuItems">
+  <ul
+    class="nav nav-pills flex-column mb-auto"
+    [class.sideClosed_list]="isOpen"
+  >
+    <li class="side-item" *ngFor="let item of menuItems" [class.sideClosed_list_item]="isOpen">
       <a
         *ngIf="!isOpen"
-        (click) = "refreshLink(item.linkUrl)"
+        (click)="refreshLink(item.linkUrl)"
         class="nav-link text-white label-link"
         [class.active]="pathName === item.linkUrl"
       >
@@ -30,12 +33,14 @@
       </a>
       <a
         *ngIf="isOpen"
-        (click) = "refreshLink(item.linkUrl)"
+        (click)="refreshLink(item.linkUrl)"
         class="nav-link text-white label-link"
-        [class.sideClosed_link]="isOpen"
         [class.active]="pathName === item.linkUrl"
       >
-        <i class="bi bi-{{ item.linkIcon }} side-icon"></i>
+        <i
+          class="bi bi-{{ item.linkIcon }} side-icon"
+          [class.sideClosed_list_item_icon]="isOpen"
+        ></i>
       </a>
     </li>
   </ul>

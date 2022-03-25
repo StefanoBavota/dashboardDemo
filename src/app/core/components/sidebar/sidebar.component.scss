@@ -23,7 +23,7 @@
   color: var(--white);
   width: 16px;
   height: 16px;
-  margin-right: 0.5rem;
+  //margin-right: 0.5rem;
 }
 
 .active {
@@ -42,7 +42,16 @@
     height: 42px;
   }
 
-  &_link {
-    border-radius: 0.25rem 0 0 0.25rem;
+  &_list {
+    display: flex;
+    align-content: center;
+
+    &_item {
+      margin-bottom: 0.5rem;
+
+      &_icon {
+        font-size: 1.5rem;
+      }
+    }
   }
 }
