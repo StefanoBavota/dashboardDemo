@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 export class SidebarComponent implements OnInit {
   @Input() isOpen: boolean = false;
   pathName: string = '';
+  status: boolean = false;
 
   menuItems = [
     { linkIcon: 'house-door', linkName: 'Home', linkUrl: '' },
@@ -28,6 +29,10 @@ export class SidebarComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  onClickLogo() {
+    this.pathName = ""
+  }
 
   refreshLink(url: string) {
     this.pathName = url;

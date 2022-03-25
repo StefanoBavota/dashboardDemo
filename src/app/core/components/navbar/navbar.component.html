@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-light justify-content-between">
+<nav class="navbar navbar-light bg-white justify-content-between">
   <i
     class="bi bi-list ms-2 fs-1 icon d-flex justify-content-center align-items-center"
     (click)="onOpenSide()"
@@ -25,8 +25,8 @@
         class="dropdown-menu dropdown-menu-left menu-list"
         aria-labelledby="dropdownMenuButton1"
       >
-        <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li><a class="dropdown-item" href="#">Logout</a></li>
+        <li><a class="dropdown-item" (click)="onProfileClick()">Profile</a></li>
+        <li><a class="dropdown-item"(click)="onLogout()">Logout</a></li>
       </ul>
     </div>
   </form>
