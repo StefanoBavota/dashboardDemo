@@ -94,6 +94,9 @@
             },
             "development": {
               "browserTarget": "dashboardDemo:build:development"
+            },
+            "staging": {
+              "browserTarget": "dashboardDemo:build:staging"
             }
           },
           "defaultConfiguration": "development"

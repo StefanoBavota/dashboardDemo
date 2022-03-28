@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { generateButtons, PaginationButton } from './pagination';
 
 @Component({
@@ -6,7 +6,7 @@ import { generateButtons, PaginationButton } from './pagination';
   templateUrl: './table-pagination.component.html',
   styleUrls: ['./table-pagination.component.scss']
 })
-export class TablePaginationComponent implements OnInit {
+export class TablePaginationComponent implements OnInit, OnChanges {
 
   @Input() totalPages: number = 1;
   @Input() actualPage: number = 1;
@@ -17,9 +17,12 @@ export class TablePaginationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('pippo')
     this.buttons = generateButtons(this.totalPages, this.actualPage);
-    console.log('geremia', this.buttons)
+  }
+
+  ngOnChanges() {
+    console.log('pagination', this.totalPages, this.actualPage)
+    this.buttons = generateButtons(this.totalPages, this.actualPage);
   }
 
   onClick(index: number) {

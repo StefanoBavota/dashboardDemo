@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="page-size-selection col-md-2">
+    <app-page-size-selection [actualSize]="pageSize" (sizeEmitter)="onChangePageSize($event)"></app-page-size-selection>
+  </div>
+  <div class="filter born-date-filter col-md-2">
+    <div class="title">
+      Seleziona anno di nascita:
+    </div>
+    <div class="select">
+      <select class="form-select" aria-label="Born year" [formControl]="bornYearControl">
+        <ng-container *ngFor="let year of bornDateYears">
+          <ng-container *ngIf="year === bornYear.toString() || (year === '-' && bornYear === 0); else bornYearOption">
+            <option value="{{year}}" selected>
+              {{year}}
+            </option>
+          </ng-container>
+          <ng-template #bornYearOption>
+            <option value="{{year}}">
+              {{year}}
+            </option>
+          </ng-template>
+        </ng-container>
+      </select>
+    </div>
+  </div>
+  <div class="filter card-year-filter col-md-2">
+    <div class="title">
+      Seleziona anno di rilascio tessera:
+    </div>
+    <div class="select">
+      <select class="form-select" aria-label="Card year" [formControl]="cardYearControl">
+        <ng-container *ngFor="let year of cardDateYears">
+          <ng-container *ngIf="year === cardYear.toString() || (year === '-' && cardYear === 0); else yearOption">
+            <option value="{{year}}" selected>
+              {{year}}
+            </option>
+          </ng-container>
+          <ng-template #yearOption>
+            <option value="{{year}}">
+              {{year}}
+            </option>
+          </ng-template>
+        </ng-container>
+      </select>
+    </div>
+  </div>
+  <div class="filter active-filter col-md-2">
+    <div class="title">
+      Visualizzazione utenti attivi:
+    </div>
+    <div class="select">
+      <select class="form-select" aria-label="active" [formControl]="activeControl">
+        <ng-container *ngFor="let option of activeOptions">
+          <ng-container *ngIf="option === active; else yearOption">
+            <option value="{{option}}" selected>
+              {{option}}
+            </option>
+          </ng-container>
+          <ng-template #yearOption>
+            <option value="{{option}}">
+              {{option}}
+            </option>
+          </ng-template>
+        </ng-container>
+      </select>
+    </div>
+  </div>
+  <div class="search-filter col-md-4">
+    <input type="text" class="form-control" placeholder="Search" aria-label="Search" [formControl]="searchControl">
+  </div>
+</div>

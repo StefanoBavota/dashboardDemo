@@ -1,19 +1,24 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { ClientRoutingModule } from './client-routing.module';
-import { ClientListPageComponent } from './components/client-list-page/client-list-page.component';
 import { ClientEditPageComponent } from './components/client-edit-page/client-edit-page.component';
+import { ClientListPageComponent } from './components/client-list-page/client-list-page.component';
+import { FilterRowComponent } from './components/filter-row/filter-row.component';
 
 
 @NgModule({
   declarations: [
     ClientListPageComponent,
-    ClientEditPageComponent
+    ClientEditPageComponent,
+    FilterRowComponent
   ],
   imports: [
     CommonModule,
-    ClientRoutingModule
+    ClientRoutingModule,
+    SharedModule,
+    ReactiveFormsModule,
   ]
 })
 export class ClientModule { }
