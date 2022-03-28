@@ -55,6 +55,7 @@ export class ClientListPageComponent implements OnInit {
   onFiltersChange(filters: ClientFilters) {
     console.log('filters', filters);
     this.filters = filters;
+    this.getClients();
   }
 
 }
