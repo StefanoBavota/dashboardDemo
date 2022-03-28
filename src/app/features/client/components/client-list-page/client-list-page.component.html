@@ -3,9 +3,6 @@
     LISTA CLIENTI
   </div>
   <div class="row filters-row">
-    <div class="page-size-selection"></div>
-    <div class="botn-date-filter"></div>
-    <div class="card-year-filter"></div>
-    <div class="active-filter"></div>
+    <app-filter-row [filters]="filters" (filtersEmitter)="onFiltersChange($event)"></app-filter-row>
   </div>
 </div>
