@@ -1,0 +1,7 @@
+.menu-list {
+  min-width: 8rem;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  background-color: var(--primary);
+}

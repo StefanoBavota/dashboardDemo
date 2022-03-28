@@ -1,5 +1,4 @@
 .wrap-nav {
-  width: 280px;
   height: 100vh;
 }
 
@@ -24,7 +23,7 @@
   color: var(--white);
   width: 16px;
   height: 16px;
-  margin-right: 0.5rem;
+  //margin-right: 0.5rem;
 }
 
 .active {
@@ -33,5 +32,26 @@
 
   i {
     color: var(--black) !important;
+  }
+}
+
+.sideClosed {
+  width: 4.5rem;
+
+  &_img {
+    height: 42px;
+  }
+
+  &_list {
+    display: flex;
+    align-content: center;
+
+    &_item {
+      margin-bottom: 0.5rem;
+
+      &_icon {
+        font-size: 1.5rem;
+      }
+    }
   }
 }

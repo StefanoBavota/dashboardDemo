@@ -1,8 +1,9 @@
 <div class="d-flex">
   <div>
-    <app-sidebar></app-sidebar>
+    <app-sidebar [isOpen]="isSideOpen"></app-sidebar>
   </div>
-  <div>
+  <div class="w-100">
+    <app-navbar (openSide)="toggleSidebar($event)"></app-navbar>
     <router-outlet></router-outlet>
   </div>
 </div>

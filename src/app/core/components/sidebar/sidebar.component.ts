@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,6 +13,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
+  @Input() isOpen: boolean = false;
+  pathName: string = '';
+  status: boolean = false;
+
   menuItems = [
     { linkIcon: 'house-door', linkName: 'Home', linkUrl: '' },
     { linkIcon: 'people', linkName: 'Clienti', linkUrl: 'client' },
@@ -15,7 +26,16 @@ export class SidebarComponent implements OnInit {
     { linkIcon: 'person-lines-fill', linkName: 'Utenti', linkUrl: 'user' },
   ];
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  onClickLogo() {
+    this.pathName = ""
+  }
+
+  refreshLink(url: string) {
+    this.pathName = url;
+    this.router.navigate([url])
+  }
 }
