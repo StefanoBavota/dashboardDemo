@@ -1,0 +1,11 @@
+.filter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.search-filter {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}

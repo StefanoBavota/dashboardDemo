@@ -8,7 +8,6 @@ import { ClientListPageComponent } from './components/client-list-page/client-li
 import { FilterRowComponent } from './components/filter-row/filter-row.component';
 
 
-
 @NgModule({
   declarations: [
     ClientListPageComponent,
@@ -19,7 +18,7 @@ import { FilterRowComponent } from './components/filter-row/filter-row.component
     CommonModule,
     ClientRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class ClientModule { }

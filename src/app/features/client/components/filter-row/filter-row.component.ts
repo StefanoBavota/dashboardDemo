@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { merge, of, switchMap } from 'rxjs';
+import { merge, of, switchMap, tap } from 'rxjs';
 import { ClientFilters } from '../../model/filter.model';
 import { getYears } from './filter-row-utils';
 
@@ -9,7 +9,7 @@ import { getYears } from './filter-row-utils';
   templateUrl: './filter-row.component.html',
   styleUrls: ['./filter-row.component.scss']
 })
-export class FilterRowComponent implements OnInit {
+export class FilterRowComponent implements OnInit, OnChanges {
 
   @Input() filters?: ClientFilters;
   @Output() filtersEmitter = new EventEmitter<ClientFilters>();
@@ -31,12 +31,17 @@ export class FilterRowComponent implements OnInit {
   activeControl = new FormControl(this.active);
   searchControl = new FormControl(this.search);
 
+
   constructor() { }
+
+  ngOnChanges(): void {
+  }
 
   ngOnInit(): void {
     this.setFilters();
     this.setFormControls();
     this.listenFormControls().subscribe(res => {
+      console.log('subscribe', res);
       this.filtersEmitter.emit(res);
     })
   }
@@ -67,6 +72,7 @@ export class FilterRowComponent implements OnInit {
       this.activeControl.valueChanges,
       this.searchControl.valueChanges
     ).pipe(
+      tap(x => console.log('pipe', x)),
       switchMap(() => of({
         search: this.searchControl.value,
         bornYear: this.bornYearControl.value,
