@@ -1,5 +1,6 @@
 .wrap-nav {
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 }
 
 .logo {
@@ -23,7 +24,6 @@
   color: var(--white);
   width: 16px;
   height: 16px;
-  //margin-right: 0.5rem;
 }
 
 .active {
