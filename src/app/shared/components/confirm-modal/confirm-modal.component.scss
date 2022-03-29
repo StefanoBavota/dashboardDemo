@@ -1,0 +1,29 @@
+.modal-save {
+  width: 10rem;
+  height: 4rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10% 0%;
+
+  p {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5rem;
+  }
+
+  &_button {
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+
+    &_btn {
+      width: 10rem;
+      height: 4rem;
+    }
+  }
+}

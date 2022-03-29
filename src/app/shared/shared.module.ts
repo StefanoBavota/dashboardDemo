@@ -3,18 +3,21 @@ import { NgModule } from '@angular/core';
 import { PageSizeSelectionComponent } from './components/page-size-selection/page-size-selection.component';
 import { TablePaginationComponent } from './components/table-pagination/table-pagination.component';
 import { FormItemComponent } from './components/form-item/form-item.component';
+import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 
 @NgModule({
   declarations: [
     TablePaginationComponent,
     PageSizeSelectionComponent,
     FormItemComponent,
+    ConfirmModalComponent,
   ],
   imports: [CommonModule],
   exports: [
     TablePaginationComponent,
     PageSizeSelectionComponent,
-    FormItemComponent
+    FormItemComponent,
+    ConfirmModalComponent,
   ],
 })
 export class SharedModule {}
