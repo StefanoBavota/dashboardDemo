@@ -1,0 +1,14 @@
+.input {
+  outline: none;
+  transition: border 100ms linear;
+  color: var(--black) !important;
+  box-sizing: border-box;
+
+  &:focus-within {
+    border: solid 3px var(--light-gray);
+  }
+}
+
+input.ng-touched.ng-invalid {
+  border: solid 3px var(--danger) !important;
+}

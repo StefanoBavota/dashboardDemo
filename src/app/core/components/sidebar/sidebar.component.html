@@ -2,20 +2,18 @@
   class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark wrap-nav"
   [class.sideClosed]="isOpen"
 >
-  <a routerLink="/" class="d-flex justify-content-center">
+  <a routerLink="home" class="d-flex justify-content-center">
     <img
       *ngIf="!isOpen"
       [class.sideClosed_img]="false"
       class="logo"
       src="../../../../assets/icons/logo.png"
-      (click)="onClickLogo()"
     />
     <img
       *ngIf="isOpen"
       [class.sideClosed_img]="true"
       class="logo"
       src="../../../../assets/icons/logo-small.png"
-      (click)="onClickLogo()"
     />
   </a>
   <hr />
@@ -30,18 +28,18 @@
     >
       <a
         *ngIf="!isOpen"
-        (click)="refreshLink(item.linkUrl)"
         class="nav-link text-white label-link"
-        [class.active]="pathName === item.linkUrl"
+        routerLinkActive="active"
+        [routerLink]="item.linkUrl"
       >
         <i class="bi bi-{{ item.linkIcon }} side-icon"></i>
         {{ item.linkName }}
       </a>
       <a
         *ngIf="isOpen"
-        (click)="refreshLink(item.linkUrl)"
         class="nav-link text-white label-link"
-        [class.active]="pathName === item.linkUrl"
+        routerLinkActive="active"
+        [routerLink]="item.linkUrl"
       >
         <i
           class="bi bi-{{ item.linkIcon }} side-icon"
