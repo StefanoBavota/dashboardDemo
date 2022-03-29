@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { fromFiltersToRequestClient } from 'src/app/core/adapters';
 import { Client } from 'src/app/core/models';
 import { DataService } from 'src/app/core/services/data.service';
 import { ClientFilters } from '../../model/filter.model';
+import { ClientService } from '../../services/client.service';
 
 @Component({
   selector: 'app-client-list-page',
@@ -26,7 +28,9 @@ export class ClientListPageComponent implements OnInit {
   actualPage: number = 1;
 
   constructor(
-    private data: DataService
+    private data: DataService,
+    private clientService: ClientService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -58,4 +62,8 @@ export class ClientListPageComponent implements OnInit {
     this.getClients();
   }
 
+  onClickEdit(client: Client) {
+    this.clientService.setClient(client);
+    this.router.navigateByUrl('client/edit/' + client.id)
+  }
 }

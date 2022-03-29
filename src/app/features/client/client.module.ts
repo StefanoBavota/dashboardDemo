@@ -18,7 +18,7 @@ import { FilterRowComponent } from './components/filter-row/filter-row.component
     CommonModule,
     ClientRoutingModule,
     SharedModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ClientModule { }

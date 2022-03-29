@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Area, AreaRequest, BaseRequest, Client, ClientRequest, LoginResponse, Page, Payment, PaymentRequest, Society, User, UserRequest } from '../models';
 
@@ -42,7 +42,18 @@ export class DataService {
       {
         params: this.getParams(request)
       }
-    );
+    ).pipe(
+      switchMap(res => of({
+        total: res.total,
+        data: res.data.map(client => {
+          const splitted = client.born.split('/');
+          return {
+            ...client,
+            born: new Date(splitted[2], splitted[1], splitted[0])
+          };
+        })
+      }))
+    )
   }
 
   getAreas(request: AreaRequest) {

@@ -2,6 +2,9 @@
   <div class="row title-row">
     LISTA CLIENTI
   </div>
+  <div>
+    <button class="btn button primary" routerLink="new">NUOVO CLIENTE</button>
+  </div>
   <div class="row filters-row">
     <app-filter-row
       [filters]="filters"
@@ -34,7 +37,7 @@
             <i class="bi bi-circle-fill" [ngStyle]="{'color': client.payed ? '#28a745' : '#f20000'}"></i>
           </td>
           <td class="buttons-col">
-            <i class="bi bi-pencil-square" style="font-size: 2rem;"></i>
+            <i class="bi bi-pencil-square" style="font-size: 2rem;" (click)="onClickEdit(client)"></i>
             <i class="bi bi-trash" style="font-size: 2rem;"></i>
           </td>
         </tr>
