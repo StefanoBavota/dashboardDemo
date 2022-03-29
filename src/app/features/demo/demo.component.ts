@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { from, Observable } from 'rxjs';
+import { ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-demo',
@@ -6,18 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./demo.component.scss'],
 })
 export class DemoComponent implements OnInit {
-  selectedOption: string = '';
-
   options = [
     { name: 'option1', value: 1 },
     { name: 'option2', value: 2 },
     { name: 'option3', value: 3 },
   ];
-  constructor() {}
+  constructor(private modalService: NgbModal) {}
 
   ngOnInit(): void {}
 
-  print() {
-    console.log(this.selectedOption);
+  // MODAL LOGIC OBSERVABLE
+  openModal() {
+    const modalRef = this.modalService.open(ConfirmModalComponent);
+    from(modalRef.result).subscribe((res: boolean) => {
+      console.log(res);
+    });
   }
 }
