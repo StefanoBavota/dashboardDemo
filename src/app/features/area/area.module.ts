@@ -1,9 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { AreaRoutingModule } from './area-routing.module';
-import { AreaListPageComponent } from './components/area-list-page/area-list-page.component';
 import { AreaEditPageComponent } from './components/area-edit-page/area-edit-page.component';
+import { AreaListPageComponent } from './components/area-list-page/area-list-page.component';
+
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { AreaEditPageComponent } from './components/area-edit-page/area-edit-pag
   ],
   imports: [
     CommonModule,
-    AreaRoutingModule
+    AreaRoutingModule,
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class AreaModule { }

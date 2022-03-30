@@ -23,26 +23,27 @@ export class DataService {
     return params;
   }
 
+  getQueryParams(request: BaseRequest, url: string): Observable<Page> {
+    let queryString = '?';
+    let myUrl = `${environment.restApiBasePathUrl}/${url}`;
+    for(const [key, value] of Object.entries(request)) {
+      if(queryString !== '?') queryString = queryString + '&';
+      queryString = `${queryString}${key}=${value}`;
+    }
+
+    if (queryString !== '?') myUrl = myUrl + queryString;
+    return this.http.get<Page>(myUrl);
+  }
+
   /*
     GET FUNCTIONS
   */
 
   getPayments(request: PaymentRequest) {
-    return this.http.get<Page>(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.payment.url}`,
-      {
-        params: this.getParams(request)
-      }
-    );
   }
 
   getClients(request: ClientRequest) {
-    return this.http.get<Page>(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}`,
-      {
-        params: this.getParams(request)
-      }
-    ).pipe(
+    return this.getQueryParams(request, environment.endpoints.client.url).pipe(
       switchMap(res => of({
         total: res.total,
         data: res.data.map(client => {
@@ -57,32 +58,15 @@ export class DataService {
   }
 
   getAreas(request: AreaRequest) {
-    return this.http.get<Page>(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.area.url}`,
-      {
-        params: this.getParams(request)
-      }
-    )
+    return this.getQueryParams(request, environment.endpoints.area.url);
   }
 
   getSocieties(request: BaseRequest) {
-    return this.http.get<Page>(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.area.url}`,
-      {
-        params: this.getParams(request)
-      }
-    )
+    return this.getQueryParams(request, environment.endpoints.society.url);
   }
 
-
-
   getUsers(request: UserRequest) {
-    return this.http.get<Page>(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.user.url}`,
-      {
-        params: this.getParams(request)
-      }
-    )
+    return this.getQueryParams(request, environment.endpoints.user.url);
   }
 
   /*

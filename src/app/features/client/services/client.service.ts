@@ -14,6 +14,10 @@ export class ClientService {
     this.client = client;
   }
 
+  resetService() {
+    this.client = undefined;
+  }
+
   getClient() {
     return this.client;
   }
