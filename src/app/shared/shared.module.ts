@@ -5,6 +5,7 @@ import { TablePaginationComponent } from './components/table-pagination/table-pa
 import { FormItemComponent } from './components/form-item/form-item.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     ConfirmModalComponent,
     ChangePasswordComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   exports: [
     TablePaginationComponent,
     PageSizeSelectionComponent,
