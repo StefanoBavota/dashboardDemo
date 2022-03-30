@@ -179,7 +179,8 @@ export class DataService {
 
   deleteArea(area: Area) {
     return this.http.delete(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}/${area.id}`
+      `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}/${area.id}`,
+      { observe: 'response' }
     )
   }
 

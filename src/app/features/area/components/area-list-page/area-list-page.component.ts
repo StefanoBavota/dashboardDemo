@@ -57,7 +57,7 @@ export class AreaListPageComponent implements OnInit {
 
   onClickEdit(area: Area) {
     this.areaService.setArea(area);
-    this.router.navigateByUrl('client/edit/' + area.id)
+    this.router.navigateByUrl('area/edit/' + area.id)
   }
 
   generateAreaRequest(): AreaRequest {
@@ -67,5 +67,13 @@ export class AreaListPageComponent implements OnInit {
     };
     if(this.search !== '') request.search = this.search;
     return request;
+  }
+
+  onClickDelete(area: Area) {
+    this.data.deleteArea(area).subscribe((res) => {
+      if(res.status === 200) {
+        //toaster ok
+      }
+    });
   }
 }

@@ -9,7 +9,11 @@ const routes: Routes = [
     component: AreaListPageComponent
   },
   {
-    path: ':id',
+    path: 'edit/:id',
+    component: AreaEditPageComponent
+  },
+  {
+    path: 'new',
     component: AreaEditPageComponent
   }
 ];
