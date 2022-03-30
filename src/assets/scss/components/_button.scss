@@ -27,4 +27,15 @@
       box-shadow: 0 0 5px 3px var(--light-gray);
     }
   }
+
+  &.close {
+    background-color: var(--danger);
+    color: var(--white);
+    border-radius: 50%;
+
+    &:hover {
+      color: var(--white);
+      box-shadow: 0 0 5px 3px var(--light-gray);
+    }
+  }
 }
