@@ -1,0 +1,34 @@
+.input-row {
+  margin-bottom: 30px;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.input-field {
+  width: 30%;
+}
+
+.btn-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.body-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title-row {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  margin-left: 20px;
+}
