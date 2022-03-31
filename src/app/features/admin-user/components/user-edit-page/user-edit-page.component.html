@@ -1,1 +1,92 @@
-<p>user-edit-page works!</p>
+<div class="container bg-light my-3 py-3 round-border">
+
+  <div class="row title-row">
+    <h2>{{mode === 'NEW' ? ' Creazione' : mode === 'EDIT' ? 'MODIFICA' : 'DETTAGLIO'}} Utente</h2>
+  </div>
+
+  <!--MESSAGE PLACEHOLDER-->
+
+  <form [formGroup]="editFormUser"  class="col-md-7 col-lg-8">
+    <div class="input-row input-field">
+      <div class="row g-3">
+      <div class="col-sm-6">
+      <app-form-item label="Nome">
+        <input type="text" class="form-control" id="name" formControlName="name"  required
+        [ngClass]="(editFormUser.get('name')?.touched ||
+        editFormUser.get('name')?.dirty) &&
+        editFormUser.get('name')?.hasError('required')
+        ? 'is-invalid'
+        : '' ||
+       ((editFormUser.get('name')?.touched ||
+         editFormUser.get('name')?.dirty) &&
+         !editFormUser.get('name')?.invalid)
+        ? 'is-valid'
+        : ''"
+        />
+        <div class="invalid-feedback">
+          Name is required
+        </div>
+      </app-form-item>
+
+      </div>
+    </div>
+
+
+        <div class="col-sm-6">
+          <label for="lastName" class="form-label">Cognome</label>
+          <input type="text" class="form-control" required ngModel name="cognome" #lastNameRef="ngModel" [ngClass]="checkField(lastNameRef)">
+          <div class="invalid-feedback">
+            Cognome name is required.
+          </div>
+        </div>
+
+
+        <div class="col-12">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" placeholder="you@example.com" ngModel name="email" required email #emailRef="ngModel" [ngClass]="checkField(emailRef)">
+          <div class="invalid-feedback">
+            Please enter a valid email address for shipping updates.
+          </div>
+        </div>
+
+
+        <div class="col-md-5">
+          <label for="country" class="form-label">Ruolo</label>
+          <select class="form-select" [ngModel] name="country" #countryRef="ngModel" [ngClass]="checkField(countryRef)">
+            <option [value]="">All</option>
+            <option value="Admin">Admin</option>
+            <option value="Operator">Operator</option>
+          </select>
+        </div>
+
+
+      </div>
+
+      <hr class="my-4">
+
+
+      <h4 class="mb-3">Password</h4>
+
+
+      <div class="col-sm-6">
+        <label for="Password" class="form-label">Password</label>
+        <input type="text" class="form-control" required ngModel name="password" #firstNameRef="ngModel" [ngClass]="checkField(firstNameRef)">
+        <div class="invalid-feedback">
+          Password is required.
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <label for="lastName" class="form-label">Confirm Password</label>
+        <input type="text" class="form-control" required ngModel name="confirmPassword" #lastNameRef="ngModel" [ngClass]="checkField(lastNameRef)">
+        <div class="invalid-feedback">
+          Confirm Password is required.
+        </div>
+      </div>
+
+
+      <hr class="my-4">
+
+      <button class="w-100 btn btn-primary btn-lg" type="submit" [disabled]="editFormUser.invalid">Salva</button>
+    </form>
+  </div>
