@@ -15,7 +15,7 @@ import {
   PaymentRequest,
   Society,
   User,
-  UserRequest,
+  UserRequest
 } from '../models';
 
 @Injectable({
@@ -32,6 +32,18 @@ export class DataService {
       }
     });
     return params;
+  }
+
+  getQueryParams(request: BaseRequest, url: string): Observable<Page> {
+    let queryString = '?';
+    let myUrl = `${environment.restApiBasePathUrl}/${url}`;
+    for(const [key, value] of Object.entries(request)) {
+      if(queryString !== '?') queryString = queryString + '&';
+      queryString = `${queryString}${key}=${value}`;
+    }
+
+    if (queryString !== '?') myUrl = myUrl + queryString;
+    return this.http.get<Page>(myUrl);
   }
 
   /*
@@ -208,8 +220,9 @@ export class DataService {
 
   deleteArea(area: Area) {
     return this.http.delete(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}/${area.id}`
-    );
+      `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}/${area.id}`,
+      { observe: 'response' }
+    )
   }
 
   deleteSociety(society: Society) {
@@ -251,5 +264,5 @@ export class DataService {
   //TODO implement function
   changePassword(body: ChangePasswordRequest) {
     console.log(body)
-  } 
+  }
 }

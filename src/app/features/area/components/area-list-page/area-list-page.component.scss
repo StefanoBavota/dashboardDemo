@@ -1,0 +1,26 @@
+.page {
+  display: flex;
+  justify-content: center;
+}
+
+.title-row {
+  font-size: 28px;
+  margin-bottom: 30px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+}
+
+.filters-row {
+  height: 20%;
+  margin-bottom: 30px;
+}
+
+.buttons-col {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.search-bar {
+  width: 30%;
+}

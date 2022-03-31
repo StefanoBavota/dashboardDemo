@@ -19,8 +19,7 @@ export interface ClientRequest extends BaseRequest {
 }
 
 export interface AreaRequest extends BaseRequest {
-  name?: string;
-  description?: string;
+  search?: string,
 }
 
 export interface UserRequest extends BaseRequest {
