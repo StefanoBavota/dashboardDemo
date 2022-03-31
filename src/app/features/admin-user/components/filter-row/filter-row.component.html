@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="page-size-selection col-md-2">
+    <app-page-size-selection [actualSize]="pageSize" (sizeEmitter)="onChangePageSize($event)"></app-page-size-selection>
+  </div>
+
+  <div class="search-filter col-md-4">
+    <div class="title">
+      Filtra per email:
+     </div>
+    <input type="text" class="form-control" placeholder="Search" aria-label="Search" [formControl]="searchEmailControl">
+  </div>
+
+  <div class="filter active-filter col-md-2">
+    <div class="title">
+     Seleziona il ruolo:
+    </div>
+    <div class="select">
+      <select class="form-select" aria-label="active" [formControl]="filterByRoleControl">
+        <ng-container *ngFor="let option of filterByRoleOptions">
+          <ng-container *ngIf="option === filterByRole; else roleOption">
+            <option value="{{option}}" selected>
+              {{option}}
+            </option>
+          </ng-container>
+          <ng-template #roleOption>
+            <option value="{{option}}">
+              {{option}}
+            </option>
+          </ng-template>
+        </ng-container>
+      </select>
+    </div>
+  </div>
+  </div>
