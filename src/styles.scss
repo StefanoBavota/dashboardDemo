@@ -3,10 +3,11 @@
 @import "./assets/scss/colors";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
-// components
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+/* Importing Component SCSS file. */
 @import "./assets/scss/components/button";
 @import "./assets/scss/components/input";
 @import "./assets/scss/components/confirm-modal";
 
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
