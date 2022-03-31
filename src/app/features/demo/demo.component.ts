@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { from, Observable } from 'rxjs';
+import { ChangePasswordComponent } from 'src/app/shared/components/change-password/change-password.component';
 import { ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 
 @Component({
@@ -24,5 +25,9 @@ export class DemoComponent implements OnInit {
     from(modalRef.result).subscribe((res: boolean) => {
       console.log(res);
     });
+  }
+
+  openModalPassword() {
+    this.modalService.open(ChangePasswordComponent);
   }
 }
