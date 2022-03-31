@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Area, AreaRequest } from 'src/app/core/models';
 import { DataService } from 'src/app/core/services/data.service';
+import { ToastService } from 'src/app/core/services/toast.service';
 import { DeleteModalComponent } from 'src/app/shared/components/delete-modal/delete-modal.component';
 import { AreaService } from '../../services/area.service';
 
@@ -28,7 +29,8 @@ export class AreaListPageComponent implements OnInit {
     private data: DataService,
     private router: Router,
     private areaService: AreaService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private toastService: ToastService
   ) { }
 
   ngOnInit(): void {
@@ -78,9 +80,11 @@ export class AreaListPageComponent implements OnInit {
 
     modalRef.result.then(modalRes => {
       if(modalRes) {
+        console.log('aaaa');
+        this.toastService.show('Settore rimosso', `Il settore ${area.name} è stato rimosso`)
         this.data.deleteArea(area).subscribe((res) => {
           if(res.status === 200) {
-            //toaster ok
+
           }
         });
       }

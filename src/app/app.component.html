@@ -10,4 +10,15 @@
       <router-outlet></router-outlet>
     </div>
   </div>
+  <div class="toast-container">
+    <ngb-toast
+      *ngFor="let toast of toasts$ | async"
+      [header]="toast.header"
+      [autohide]="true"
+      [delay]="toast.delay || 5000"
+      (hide)="closeToast(toast)"
+    >
+      {{toast.body}}
+    </ngb-toast>
+  </div>
 </div>
