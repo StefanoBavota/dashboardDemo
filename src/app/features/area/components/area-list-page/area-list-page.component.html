@@ -4,7 +4,7 @@
       LISTA SETTORI
     </div>
     <div class="col-4">
-      <button class="btn button primary w-" routerLink="new">NUOVO CLIENTE</button>
+      <button class="btn button primary w-" (click)="onClickNewArea()">NUOVO SETTORE</button>
     </div>
   </div>
   <div class="row filters-row">
@@ -27,7 +27,7 @@
           <td>{{area.description}}</td>
           <td class="buttons-col">
             <i class="bi bi-pencil-square" style="font-size: 2rem;" (click)="onClickEdit(area)"></i>
-            <i class="bi bi-trash" style="font-size: 2rem;"></i>
+            <i class="bi bi-trash" style="font-size: 2rem;" (click)="onClickDelete(area)"></i>
           </td>
         </tr>
       </tbody>

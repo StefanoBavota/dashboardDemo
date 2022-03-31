@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Area, AreaRequest } from 'src/app/core/models';
 import { DataService } from 'src/app/core/services/data.service';
+import { DeleteModalComponent } from 'src/app/shared/components/delete-modal/delete-modal.component';
 import { AreaService } from '../../services/area.service';
 
 @Component({
@@ -25,7 +27,8 @@ export class AreaListPageComponent implements OnInit {
   constructor(
     private data: DataService,
     private router: Router,
-    private areaService: AreaService
+    private areaService: AreaService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -70,10 +73,21 @@ export class AreaListPageComponent implements OnInit {
   }
 
   onClickDelete(area: Area) {
-    this.data.deleteArea(area).subscribe((res) => {
-      if(res.status === 200) {
-        //toaster ok
+    const modalRef = this.modalService.open(DeleteModalComponent);
+    modalRef.componentInstance.item = `${area.id}-${area.name}`;
+
+    modalRef.result.then(modalRes => {
+      if(modalRes) {
+        this.data.deleteArea(area).subscribe((res) => {
+          if(res.status === 200) {
+            //toaster ok
+          }
+        });
       }
-    });
+    })
+  }
+  onClickNewArea() {
+    this.areaService.resetService();
+    this.router.navigateByUrl('area/new');
   }
 }

@@ -17,7 +17,7 @@ import { AreaListPageComponent } from './components/area-list-page/area-list-pag
     CommonModule,
     AreaRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class AreaModule { }

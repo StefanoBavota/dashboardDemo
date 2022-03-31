@@ -4,6 +4,7 @@ import { PageSizeSelectionComponent } from './components/page-size-selection/pag
 import { TablePaginationComponent } from './components/table-pagination/table-pagination.component';
 import { FormItemComponent } from './components/form-item/form-item.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
+import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.
     PageSizeSelectionComponent,
     FormItemComponent,
     ConfirmModalComponent,
+    DeleteModalComponent,
   ],
   imports: [CommonModule],
   exports: [
