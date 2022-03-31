@@ -214,7 +214,8 @@ export class DataService {
 
   deleteClient(client: Client) {
     return this.http.delete(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}/${client.id}`
+      `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}/${client.id}`,
+      { observe: 'response' }
     );
   }
 
@@ -227,19 +228,22 @@ export class DataService {
 
   deleteSociety(society: Society) {
     return this.http.delete(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}/${society.id}`
+      `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}/${society.id}`,
+      { observe: 'response' }
     );
   }
 
   deleteUser(user: User) {
     return this.http.delete(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}/${user.id}`
+      `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}/${user.id}`,
+      { observe: 'response' }
     );
   }
 
   deletePayment(payment: Payment) {
     return this.http.delete(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}/${payment.id}`
+      `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}/${payment.id}`,
+      { observe: 'response' }
     );
   }
 
