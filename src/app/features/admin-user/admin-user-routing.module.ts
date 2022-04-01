@@ -9,11 +9,11 @@ const routes: Routes = [
     component: UserListPageComponent
   },
   {
-    path: ':id',
+    path: 'edit/:id',
     component: UserEditPageComponent
   },
   {
-    path: 'edit/:id',
+    path: 'new',
     component: UserEditPageComponent
   },
 ];

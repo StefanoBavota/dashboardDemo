@@ -1,0 +1,24 @@
+.btn-row {
+  width: 68%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.body-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title-row {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  margin-left: 20px;
+}
+
+.btn-container {
+  width: 200px;
+}
