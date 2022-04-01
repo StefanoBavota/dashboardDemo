@@ -28,27 +28,27 @@ export class UserListPageComponent implements OnInit {
   totalPages: number = 1;
   actualPage: number = 1;
 
-  constructor(private data: DataService, public userService: UserService , private router: Router) { }
+  constructor(private data: DataService, public userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.getUsers();
   }
 
-  getUsers(){
+  getUsers() {
     this.data.getUsers(fromFiltersToRequestUser(this.filters, this.take, this.skip)).subscribe(res => {
-      if(!res){
+      if (!res) {
         this.success = false;
       }
-       this.users = res.data;
-       console.log('users',this.users);
-       this.totalPages = Math.ceil(res.total / this.take);
-       console.log('totalPages', this.totalPages);
+      this.users = res.data;
+      console.log('users', this.users);
+      this.totalPages = Math.ceil(res.total / this.take);
+      console.log('totalPages', this.totalPages);
     })
-}
+  }
 
 
   onPageClick(page: number) {
-    this.skip = (page-1) * this.take;
+    this.skip = (page - 1) * this.take;
     this.actualPage = page;
     this.getUsers();
   }
@@ -64,7 +64,7 @@ export class UserListPageComponent implements OnInit {
     this.getUsers();
   }
 
-  onClickEdit(user: User){
+  onClickEdit(user: User) {
     this.userService.setUser(user);
     this.router.navigateByUrl('user/edit/' + user.id)
   }

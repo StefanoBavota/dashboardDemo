@@ -1,10 +1,11 @@
 import { UserService } from './../../services/user.service';
 import { User } from './../../../../core/models/user.model';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgModel, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgModel, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/core/services/data.service';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-user-edit-page',
@@ -16,6 +17,11 @@ export class UserEditPageComponent implements OnInit {
 
   editFormUser: FormGroup;
   user?: User;
+  visible: boolean = false;
+  readOnly : boolean = false;
+
+  errorBS = new BehaviorSubject<boolean>(false);
+  error$ = this.errorBS.asObservable();
 
   mode: string = 'DETAIL';
   modeBS = new BehaviorSubject<string>(this.mode);
@@ -23,26 +29,46 @@ export class UserEditPageComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router,
+    public router: Router,
     private data: DataService,
     private UserService: UserService
   ) {
     this.editFormUser = this.fb.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],
-      email: ['', Validators.required],
-      ruolo: ['', Validators.required],
-      namepassword: ['', Validators.required],
-      confirmaPassword: ['', Validators.required]
-    });
+      email: ['', [Validators.required, Validators.email]],
+      ruolo: ['All', Validators.required],
+      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      confirmPassword: new FormControl('', [Validators.required, Validators.minLength(8)])
+    },
+      { validator: this.checkPasswords }
+
+    );
+  }
+
+
+  checkPasswords(group: FormGroup) {
+    const pass = group.controls['password']?.value;
+    const confirmPass = group.controls['confirmPassword']?.value;
+    return pass === confirmPass ? null : { notSame: true };
+
+
   }
 
 
 
   ngOnInit(): void {
+    this.editFormUser.statusChanges.subscribe(status => {
+      console.log(status);
+
+      this.errorBS.next(status === 'INVALID')
+    })
+
     this.user = this.UserService.getUser();
     if (!this.user) {
       this.changeMode('NEW');
+      this.visible = true;
+      this.readOnly = false;
     } else this.populateFormControls();
   }
 
@@ -53,12 +79,16 @@ export class UserEditPageComponent implements OnInit {
     }
     if (this.mode === 'DETAIL') {
       this.editFormUser.disable();
+      this.visible = false;
+      this.readOnly = true;
     }
   }
 
   enableModifies() {
     this.changeMode('EDIT');
     this.editFormUser.enable();
+    this.visible = false;
+    this.readOnly = true;
   }
 
   saveModifies() {
@@ -71,7 +101,7 @@ export class UserEditPageComponent implements OnInit {
         };
         this.data.modifyUser(newUser).subscribe(res => {
           console.log(res);
-          this.router.navigateByUrl('user')
+          this.router.navigateByUrl('user');
         });
       }
       else {
@@ -91,16 +121,17 @@ export class UserEditPageComponent implements OnInit {
   }
 
   checkField(input: NgModel) {
-    return { 'is-invalid': input.invalid, 'is-valid': input.valid }
+    return { 'is-invalid': input.invalid, 'is-valid': input.valid };
   }
 
   submitHandler(formData: any) {
-    console.log(formData)
+    console.log(formData);
 
   }
 
 
   goBack() {
-    this.router.navigateByUrl('user');
+    this.UserService.resetService();
+    this.router.navigateByUrl('/section/user');
   }
 }

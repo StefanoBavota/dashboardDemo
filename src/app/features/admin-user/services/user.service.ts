@@ -15,8 +15,13 @@ export class UserService {
     this.user = user;
   }
 
+
   getUser() {
     return this.user;
+  }
+
+  resetService() {
+    this.user = undefined;
   }
 
 

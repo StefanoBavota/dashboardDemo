@@ -9,12 +9,8 @@
     </div>
   </div>
   <div class="row filters-row">
-    <app-filter-row
-      [filters]="filters"
-      (filtersEmitter)="onFiltersChange($event)"
-      [pageSize]="take"
-      (pageSizeEmitter)="onPageSizeChange($event)"
-    ></app-filter-row>
+    <app-filter-row [filters]="filters" (filtersEmitter)="onFiltersChange($event)" [pageSize]="take"
+      (pageSizeEmitter)="onPageSizeChange($event)"></app-filter-row>
   </div>
 
   <div class="row table-row" *ngIf="success; else failure">
@@ -37,7 +33,7 @@
           <td>{{user.email}}</td>
           <td>{{user.role}}</td>
           <td class="buttons-col">
-            <i class="bi bi-pencil-square " style="font-size: 2rem;"  (click)="onClickEdit(user)"></i>
+            <i class="bi bi-pencil-square " style="font-size: 2rem;" (click)="onClickEdit(user)"></i>
             <i class="bi bi-trash" style="font-size: 2rem;"></i>
           </td>
         </tr>
@@ -51,6 +47,7 @@
 
 
   <div class="row page">
-    <app-table-pagination [totalPages]="totalPages" [actualPage]="actualPage" (clickEvent)="onPageClick($event)"></app-table-pagination>
+    <app-table-pagination [totalPages]="totalPages" [actualPage]="actualPage" (clickEvent)="onPageClick($event)">
+    </app-table-pagination>
   </div>
 </div>
