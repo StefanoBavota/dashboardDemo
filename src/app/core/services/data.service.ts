@@ -9,6 +9,7 @@ import {
   ChangePasswordRequest,
   Client,
   ClientRequest,
+  EditProfileRequest,
   LoginResponse,
   Page,
   Payment,
@@ -267,6 +268,10 @@ export class DataService {
 
   //TODO implement function
   changePassword(body: ChangePasswordRequest) {
+    console.log(body)
+  }
+
+  editProfile(body: EditProfileRequest) {
     console.log(body)
   }
 }

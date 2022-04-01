@@ -32,6 +32,6 @@ export class NavbarComponent implements OnInit {
 
   onProfileClick() {
     this.show = !this.show;
-    this.router.navigate(["profile"])
+    this.router.navigate(["/section/profile"])
   }
 }

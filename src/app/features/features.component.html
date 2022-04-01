@@ -1,12 +1,15 @@
 <div class="d-flex">
   <div class="d-flex flex-column">
-    <app-sidebar class="d-block flex-grow-1" [isOpen]="isSideOpen"></app-sidebar>
+    <app-sidebar
+      class="d-block flex-grow-1"
+      [isOpen]="isSideOpen"
+    ></app-sidebar>
   </div>
   <div class="w-100">
-    <div>
-      <app-navbar (openSide)="toggleSidebar($event)"></app-navbar>
+    <div class="wrap-nav">
+      <app-navbar (openSide)="toggleSidebar($event)" class=""></app-navbar>
     </div>
-    <div>
+    <div class="wrap-page">
       <router-outlet></router-outlet>
     </div>
   </div>
@@ -18,7 +21,10 @@
       [animation]="true"
       [delay]="toast.delay || 3000"
       (hide)="closeToast(toast)"
-      [ngClass]="{'toast-success': toast.success, 'toast-error': !toast.success}"
+      [ngClass]="{
+        'toast-success': toast.success,
+        'toast-error': !toast.success
+      }"
     >
       {{ toast.body }}
     </ngb-toast>
