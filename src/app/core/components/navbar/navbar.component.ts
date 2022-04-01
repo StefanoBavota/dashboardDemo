@@ -26,12 +26,12 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogout() {
-    console.log("logout")
     this.show = !this.show;
+    this.router.navigate(["/login"])
   }
 
   onProfileClick() {
-    this.router.navigate(["profile"])
     this.show = !this.show;
+    this.router.navigate(["profile"])
   }
 }
