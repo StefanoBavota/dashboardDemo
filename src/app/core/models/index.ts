@@ -6,5 +6,6 @@ export * from './page.model';
 export * from './payment.model';
 export * from './requests.model';
 export * from './society.model';
+export * from './toast.model';
 export * from './user.model';
 

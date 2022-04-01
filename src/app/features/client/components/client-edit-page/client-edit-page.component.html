@@ -6,102 +6,120 @@
     <form [formGroup]="formGroup">
       <div class="row">
         <div class="col-md-6">
-          <label for="name" class="form-label">Nome</label>
-          <input type="text" class="form-control" id="name" formControlName="name">
+          <app-form-item label="Nome">
+            <input type="text" class="form-control" id="name" formControlName="name" />
+          </app-form-item>
         </div>
         <div class="col-md-6">
-          <label for="surname" class="form-label">Cognome</label>
-          <input type="text" class="form-control" id="surname" formControlName="surname">
+          <app-form-item label="Cognome">
+            <input type="text" class="form-control" id="surname" formControlName="surname" />
+          </app-form-item>
         </div>
       </div>
-      <div class="row">
+      <div class="row field-row">
         <div class="col-md-6">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" formControlName="email">
+          <app-form-item label="Email">
+            <input type="email" class="form-control" id="email" formControlName="email" />
+          </app-form-item>
         </div>
         <div class="col-md-6">
-          <label for="cf" class="form-label">Codice Fiscale</label>
-          <input type="text" class="form-control" id="cf" formControlName="cf">
+          <app-form-item label="Codice Fiscale">
+            <input type="text" class="form-control" id="cf" formControlName="cf" />
+          </app-form-item>
         </div>
-        <div class="row">
+        <div class="row field-row">
           <div class="col-md-6">
-            <label for="phone" class="form-label">Telefono</label>
-            <input type="text" class="form-control" id="phone" formControlName="phone">
-          </div>
-        </div>
-        <div class="row section-row">
-          <div class="col-md-6">
-            <label for="parentName" class="form-label">Nome Genitore</label>
-            <input type="text" class="form-control" id="parentName" formControlName="parentName">
-          </div>
-          <div class="col-md-6">
-            <label for="parentSurname" class="form-label">Cognome Genitore</label>
-            <input type="text" class="form-control" id="parentSurname" formControlName="parentSurname">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <label for="parentCf" class="form-label">CF Genitore</label>
-            <input type="text" class="form-control" id="parentCf" formControlName="parentCf">
+            <app-form-item label="Telefono">
+              <input type="text" class="form-control" id="phone" formControlName="phone" />
+            </app-form-item>
           </div>
         </div>
         <div class="row section-row">
           <div class="col-md-6">
-            <label for="address" class="form-label">Indirizzo</label>
-            <input type="text" class="form-control" id="address" formControlName="address">
+            <app-form-item label="Nome Genitore">
+              <input type="text" class="form-control" id="parentName" formControlName="parentName" />
+            </app-form-item>
           </div>
           <div class="col-md-6">
-            <label for="cap" class="form-label">CAP</label>
-            <input type="text" class="form-control" id="cap" formControlName="cap">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <label for="city" class="form-label">Città</label>
-            <input type="text" class="form-control" id="city" formControlName="city">
+            <app-form-item label="Cognome Genitore">
+              <input type="text" class="form-control" id="parentSurname" formControlName="parentSurname" />
+            </app-form-item>
           </div>
         </div>
-        <div class="row section-row">
+        <div class="row field-row">
           <div class="col-md-6">
-            <label for="born" class="form-label">Nato</label>
-            <input type="date" class="form-control" id="born" formControlName="born" min="1920-01-01" max="2022-03-29">
-          </div>
-          <div class="col-md-6">
-            <label for="bornPlace" class="form-label">Nato a</label>
-            <input type="text" class="form-control" id="bornPlace" formControlName="bornPlace">
+            <app-form-item label="CF Genitore">
+              <input type="text" class="form-control" id="parentCf" formControlName="parentCf" />
+            </app-form-item>
           </div>
         </div>
         <div class="row section-row">
           <div class="col-md-6">
-            <label for="cardNumber" class="form-label">Numero Tessera</label>
-            <input type="text" class="form-control" id="cardNumber" formControlName="cardNumber">
+            <app-form-item label="Indirizzo">
+              <input type="text" class="form-control" id="address" formControlName="address" />
+            </app-form-item>
           </div>
           <div class="col-md-6">
-            <label for="cardYear" class="form-label">Anno di rilascio Tessera</label>
-            <input type="text" class="form-control" id="cardYear" formControlName="cardYear">
+            <app-form-item label="CAP">
+              <input type="text" class="form-control" id="cap" formControlName="cap" />
+            </app-form-item>
+          </div>
+        </div>
+        <div class="row field-row">
+          <div class="col-md-6">
+            <app-form-item label="Città">
+              <input type="text" class="form-control" id="city" formControlName="city" />
+            </app-form-item>
+          </div>
+        </div>
+        <div class="row section-row">
+          <div class="col-md-6">
+            <app-form-item label="Nato">
+              <input type="date" class="form-control" id="born" formControlName="born" />
+            </app-form-item>
+          </div>
+          <div class="col-md-6">
+            <app-form-item label="Nato a">
+              <input type="text" class="form-control" id="bornPlace" formControlName="bornPlace" />
+            </app-form-item>
+          </div>
+        </div>
+        <div class="row section-row">
+          <div class="col-md-6">
+            <app-form-item label="Numero Tessera">
+              <input type="text" class="form-control" id="cardNumber" formControlName="cardNumber" />
+            </app-form-item>
+          </div>
+          <div class="col-md-6">
+            <app-form-item label="Anno di rilascio Tessera">
+              <input type="text" class="form-control" id="cardYear" formControlName="cardYear" />
+            </app-form-item>
           </div>
         </div>
         <div class="row section-row">
           <div>
-            <input class="form-check-input" type="checkbox" id="active" formControlName="active">
-            <label for="active" class="form-label">Attivo</label>
+            <app-form-item label="Attivo">
+              <input class="form-check-input form-checkbox" type="checkbox" id="active" formControlName="active">
+            </app-form-item>
           </div>
           <div>
-            <input class="form-check-input" type="checkbox" id="payed" formControlName="payed">
-            <label for="payed" class="form-label">Abbonamento</label>
+            <app-form-item label="Abbonamento">
+              <input type="checkbox" class="form-check-input form-checkbox" id="payed" formControlName="payed" />
+            </app-form-item>
           </div>
         </div>
-        <div class="row">
+        <div class="row field-row">
           <div class="col-md-6">
-            <label for="note" class="form-label">Note</label>
-            <input type="text" class="form-control" id="note" formControlName="note">
+            <app-form-item label="Note">
+              <input type="text" class="form-control" id="note" formControlName="note" />
+            </app-form-item>
           </div>
         </div>
       </div>
     </form>
   </div>
-  <div class="row btn-row">
-    <button type="button" class="btn button primary">ANNULLA</button>
+  <div class="btn-row">
+    <button type="button" class="btn button primary" (click)="onClickBack()">ANNULLA</button>
     <button class="btn button secondary" *ngIf="(mode$ | async) !== 'DETAIL'; else modifyButton" type="submit" (click)="saveModifies()">SALVA</button>
     <ng-template #modifyButton>
       <button class="btn button secondary" (click)="enableModifies()">ABILITA MODIFICHE</button>

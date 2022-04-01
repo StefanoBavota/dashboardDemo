@@ -84,7 +84,7 @@ export class ClientListPageComponent implements OnInit {
     modalRef.result.then(modalRes => {
       if(modalRes) {
         console.log('aaaa');
-        this.toastService.show('Cliente rimosso', `Il cliente ${client.id}-${client.name} ${client.surname} è stato rimosso`);
+        this.toastService.show('Cliente rimosso', `Il cliente ${client.id}-${client.name} ${client.surname} è stato rimosso`, true);
         this.data.deleteClient(client).subscribe((res) => {
           if(res.status === 200) {
             //toast

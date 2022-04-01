@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Toast } from '../core/models';
 import { ToastService } from '../core/services/toast.service';
 
 @Component({
@@ -23,7 +24,7 @@ export class FeaturesComponent {
     this.isSideOpen = e;
   }
 
-  closeToast(toast: any) {
+  closeToast(toast: Toast) {
     this.toastService.remove(toast);
   }
 }

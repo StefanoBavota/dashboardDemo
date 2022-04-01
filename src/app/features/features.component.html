@@ -15,8 +15,10 @@
       *ngFor="let toast of toasts$ | async"
       [header]="toast.header"
       [autohide]="true"
+      [animation]="true"
       [delay]="toast.delay || 3000"
       (hide)="closeToast(toast)"
+      [ngClass]="{'toast-success': toast.success, 'toast-error': !toast.success}"
     >
       {{ toast.body }}
     </ngb-toast>

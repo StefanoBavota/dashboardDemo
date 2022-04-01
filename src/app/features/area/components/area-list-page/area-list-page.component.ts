@@ -81,7 +81,7 @@ export class AreaListPageComponent implements OnInit {
     modalRef.result.then(modalRes => {
       if(modalRes) {
         console.log('aaaa');
-        this.toastService.show('Settore rimosso', `Il settore ${area.name} è stato rimosso`)
+        this.toastService.show('Settore rimosso', `Il settore ${area.name} è stato rimosso`, true);
         this.data.deleteArea(area).subscribe((res) => {
           if(res.status === 200) {
 
