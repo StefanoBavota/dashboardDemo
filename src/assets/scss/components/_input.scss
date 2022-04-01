@@ -3,6 +3,7 @@
   transition: border 100ms linear;
   color: var(--black) !important;
   box-sizing: border-box;
+  height: 3rem;
 
   &:focus-within {
     border: solid 3px var(--light-gray);

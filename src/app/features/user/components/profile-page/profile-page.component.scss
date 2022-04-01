@@ -1,0 +1,129 @@
+.wrap-all {
+  display: flex;
+  justify-content: space-around;
+}
+
+.global-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-left: 3%;
+  margin-bottom: 2%;
+  padding-top: 2%;
+}
+
+.container-form {
+  background-color: var(--white);
+  width: 50%;
+  height: fit-content;
+  padding: 3%;
+  border-radius: 20px;
+
+  .title {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+
+    i {
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0%;
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 7%;
+    margin-bottom: 7%;
+
+    &_input-container {
+      width: 45%;
+      margin-right: 5%;
+      margin-bottom: 5%;
+    }
+  }
+
+  .btn-wrap {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+
+    &_btn-container {
+      width: 13rem;
+      height: 4rem;
+    }
+  }
+}
+
+.container-card {
+  background-color: var(--white);
+  width: 40%;
+  height: fit-content;
+  padding: 3%;
+  border-radius: 20px;
+
+  .title-card {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+
+    i {
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0%;
+    }
+  }
+
+  &_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      width: fit-content;
+      margin-top: 7%;
+      margin-bottom: 2%;
+
+      &_name {
+        font-size: 22px;
+        font-weight: 600;
+      }
+
+      &_email {
+        font-size: 18px;
+        font-weight: 400;
+        color: var(--dark-gray);
+      }
+    }
+
+    .role {
+      width: fit-content;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &_title {
+        font-size: 22px;
+        font-weight: 600;
+      }
+
+      &_info {
+        font-size: 18px;
+        font-weight: 400;
+        color: var(--dark-gray);
+      }
+    }
+  }
+}

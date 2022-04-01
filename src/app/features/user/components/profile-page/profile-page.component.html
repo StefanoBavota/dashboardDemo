@@ -1,1 +1,123 @@
-<p>profile-page works!</p>
+<div class="fullpage">
+  <p class="global-title">Profilo</p>
+  <div class="wrap-all">
+    <!-- INFO PROFILE -->
+    <div class="container-form">
+      <div class="title">
+        <i class="bi bi-person-circle me-3"></i>
+        <p>Informazioni Personali</p>
+      </div>
+
+      <!-- FORM -->
+      <div class="form" [formGroup]="profileForm">
+        <!-- NAME -->
+        <div class="form_input-container">
+          <app-form-item label="Nome">
+            <input
+              type="text"
+              class="form-control input"
+              placeholder="Mario"
+              formControlName="name"
+            />
+          </app-form-item>
+        </div>
+
+        <!-- SURNAME -->
+        <div class="form_input-container">
+          <app-form-item label="Cognome">
+            <input
+              type="text"
+              class="form-control input"
+              placeholder="Rossi"
+              formControlName="surname"
+            />
+          </app-form-item>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="form_input-container">
+          <app-form-item label="Email">
+            <input
+              type="text"
+              class="form-control input"
+              placeholder="mario.rossi@email.com"
+              disabled
+            />
+          </app-form-item>
+        </div>
+
+        <!-- ROLE -->
+        <div class="form_input-container">
+          <app-form-item label="Ruolo">
+            <input
+              type="text"
+              class="form-control input"
+              placeholder="Admin"
+              disabled
+            />
+          </app-form-item>
+        </div>
+      </div>
+      <!-- END FORM -->
+
+      <!-- BUTTONS -->
+      <div class="btn-wrap">
+        <div *ngIf="!isEnable; else save" class="btn-wrap_btn-container">
+          <button
+            type="button"
+            class="btn button primary"
+            (click)="onEnableModifies()"
+          >
+            Modifica
+          </button>
+        </div>
+        <ng-template #save>
+          <div class="btn-wrap_btn-container">
+            <button
+              type="button"
+              class="btn button secondary"
+              (click)="onSaveModifies()"
+              [disabled]="profileForm.invalid"
+            >
+              Salva
+            </button>
+          </div>
+        </ng-template>
+
+        <div class="btn-wrap_btn-container">
+          <button
+            type="button"
+            class="btn button primary"
+            (click)="openModalPassword()"
+          >
+            Cambia Password
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- END INFO PROFILE -->
+
+    <!-- CARD PROFILE -->
+    <div class="container-card">
+      <div class="title-card">
+        <i class="bi bi-person-square me-3"></i>
+        <p>Cartellino</p>
+      </div>
+
+      <div class="container-card_wrap">
+        <!-- INFO -->
+        <div class="info">
+          <p class="info_name">Mario Rossi</p>
+          <p class="info_email">mario.rossi@email.com</p>
+        </div>
+
+        <!-- ROLE -->
+        <div class="role">
+          <p class="role_title">Ruolo:</p>
+          <p class="role_info">Amministratore</p>
+        </div>
+      </div>
+    </div>
+    <!-- END CARD PROFILE -->
+  </div>
+</div>

@@ -31,3 +31,8 @@ export interface ChangePasswordRequest {
   oldPassword: string;
   newPassword: string;
 }
+
+export interface EditProfileRequest {
+  name: string;
+  surname: string;
+}
