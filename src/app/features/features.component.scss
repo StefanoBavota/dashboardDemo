@@ -1,8 +1,15 @@
 .toast-container {
-    position: fixed;
-    top: 10vh;
-    right: 10px;
-    margin: 0.5em;
-    z-index: 1200;
-  }
-  
+  position: fixed;
+  top: 10vh;
+  right: 10px;
+  margin: 0.5em;
+  z-index: 1200;
+}
+
+.toast-success {
+  background-color: rgb(5, 240, 75, 0.5);
+}
+
+.toast-error {
+  background-color: rgb(230, 16, 5, 0.5);
+}

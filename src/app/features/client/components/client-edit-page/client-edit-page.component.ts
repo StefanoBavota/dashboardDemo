@@ -102,4 +102,9 @@ export class ClientEditPageComponent implements OnInit {
     this.modeBS.next(newMode);
   }
 
+  onClickBack() {
+    this.clientService.resetService();
+    this.router.navigateByUrl('/client');
+  }
+
 }
