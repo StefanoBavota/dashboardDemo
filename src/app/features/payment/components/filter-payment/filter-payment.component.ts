@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { PaymentFilters } from 'src/app/features/client/model/filter.model';
-import { merge, of, switchMap, tap } from 'rxjs';
+import { debounce, interval, merge, of, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-filter-payment',
@@ -59,7 +59,7 @@ export class FilterPaymentComponent implements OnInit {
       this.clientControl.valueChanges,
       this.dateControl.valueChanges
     ).pipe(
-      tap((x) => console.log('pipe', x)),
+      debounce(() => interval(500)),
       switchMap(() =>
         of({
           search: this.searchControl.value,

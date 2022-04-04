@@ -48,7 +48,7 @@ export class PaymentListPageComponent implements OnInit {
           `${payment.clientName} ${payment.clientSurname} rimosso con successo`,
           true
         );
-        this.dataService.deletePayment(payment).subscribe((res) => {
+        this.dataService.deletePayment(payment.id).subscribe((res) => {
           if (res.status === 200) {
             //toast
             this.getPayments();
@@ -66,7 +66,7 @@ export class PaymentListPageComponent implements OnInit {
       .subscribe((res: Page) => {
         this.payments = res.data;
         this.totalPages = Math.ceil(res.total / this.take);
-        console.log('Payments', this.payments, 'totalPages', this.totalPages);
+        //console.log('Payments', this.payments, 'totalPages', this.totalPages);
       });
   }
 

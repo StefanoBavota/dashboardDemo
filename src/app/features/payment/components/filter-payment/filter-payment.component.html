@@ -7,6 +7,7 @@
   </div>
 
   <div class="search-filter col-md-2">
+    <p>Cerca per nomi:</p>
     <input
       type="text"
       class="form-control"
@@ -16,6 +17,7 @@
   </div>
 
   <div class="search-filter col-md-2">
+    <p>Cerca per settori:</p>
     <input
       type="text"
       class="form-control"
@@ -25,17 +27,17 @@
   </div>
 
   <div class="col-md-2">
-    <app-form-item label="Nato">
-      <input
-        type="date"
-        class="form-control"
-        id="born"
-        [formControl]="dateControl"
-      />
-    </app-form-item>
+    <p>Cerca per data:</p>
+    <input
+      type="date"
+      class="form-control"
+      id="born"
+      [formControl]="dateControl"
+    />
   </div>
 
   <div class="search-filter col-md-3">
+    <p>Cerca:</p>
     <input
       type="text"
       class="form-control"

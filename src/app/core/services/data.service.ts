@@ -241,9 +241,9 @@ export class DataService {
     );
   }
 
-  deletePayment(payment: Payment) {
+  deletePayment(paymentId: string) {
     return this.http.delete(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}/${payment.id}`,
+      `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}/${paymentId}`,
       { observe: 'response' }
     );
   }

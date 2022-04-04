@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { merge, of, switchMap, tap } from 'rxjs';
+import { debounce, interval, merge, of, switchMap, tap } from 'rxjs';
 import { ClientFilters } from '../../model/filter.model';
 import { getYears } from './filter-row-utils';
 
@@ -72,6 +72,7 @@ export class FilterRowComponent implements OnInit, OnChanges {
       this.activeControl.valueChanges,
       this.searchControl.valueChanges
     ).pipe(
+      debounce(() => interval(500)),
       tap(x => console.log('pipe', x)),
       switchMap(() => of({
         search: this.searchControl.value,
