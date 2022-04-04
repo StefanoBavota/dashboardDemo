@@ -1,1 +1,43 @@
-<p>society-list-page works!</p>
+<div class="container">
+  <div class="row title-row h-10">
+    <div class="col-4">
+      LISTA SOCIETA'
+    </div>
+    <div class="col-4">
+      <button class="btn button primary new-area-btn" (click)="onClickNewSociety()">NUOVA SOCIETA'</button>
+    </div>
+  </div>
+  <div class="row table-row" *ngIf="success; else failure">
+    <table class="table table-striped table-bordered table-fixed">
+      <thead>
+        <tr>
+          <th scope="col" class="th-sm">#</th>
+          <th scope="col" class="th-lg">Ragione Sociale</th>
+          <th scope="col" class="th-sm">Codice Fiscale</th>
+          <th scope="col" class="th-sm"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let society of societies">
+          <th scope="row">{{society.id}}</th>
+          <td>{{society.ragioneSociale}}</td>
+          <td>{{society.cf}}</td>
+          <td class="buttons-col">
+            <i class="bi bi-pencil-square" style="font-size: 2rem;" (click)="onClickEdit(society)"></i>
+            <i class="bi bi-trash" style="font-size: 2rem;" (click)="onClickDelete(society)"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #failure>
+    <p>Non sono presenti risultati per questa ricerca</p>
+  </ng-template>
+
+
+  <div class="row page">
+    <app-table-pagination [totalPages]="totalPages" [actualPage]="actualPage" (clickEvent)="onPageClick($event)"></app-table-pagination>
+  </div>
+</div>
+
