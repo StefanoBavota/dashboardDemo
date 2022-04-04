@@ -1,7 +1,7 @@
 export interface Payment {
   id: string
-  clientId: string
-  societyId: string
+  clientName: string;
+  clientSurname: string;
   total: number
   annualFee: number
   paymentDate: Date

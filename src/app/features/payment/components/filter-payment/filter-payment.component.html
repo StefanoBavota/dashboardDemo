@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="page-size-selection col-md-2">
+    <app-page-size-selection
+      [actualSize]="pageSize"
+      (sizeEmitter)="onChangePageSize($event)"
+    ></app-page-size-selection>
+  </div>
+
+  <div class="search-filter col-md-2">
+    <p>Cerca per nomi:</p>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Clienti"
+      [formControl]="clientControl"
+    />
+  </div>
+
+  <div class="search-filter col-md-2">
+    <p>Cerca per settori:</p>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Settori"
+      [formControl]="areaControl"
+    />
+  </div>
+
+  <div class="col-md-2">
+    <p>Cerca per data:</p>
+    <input
+      type="date"
+      class="form-control"
+      id="born"
+      [formControl]="dateControl"
+    />
+  </div>
+
+  <div class="search-filter col-md-3">
+    <p>Cerca:</p>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search"
+      [formControl]="searchControl"
+    />
+  </div>
+</div>

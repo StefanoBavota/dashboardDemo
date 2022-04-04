@@ -15,7 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CoreModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule,
+    NgbModule
   ],
 })
 export class FeatureModule {}

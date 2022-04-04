@@ -5,10 +5,9 @@ export interface BaseRequest {
 
 export interface PaymentRequest extends BaseRequest {
   search?: string;
-  active?: boolean;
   client?: string;
   area?: string;
-  society?: string;
+  date?: string;
 }
 
 export interface ClientRequest extends BaseRequest {

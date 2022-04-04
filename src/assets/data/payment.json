@@ -2,203 +2,93 @@
   "data": [
     {
       "id": "P1",
-      "clientId": "C1",
-      "societyId": "S1",
+      "clientName": "Mario",
+      "clientSurname": "Rossi",
       "total": 100,
       "annualFee": 100,
       "paymentDate": "15/02/2022",
-      "paymentAreas": [
-        {
-          "areaId": "A1",
-          "total": 50,
-          "type": "BOH"
-        },
-        {
-          "areaId": "A2",
-          "total": 50,
-          "type": "BOH"
-        }
-      ]
+      "paymentAreas": ["area 1", "area 2"]
     },
     {
       "id": "P2",
-      "clientId": "C1",
-      "societyId": "S1",
-      "total": 100,
+      "clientName": "Paolo",
+      "clientSurname": "Bianchi",
+      "total": 200,
       "annualFee": 100,
       "paymentDate": "15/02/2022",
-      "paymentAreas": [
-        {
-          "areaId": "A1",
-          "total": 50,
-          "type": "BOH"
-        },
-        {
-          "areaId": "A2",
-          "total": 50,
-          "type": "BOH"
-        }
-      ]
+      "paymentAreas": ["area 1", "area 2", "area 3"]
     },
     {
       "id": "P3",
-      "clientId": "C1",
-      "societyId": "S1",
-      "total": 100,
+      "clientName": "Giovanni",
+      "clientSurname": "Verdi",
+      "total": 125,
       "annualFee": 100,
       "paymentDate": "15/02/2022",
-      "paymentAreas": [
-        {
-          "areaId": "A1",
-          "total": 50,
-          "type": "BOH"
-        },
-        {
-          "areaId": "A2",
-          "total": 50,
-          "type": "BOH"
-        }
-      ]
+      "paymentAreas": ["area 1"]
     },
     {
       "id": "P4",
-      "clientId": "C1",
-      "societyId": "S1",
-      "total": 100,
+      "clientName": "Daniele",
+      "clientSurname": "Azzurri",
+      "total": 322,
       "annualFee": 100,
       "paymentDate": "15/02/2022",
-      "paymentAreas": [
-        {
-          "areaId": "A1",
-          "total": 50,
-          "type": "BOH"
-        },
-        {
-          "areaId": "A2",
-          "total": 50,
-          "type": "BOH"
-        }
-      ]
+      "paymentAreas": ["area 1", "area 2"]
     },
     {
       "id": "P5",
-      "clientId": "C1",
-      "societyId": "S1",
-      "total": 100,
+      "clientName": "Mario",
+      "clientSurname": "Rossi",
+      "total": 222,
       "annualFee": 100,
       "paymentDate": "15/02/2022",
-      "paymentAreas": [
-        {
-          "areaId": "A1",
-          "total": 50,
-          "type": "BOH"
-        },
-        {
-          "areaId": "A2",
-          "total": 50,
-          "type": "BOH"
-        }
-      ]
+      "paymentAreas": ["area 1", "area 2", "area 3"]
     },
     {
       "id": "P6",
-      "clientId": "C1",
-      "societyId": "S1",
+      "clientName": "Mario",
+      "clientSurname": "Rossi",
       "total": 100,
       "annualFee": 100,
       "paymentDate": "15/02/2022",
-      "paymentAreas": [
-        {
-          "areaId": "A1",
-          "total": 50,
-          "type": "BOH"
-        },
-        {
-          "areaId": "A2",
-          "total": 50,
-          "type": "BOH"
-        }
-      ]
+      "paymentAreas": ["area 1"]
     },
     {
       "id": "P7",
-      "clientId": "C1",
-      "societyId": "S1",
+      "clientName": "Mario",
+      "clientSurname": "Rossi",
       "total": 100,
       "annualFee": 100,
       "paymentDate": "15/02/2022",
-      "paymentAreas": [
-        {
-          "areaId": "A1",
-          "total": 50,
-          "type": "BOH"
-        },
-        {
-          "areaId": "A2",
-          "total": 50,
-          "type": "BOH"
-        }
-      ]
+      "paymentAreas": ["area 1"]
     },
     {
       "id": "P8",
-      "clientId": "C1",
-      "societyId": "S1",
+      "clientName": "Mario",
+      "clientSurname": "Rossi",
       "total": 100,
       "annualFee": 100,
       "paymentDate": "15/02/2022",
-      "paymentAreas": [
-        {
-          "areaId": "A1",
-          "total": 50,
-          "type": "BOH"
-        },
-        {
-          "areaId": "A2",
-          "total": 50,
-          "type": "BOH"
-        }
-      ]
+      "paymentAreas": ["area 1", "area 2"]
     },
     {
       "id": "P9",
-      "clientId": "C1",
-      "societyId": "S1",
+      "clientName": "Mario",
+      "clientSurname": "Rossi",
       "total": 100,
       "annualFee": 100,
       "paymentDate": "15/02/2022",
-      "paymentAreas": [
-        {
-          "areaId": "A1",
-          "total": 50,
-          "type": "BOH"
-        },
-        {
-          "areaId": "A2",
-          "total": 50,
-          "type": "BOH"
-        }
-      ]
+      "paymentAreas": ["area 1", "area 2"]
     },
     {
       "id": "P10",
-      "clientId": "C1",
-      "societyId": "S1",
+      "clientName": "Mario",
+      "clientSurname": "Rossi",
       "total": 100,
       "annualFee": 100,
       "paymentDate": "15/02/2022",
-      "paymentAreas": [
-        {
-          "areaId": "A1",
-          "total": 50,
-          "type": "BOH"
-        },
-        {
-          "areaId": "A2",
-          "total": 50,
-          "type": "BOH"
-        }
-      ]
+      "paymentAreas": ["area 1", "area 2"]
     }
   ],
   "total": 100

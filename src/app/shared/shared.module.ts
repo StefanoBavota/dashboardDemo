@@ -7,6 +7,7 @@ import { DeleteModalComponent } from './components/delete-modal/delete-modal.com
 import { FormItemComponent } from './components/form-item/form-item.component';
 import { PageSizeSelectionComponent } from './components/page-size-selection/page-size-selection.component';
 import { TablePaginationComponent } from './components/table-pagination/table-pagination.component';
+import { JoinPipe } from './pipes/join.pipe';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { TablePaginationComponent } from './components/table-pagination/table-pa
     ConfirmModalComponent,
     ChangePasswordComponent,
     DeleteModalComponent,
+    JoinPipe,
   ],
   imports: [CommonModule, ReactiveFormsModule],
   exports: [
@@ -24,6 +26,7 @@ import { TablePaginationComponent } from './components/table-pagination/table-pa
     FormItemComponent,
     ConfirmModalComponent,
     ChangePasswordComponent,
+    JoinPipe,
   ],
 })
 export class SharedModule {}

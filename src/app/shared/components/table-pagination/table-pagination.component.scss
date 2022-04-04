@@ -2,3 +2,12 @@
   display: flex;
   justify-content: center;
 }
+
+.active > a {
+  background-color: var(--light-gray) !important;
+  color: var(--black);
+}
+
+.page-link {
+  color: var(--black) !important;
+}
