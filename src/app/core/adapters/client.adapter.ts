@@ -6,11 +6,12 @@ export function fromFiltersToRequestClient(filter: ClientFilters, skip: number, 
     skip: skip,
     take: take
   };
+  console.log('filter', filter)
   if(filter.active !== '-') {
     req.active = filter.active === 'SI';
   }
-  if(filter.bornYear !== 0) {
-    req.bornDate = filter.bornYear;
+  if(filter.born !== 0) {
+    req.born = filter.born;
   }
   if(filter.cardYear !== 0) {
     req.cardYear = filter.cardYear;

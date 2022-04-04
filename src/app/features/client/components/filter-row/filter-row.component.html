@@ -9,8 +9,8 @@
     <div class="select">
       <select class="form-select" aria-label="Born year" [formControl]="bornYearControl">
         <ng-container *ngFor="let year of bornDateYears">
-          <ng-container *ngIf="year === bornYear.toString() || (year === '-' && bornYear === 0); else bornYearOption">
-            <option value="{{year}}" selected>
+          <ng-container *ngIf="year === born.toString() || (year === '-' && born === 0); else bornYearOption">
+            <option value="{{year === '-' ? 0 : year}}" selected>
               {{year}}
             </option>
           </ng-container>
@@ -31,7 +31,7 @@
       <select class="form-select" aria-label="Card year" [formControl]="cardYearControl">
         <ng-container *ngFor="let year of cardDateYears">
           <ng-container *ngIf="year === cardYear.toString() || (year === '-' && cardYear === 0); else yearOption">
-            <option value="{{year}}" selected>
+            <option value="{{year === '-' ? 0 : year}}" selected>
               {{year}}
             </option>
           </ng-container>

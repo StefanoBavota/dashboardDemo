@@ -17,7 +17,7 @@ import { ClientService } from '../../services/client.service';
 export class ClientListPageComponent implements OnInit {
 
   filters: ClientFilters = {
-    bornYear: 0,
+    born: 0,
     cardYear: 0,
     active: '-',
     search: ''

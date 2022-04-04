@@ -13,7 +13,7 @@ export interface PaymentRequest extends BaseRequest {
 
 export interface ClientRequest extends BaseRequest {
   search?: string;
-  bornDate?: number;
+  born?: number;
   cardYear?: number;
   active?: boolean;
 }

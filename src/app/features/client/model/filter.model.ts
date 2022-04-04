@@ -1,6 +1,6 @@
 export interface ClientFilters {
   search: string,
-  bornYear: number,
+  born: number,
   cardYear: number,
   active: string
 }

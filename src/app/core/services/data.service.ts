@@ -8,6 +8,7 @@ import {
   BaseRequest,
   ChangePasswordRequest,
   Client,
+  ClientDTO,
   ClientRequest,
   EditProfileRequest,
   LoginResponse,
@@ -36,15 +37,10 @@ export class DataService {
   }
 
   getQueryParams(request: BaseRequest, url: string): Observable<Page> {
-    let queryString = '?';
-    let myUrl = `${environment.restApiBasePathUrl}/${url}`;
-    for(const [key, value] of Object.entries(request)) {
-      if(queryString !== '?') queryString = queryString + '&';
-      queryString = `${queryString}${key}=${value}`;
-    }
-
-    if (queryString !== '?') myUrl = myUrl + queryString;
-    return this.http.get<Page>(myUrl);
+    const queryString = '?' + Object.entries(request).map(([key, value]) => `${key}=${value}`).join('&');
+    return this.http.get<Page>(
+      `${environment.restApiBasePathUrl}/${url}${queryString === '?' ? '' : queryString}`
+    )
   }
 
   /*
@@ -52,22 +48,11 @@ export class DataService {
   */
 
   getPayments(request: PaymentRequest) {
-    return this.http.get<Page>(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.payment.url}`,
-      {
-        params: this.getParams(request),
-      }
-    );
+    return this.getQueryParams(request, environment.endpoints.payment.url)
   }
 
   getClients(request: ClientRequest) {
-    return this.http
-      .get<Page>(
-        `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}`,
-        {
-          params: this.getParams(request),
-        }
-      )
+    return this.getQueryParams(request, environment.endpoints.client.url)
       .pipe(
         switchMap((res) =>
           of({
@@ -85,37 +70,22 @@ export class DataService {
   }
 
   getAreas(request: AreaRequest) {
-    return this.http.get<Page>(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.area.url}`,
-      {
-        params: this.getParams(request),
-      }
-    );
+    return this.getQueryParams(request, environment.endpoints.area.url)
   }
 
   getSocieties(request: BaseRequest) {
-    return this.http.get<Page>(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.society.url}`,
-      {
-        params: this.getParams(request),
-      }
-    );
+    return this.getQueryParams(request, environment.endpoints.society.url)
   }
 
   getUsers(request: UserRequest) {
-    return this.http.get<Page>(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.user.url}`,
-      {
-        params: this.getParams(request),
-      }
-    );
+    return this.getQueryParams(request, environment.endpoints.user.url)
   }
 
   /*
     POST FUNCTIONS
   */
 
-  modifyClient(client: Client) {
+  modifyClient(client: ClientDTO) {
     return this.http.post(
       `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}`,
       {
@@ -164,7 +134,7 @@ export class DataService {
     PUT FUNCTIONS
   */
 
-  insertClient(client: Client) {
+  insertClient(client: ClientDTO) {
     return this.http.put(
       `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}`,
       {

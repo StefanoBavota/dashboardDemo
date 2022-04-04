@@ -43,7 +43,7 @@ export class ClientEditPageComponent implements OnInit {
       bornPlace: ['', Validators.required],
       cardNumber: ['', Validators.required],
       cardYear: ['', Validators.required],
-      active: [false, Validators.required],
+      isActive: [false, Validators.required],
       payed: [false, Validators.required],
       note: ['']
     });
