@@ -5,6 +5,9 @@ import { User } from 'src/app/core/models';
 import { DataService } from 'src/app/core/services/data.service';
 import { fromFiltersToRequestUser } from 'src/app/core/adapters';
 import { UserService } from '../../services/user.service';
+import { DeleteModalComponent } from 'src/app/shared/components/delete-modal/delete-modal.component';
+import { ToastService } from 'src/app/core/services/toast.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-user-list-page',
@@ -28,7 +31,14 @@ export class UserListPageComponent implements OnInit {
   totalPages: number = 1;
   actualPage: number = 1;
 
-  constructor(private data: DataService, public userService: UserService, private router: Router) { }
+
+
+
+  constructor(private data: DataService,
+             public userService: UserService,
+            private router: Router,
+            private modalService: NgbModal,
+            private toastService: ToastService) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -64,9 +74,25 @@ export class UserListPageComponent implements OnInit {
     this.getUsers();
   }
 
+
   onClickEdit(user: User) {
     this.userService.setUser(user);
     this.router.navigateByUrl('user/edit/' + user.id)
+  }
+
+  onClickDelete(user: User) {
+    const modalRef = this.modalService.open(DeleteModalComponent);
+    modalRef.componentInstance.item = `${user.id} - ${user.name}`;
+
+    modalRef.result.then(modalRes => {
+      if(modalRes) {
+        console.log('aaaa');
+        this.toastService.show('Utente rimosso', ` L'utente ${user.id}  ${user.name} ${user.surname} è stato rimosso`, true)
+        this.data.deleteUser(user).subscribe((res) => {
+         console.log(res);
+        });
+      }
+    })
   }
 
 }
