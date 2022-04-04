@@ -9,9 +9,13 @@ const routes: Routes = [
     component: SocietyListPageComponent,
   },
   {
-    path: ':id',
+    path: 'edit/:id',
     component: SocietyEditPageComponent,
   },
+  {
+  path: 'new',
+  component: SocietyEditPageComponent,
+},
 ];
 
 @NgModule({

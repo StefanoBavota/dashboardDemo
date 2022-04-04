@@ -95,7 +95,7 @@ export class DataService {
 
   getSocieties(request: BaseRequest) {
     return this.http.get<Page>(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.area.url}`,
+      `${environment.restApiBasePathUrl}/${environment.endpoints.society.url}`,
       {
         params: this.getParams(request),
       }
