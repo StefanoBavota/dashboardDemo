@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { fromFiltersToRequestPayment } from 'src/app/core/adapters/payment.adapter';
 import { Page, Payment } from 'src/app/core/models';
 import { DataService } from 'src/app/core/services/data.service';
+import { ToastService } from 'src/app/core/services/toast.service';
 import { PaymentFilters } from 'src/app/features/client/model/filter.model';
+import { DeleteModalComponent } from 'src/app/shared/components/delete-modal/delete-modal.component';
 
 @Component({
   selector: 'app-payment-list-page',
@@ -24,15 +27,36 @@ export class PaymentListPageComponent implements OnInit {
   totalPages: number = 1;
   actualPage: number = 1;
 
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dataService: DataService,
+    private modalService: NgbModal,
+    private toastService: ToastService
+  ) {}
 
   ngOnInit(): void {
     this.getPayments();
   }
 
-  onClickEdit(payment: Payment) {}
+  onClickDelete(payment: Payment) {
+    const modalRef = this.modalService.open(DeleteModalComponent);
+    modalRef.componentInstance.item = `${payment.clientName} ${payment.clientSurname}`;
 
-  onClickDelete(payment: Payment) {}
+    modalRef.result.then((modalRes) => {
+      if (modalRes) {
+        this.toastService.show(
+          'Pagamento',
+          `${payment.clientName} ${payment.clientSurname} rimosso con successo`,
+          true
+        );
+        this.dataService.deletePayment(payment).subscribe((res) => {
+          if (res.status === 200) {
+            //toast
+            this.getPayments();
+          }
+        });
+      }
+    });
+  }
 
   getPayments() {
     this.dataService
