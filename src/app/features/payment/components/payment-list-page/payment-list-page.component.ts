@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { fromFiltersToRequestPayment } from 'src/app/core/adapters/payment.adapter';
 import { Page, Payment } from 'src/app/core/models';
 import { DataService } from 'src/app/core/services/data.service';
+import { PaymentFilters } from 'src/app/features/client/model/filter.model';
 
 @Component({
   selector: 'app-payment-list-page',
@@ -8,6 +10,13 @@ import { DataService } from 'src/app/core/services/data.service';
   styleUrls: ['./payment-list-page.component.scss'],
 })
 export class PaymentListPageComponent implements OnInit {
+  filters: PaymentFilters = {
+    search: '',
+    client: '',
+    area: '',
+    date: '',
+  };
+
   payments: Payment[] = [];
 
   skip: number = 0;
@@ -26,11 +35,15 @@ export class PaymentListPageComponent implements OnInit {
   onClickDelete(payment: Payment) {}
 
   getPayments() {
-    this.dataService.getPayments({}).subscribe((res: Page) => {
-      this.payments = res.data;
-      this.totalPages = Math.ceil(res.total / this.take);
-      console.log('Payments', this.payments, 'totalPages', this.totalPages);
-    });
+    this.dataService
+      .getPayments(
+        fromFiltersToRequestPayment(this.filters, this.skip, this.take)
+      )
+      .subscribe((res: Page) => {
+        this.payments = res.data;
+        this.totalPages = Math.ceil(res.total / this.take);
+        console.log('Payments', this.payments, 'totalPages', this.totalPages);
+      });
   }
 
   onPageClick(page: number) {

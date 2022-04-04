@@ -8,12 +8,10 @@
     </div>
   </div>
   <div class="row filters-row">
-    <!-- <app-filter-row
-      [filters]="filters"
-      (filtersEmitter)="onFiltersChange($event)"
-      [pageSize]="take"
-      (pageSizeEmitter)="onPageSizeChange($event)"
-    ></app-filter-row> -->
+    <app-filter-payment>
+      [filters]="filters" (filtersEmitter)="onFiltersChange($event)"
+      [pageSize]="take" (pageSizeEmitter)="onPageSizeChange($event)"
+    </app-filter-payment>
   </div>
   <div class="row table-row">
     <table class="table table-striped table-bordered table-fixed">
