@@ -1,1 +1,176 @@
-<p>society-edit-page works!</p>
+<div class="container w-100 page-container">
+  <div class="body-row">
+
+    <div class="row title-row ">
+      {{
+        mode === "NEW" ? "Nuova" : mode === "EDIT" ? "Modifica" : "Dettaglio"
+      }}
+      Società
+    </div>
+    <div class="row form-row">
+      <form [formGroup]="societyForm">
+        <div class="row g-3">
+          <div class="col-sm-6">
+          <app-form-item label="Ragione Sociale">
+            <input type="text" class="form-control" id="ragioneSociale" formControlName="ragioneSociale" required
+            [ngClass]="(societyForm.get('ragioneSociale')?.touched ||
+            societyForm.get('ragioneSociale')?.dirty) &&
+            societyForm.get('ragioneSociale')?.hasError('required')
+        ? 'is-invalid'
+        : '' ||
+       ((societyForm.get('ragioneSociale')?.touched ||
+       societyForm.get('ragioneSociale')?.dirty) &&
+         !societyForm.get('ragioneSociale')?.invalid)
+        ? 'is-valid'
+        : ''" />
+            <div class="invalid-feedback">
+              Ragione Sociale is required
+            </div>
+          </app-form-item>
+
+        </div>
+          <div class="col-sm-6">
+          <app-form-item label="Tipologia Società">
+            <input type="text" class="form-control" id="type" formControlName="type"  required
+            [ngClass]="(societyForm.get('type')?.touched ||
+            societyForm.get('type')?.dirty) &&
+            societyForm.get('type')?.hasError('required')
+        ? 'is-invalid'
+        : '' ||
+       ((societyForm.get('type')?.touched ||
+       societyForm.get('type')?.dirty) &&
+         !societyForm.get('type')?.invalid)
+        ? 'is-valid'
+        : ''"
+            />
+            <div class="invalid-feedback">
+              Tipologia Società is required
+            </div>
+          </app-form-item>
+        </div>
+
+        <div class="col-sm-6">
+          <app-form-item label="indirizzo">
+            <input type="text" class="form-control" id="address" formControlName="address" required
+            [ngClass]="(societyForm.get('address')?.touched ||
+            societyForm.get('address')?.dirty) &&
+            societyForm.get('address')?.hasError('required')
+            ? 'is-invalid'
+            : '' ||
+            ((societyForm.get('address')?.touched ||
+            societyForm.get('address')?.dirty) &&
+             !societyForm.get('address')?.invalid)
+             ? 'is-valid'
+            : ''"
+            />
+            <div class="invalid-feedback">
+              Address is required
+            </div>
+
+          </app-form-item>
+        </div>
+        <div class="col-sm-6">
+          <app-form-item label="Città">
+            <input type="text" class="form-control" id="city" formControlName="city" required
+
+            [ngClass]="(societyForm.get('address')?.touched ||
+            societyForm.get('address')?.dirty) &&
+            societyForm.get('address')?.hasError('required')
+            ? 'is-invalid'
+            : '' ||
+            ((societyForm.get('address')?.touched ||
+            societyForm.get('address')?.dirty) &&
+             !societyForm.get('address')?.invalid)
+             ? 'is-valid'
+            : ''"
+            />
+            <div class="invalid-feedback">
+              City is required
+            </div>
+          </app-form-item>
+        </div>
+        <div class="col-sm-6">
+          <app-form-item label="Codice Fiscale">
+            <input type="text" class="form-control" id="cf" formControlName="cf" required
+            [ngClass]="(societyForm.get('cf')?.touched ||
+            societyForm.get('cf')?.dirty) &&
+            societyForm.get('cf')?.hasError('required')
+            ? 'is-invalid'
+            : '' ||
+            ((societyForm.get('cf')?.touched ||
+            societyForm.get('cf')?.dirty) &&
+             !societyForm.get('cf')?.invalid)
+             ? 'is-valid'
+            : ''"
+            />
+            <div class="invalid-feedback">
+              Codice Fiscale is required
+            </div>
+          </app-form-item>
+        </div>
+        <div class="col-sm-6">
+          <app-form-item label="Albo">
+            <input type="text" class="form-control" id="albo" formControlName="albo" required
+            [ngClass]="(societyForm.get('albo')?.touched ||
+            societyForm.get('albo')?.dirty) &&
+            societyForm.get('albo')?.hasError('required')
+            ? 'is-invalid'
+            : '' ||
+            ((societyForm.get('albo')?.touched ||
+            societyForm.get('albo')?.dirty) &&
+             !societyForm.get('albo')?.invalid)
+             ? 'is-valid'
+            : ''"
+            />
+            <div class="invalid-feedback">
+              Albo is required
+            </div>
+          </app-form-item>
+        </div>
+        <div class="col-sm-6">
+          <app-form-item label="Affiliazione">
+            <input type="text" class="form-control" id="affiliazione" formControlName="affiliazione" required
+            [ngClass]="(societyForm.get('affiliazione')?.touched ||
+            societyForm.get('affiliazione')?.dirty) &&
+            societyForm.get('affiliazione')?.hasError('required')
+            ? 'is-invalid'
+            : '' ||
+            ((societyForm.get('affiliazione')?.touched ||
+            societyForm.get('affiliazione')?.dirty) &&
+             !societyForm.get('affiliazione')?.invalid)
+             ? 'is-valid'
+            : ''"
+            />
+            <div class="invalid-feedback">
+              Affiliazione is required
+            </div>
+          </app-form-item>
+        </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row btn-row">
+    <div class="btn-container">
+      <button type="button" class="btn button primary" (click)="goBack()">
+        ANNULLA
+      </button>
+    </div>
+    <div class="btn-container">
+      <button
+        class="btn button secondary"
+        *ngIf="(mode$ | async) !== 'DETAIL'; else modifyButton"
+        type="submit"
+        (click)="saveModifies()"
+        [disabled]="!societyForm.valid"
+      >
+        SALVA
+      </button>
+      <ng-template #modifyButton>
+        <button class="btn button secondary" (click)="enableModifies()">
+          ABILITA MODIFICHE
+        </button>
+      </ng-template>
+    </div>
+  </div>
+</div>
