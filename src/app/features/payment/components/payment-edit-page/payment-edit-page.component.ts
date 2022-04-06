@@ -48,7 +48,7 @@ export class PaymentEditPageComponent implements OnInit {
 
   onSave() {
     const body = this.paymentForm.value;
-    console.log("form: ", body);
+    console.log('form: ', body);
     //this.router.navigate(['/section/payment'])
   }
 }
