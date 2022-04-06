@@ -1,1 +1,98 @@
-<p>payment-edit-page works!</p>
+<div class="fullpage">
+  <div class="container">
+    <div class="title mt-4">
+      <p>Nuovo Pagamento</p>
+    </div>
+    <div class="row form-row" [formGroup]="paymentForm">
+      <div class="row input-row">
+        <!-- SELECT CLEINT -->
+        <div class="col-md-5 me-5">
+          <app-form-item label="Cliente">
+            <select class="form-select" formControlName="client">
+              <ng-container *ngFor="let client of allClients">
+                <option value="{{ client.id }}">
+                  {{ client.id }} - {{ client.name }} {{ client.surname }}
+                </option>
+              </ng-container>
+            </select>
+          </app-form-item>
+        </div>
+
+        <!-- SELECT SOCIETY -->
+        <div class="col-md-5">
+          <app-form-item label="Società">
+            <select class="form-select" formControlName="society">
+              <ng-container *ngFor="let society of allSociety">
+                <option value="{{ society.id }}">
+                  {{ society.id }} - {{ society.ragioneSociale }}
+                  {{ society.city }}
+                </option>
+              </ng-container>
+            </select>
+          </app-form-item>
+        </div>
+      </div>
+
+      <div class="row input-row">
+        <!-- PRICE -->
+        <div class="col-md-5 me-5">
+          <app-form-item label="Importo">
+            <input
+              type="number"
+              class="form-control input"
+              formControlName="price"
+            />
+          </app-form-item>
+        </div>
+
+        <!-- ANNUAL PRICE -->
+        <div class="col-md-5">
+          <app-form-item label="Quota Annuale">
+            <input
+              type="number"
+              class="form-control input"
+              formControlName="annualPrice"
+            />
+          </app-form-item>
+        </div>
+      </div>
+
+      <div class="row input-row">
+        <!-- DATE -->
+        <div class="col-md-5">
+          <app-form-item label="Data Pagamento">
+            <input
+              type="date"
+              class="form-control input"
+              formControlName="date"
+            />
+          </app-form-item>
+        </div>
+      </div>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="btn-wrap">
+      <div class="btn-wrap_btn-container">
+        <button
+          type="button"
+          class="btn button secondary"
+          routerLink="/section/payment"
+        >
+          Annulla
+        </button>
+      </div>
+
+      <div class="btn-wrap_btn-container">
+        <button
+          type="button"
+          class="btn button primary"
+          (click)="onSave()"
+          [disabled]="!paymentForm.valid"
+        >
+          Salva
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
