@@ -1,10 +1,10 @@
 import { ClientFilters } from "src/app/features/client/model/filter.model";
 import { ClientRequest } from "../models";
 
-export function fromFiltersToRequestClient(filter: ClientFilters, skip: number, take: number): ClientRequest {
+export function fromFiltersToRequestClient(filter: ClientFilters, offset: number, limit: number): ClientRequest {
   let req: ClientRequest = {
-    skip: skip,
-    take: take
+    offset: offset,
+    limit: limit
   };
   console.log('filter', filter)
   if(filter.active !== '-') {

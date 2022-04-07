@@ -4,18 +4,18 @@
 
 export const environment = {
   production: false,
-  restApiBasePathUrl: '',
+  restApiBasePathUrl: 'http://192.168.129.240:3000',
   endpoints: {
     payment: { url: '' },
     client: { url: '' },
     login: { url: '' },
     area: { url: '' },
     society: { url: '' },
-    user: { url: '' },
     monthStats: { url: '' },
     areaStats: { url: '' },
-  },
-};
+    user: { url: 'users' },
+  }
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

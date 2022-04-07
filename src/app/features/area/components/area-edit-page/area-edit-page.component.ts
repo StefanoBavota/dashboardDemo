@@ -86,7 +86,7 @@ export class AreaEditPageComponent implements OnInit {
 
   goBack() {
     this.areaService.resetService();
-    this.router.navigateByUrl('area');
+    this.router.navigateByUrl('/section/area');
   }
 
 

@@ -78,6 +78,7 @@ export class DataService {
   }
 
   getUsers(request: UserRequest) {
+    //debugger;
     return this.getQueryParams(request, environment.endpoints.user.url)
   }
 
@@ -251,5 +252,9 @@ export class DataService {
 
   getAreaStats(request: any) {
     return this.getQueryParams(request, environment.endpoints.areaStats.url)
+  }
+
+  getTestUser(){
+    return this.http.get('http://192.168.129.240:3000/users');
   }
 }

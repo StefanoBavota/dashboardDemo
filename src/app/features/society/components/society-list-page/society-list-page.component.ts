@@ -16,12 +16,13 @@ export class SocietyListPageComponent implements OnInit {
 
   societies: Society[] = [];
 
-  skip: number = 0;
-  take: number = 10;
+  offset: number = 0;
+  limit: number = 10;
   totalPages: number = 1;
   actualPage: number = 1;
 
   success: boolean = true;
+
 
   constructor( private data: DataService,
     private societyService: SocietiesService,
@@ -42,7 +43,7 @@ export class SocietyListPageComponent implements OnInit {
       }
       this.societies = res.data;
       console.log('society',this.societies);
-      this.totalPages = Math.ceil(res.total / this.take);
+      this.totalPages = Math.ceil(res.total / this.limit);
       console.log('totalPages', this.totalPages);
     })
   }
@@ -50,8 +51,8 @@ export class SocietyListPageComponent implements OnInit {
 
   generateSocietyRequest(){
     let request = {
-      skip: this.skip,
-      take: this.take
+      offset: this.offset,
+      limit: this.limit
     };
     return request;
   }
@@ -88,13 +89,13 @@ export class SocietyListPageComponent implements OnInit {
   }
 
   onPageClick(page: number) {
-    this.skip = (page-1) * this.take;
+    this.offset = (page-1) * this.limit;
     this.actualPage = page;
     this.getSocieties();
   }
 
   onPageSizeChange(size: number) {
-    this.take = size;
+    this.limit = size;
     this.getSocieties();
   }
 

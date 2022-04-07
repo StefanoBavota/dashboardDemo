@@ -1,13 +1,13 @@
-<div class="container">
-  <div class="row title-row h-10">
-    <div class="col-4">
+<div class="container fullpage">
+  <div class="row title-row h-10 ">
+    <div class="col-4 mt-4">
       LISTA SETTORI
     </div>
-    <div class="col-4">
-      <button class="btn button primary new-area-btn" (click)="onClickNewArea()">NUOVO SETTORE</button>
+    <div class="col-4 d-flex justify-content-end mt-4">
+      <button class="btn button primary w-50" (click)="onClickNewArea()">NUOVO SETTORE</button>
     </div>
   </div>
-  <div class="row filters-row">
+  <div class="row filters-row d-flex justify-content-end search">
     <input type="text" class="form-control search-bar" placeholder="Search" aria-label="Search" [formControl]="searchControl">
   </div>
   <div class="row table-row">
