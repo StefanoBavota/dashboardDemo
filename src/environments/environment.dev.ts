@@ -7,6 +7,7 @@ export const environment = {
     login: { url: '' },
     area: { url: '' },
     society: { url: '' },
-    user: { url: 'users' }
+    monthStats: { url: '' },
+    user: { url: 'users' },
   },
 };

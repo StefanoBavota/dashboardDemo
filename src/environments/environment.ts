@@ -11,7 +11,9 @@ export const environment = {
     login: { url: '' },
     area: { url: '' },
     society: { url: '' },
-    user: { url: 'users' }
+    monthStats: { url: '' },
+    areaStats: { url: '' },
+    user: { url: 'users' },
   }
 }
 
@@ -22,4 +24,3 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-

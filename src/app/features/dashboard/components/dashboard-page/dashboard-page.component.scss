@@ -1,0 +1,25 @@
+.fullpage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.chart-card {
+  //width: 40%;
+  height: 30rem;
+  background-color: var(--white);
+  //background-color: lightblue;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &_title {
+    font-size: 26px;
+    font-weight: 600;
+    width: 90%;
+  }
+}

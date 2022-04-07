@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "area": "settore 1",
+      "value": 100
+    },
+    {
+      "area": "settore 2",
+      "value": 200
+    },
+    {
+      "area": "settore 3",
+      "value": 234
+    },
+    {
+      "area": "settore 4",
+      "value": 545
+    },
+    {
+      "area": "settore 5",
+      "value": 654
+    },
+    {
+      "area": "settore 6",
+      "value": 132
+    }
+  ]
+}

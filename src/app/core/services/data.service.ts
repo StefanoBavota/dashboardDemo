@@ -246,9 +246,15 @@ export class DataService {
     console.log(body)
   }
 
+  getMonthStats(request: any) {
+    return this.getQueryParams(request, environment.endpoints.monthStats.url)
+  }
+
+  getAreaStats(request: any) {
+    return this.getQueryParams(request, environment.endpoints.areaStats.url)
+  }
 
   getTestUser(){
     return this.http.get('http://192.168.129.240:3000/users');
-
   }
 }
