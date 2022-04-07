@@ -7,6 +7,8 @@ export const environment = {
     login: { url: 'login.json' },
     area: { url: 'area.json' },
     society: { url: 'society.json' },
-    user: { url: 'user.json'}
-  }
+    user: { url: 'user.json' },
+    monthStats: { url: 'monthStats.json' },
+    areaStats: { url: 'areaStats.json' },
+  },
 };

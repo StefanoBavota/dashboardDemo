@@ -1,0 +1,52 @@
+{
+  "data": [
+    {
+      "month": "Gennaio",
+      "value": 100
+    },
+    {
+      "month": "Febbraio",
+      "value": 200
+    },
+    {
+      "month": "Marzo",
+      "value": 234
+    },
+    {
+      "month": "Aprile",
+      "value": 545
+    },
+    {
+      "month": "Maggio",
+      "value": 654
+    },
+    {
+      "month": "Giugno",
+      "value": 132
+    },
+    {
+      "month": "Luglio",
+      "value": 356
+    },
+    {
+      "month": "Agosto",
+      "value": 654
+    },
+    {
+      "month": "Settembre",
+      "value": 987
+    },
+    {
+      "month": "Ottobre",
+      "value": 321
+    },
+    {
+      "month": "Novembre",
+      "value": 354
+    },
+    {
+      "month": "Dicembre",
+      "value": 120
+    }
+  ]
+}

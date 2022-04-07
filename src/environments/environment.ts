@@ -11,9 +11,11 @@ export const environment = {
     login: { url: '' },
     area: { url: '' },
     society: { url: '' },
-    user: { url: '' }
-  }
-}
+    user: { url: '' },
+    monthStats: { url: '' },
+    areaStats: { url: '' },
+  },
+};
 
 /*
  * For easier debugging in development mode, you can import the following file
@@ -22,4 +24,3 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-

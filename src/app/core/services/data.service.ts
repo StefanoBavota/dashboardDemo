@@ -244,4 +244,12 @@ export class DataService {
   editProfile(body: EditProfileRequest) {
     console.log(body)
   }
+
+  getMonthStats(request: any) {
+    return this.getQueryParams(request, environment.endpoints.monthStats.url)
+  }
+
+  getAreaStats(request: any) {
+    return this.getQueryParams(request, environment.endpoints.areaStats.url)
+  }
 }
