@@ -1,6 +1,6 @@
 export interface BaseRequest {
-  skip?: number;
-  take?: number;
+  offset?: number;
+  limit?: number;
 }
 
 export interface PaymentRequest extends BaseRequest {

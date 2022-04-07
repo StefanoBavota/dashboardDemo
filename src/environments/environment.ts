@@ -4,14 +4,14 @@
 
 export const environment = {
   production: false,
-  restApiBasePathUrl: '',
+  restApiBasePathUrl: 'http://192.168.129.240:3000',
   endpoints: {
     payment: { url: '' },
     client: { url: '' },
     login: { url: '' },
     area: { url: '' },
     society: { url: '' },
-    user: { url: '' }
+    user: { url: 'users' }
   }
 }
 

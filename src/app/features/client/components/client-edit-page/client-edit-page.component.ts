@@ -104,7 +104,7 @@ export class ClientEditPageComponent implements OnInit {
 
   onClickBack() {
     this.clientService.resetService();
-    this.router.navigateByUrl('/client');
+    this.router.navigateByUrl('/section/client');
   }
 
 }

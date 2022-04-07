@@ -1,15 +1,17 @@
-<div class="container">
+<div class="container fullpage">
   <div class="row title-row">
-    <div class="col-4">
+    <div class="col-4 mt-4">
       LISTA UTENTI
 
     </div>
-    <div class="col-4">
-      <button class="btn button primary w-" routerLink="new">NUOVO UTENTE</button>
+    <div class="col-4 d-flex justify-content-end mt-4">
+      <button class="btn button primary w-50" routerLink="new">
+        NUOVO UTENTE
+      </button>
     </div>
   </div>
   <div class="row filters-row">
-    <app-filter-row [filters]="filters" (filtersEmitter)="onFiltersChange($event)" [pageSize]="take"
+    <app-filter-row [filters]="filters" (filtersEmitter)="onFiltersChange($event)" [pageSize]="limit"
       (pageSizeEmitter)="onPageSizeChange($event)"></app-filter-row>
   </div>
 

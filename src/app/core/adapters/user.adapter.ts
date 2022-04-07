@@ -1,10 +1,10 @@
 import { UserFilters } from "src/app/features/admin-user/model/filter.model";
 import { UserRequest } from "../models";
 
-export function fromFiltersToRequestUser(filter: UserFilters, skip: number, take: number): UserRequest {
+export function fromFiltersToRequestUser(filter: UserFilters, limit: number, offset: number, ): UserRequest {
   let req: UserRequest = {
-    skip: skip,
-    take: take
+    limit: limit,
+    offset: offset,
   };
 
 
