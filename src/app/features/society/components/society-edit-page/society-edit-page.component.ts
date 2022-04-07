@@ -107,6 +107,6 @@ export class SocietyEditPageComponent implements OnInit {
 
   goBack() {
     this.societyService.resetService();
-    this.router.navigateByUrl('society');
+    this.router.navigateByUrl('/section/society');
   }
 }

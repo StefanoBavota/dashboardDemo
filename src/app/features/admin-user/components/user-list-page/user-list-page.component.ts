@@ -26,8 +26,8 @@ export class UserListPageComponent implements OnInit {
   }
 
 
-  skip: number = 0;
-  take: number = 10;
+  offset: number = 0;
+  limit: number = 2;
   totalPages: number = 1;
   actualPage: number = 1;
 
@@ -41,30 +41,28 @@ export class UserListPageComponent implements OnInit {
             private toastService: ToastService) { }
 
   ngOnInit(): void {
-    this.getUsers();
+     this.getUsers();
+    //this.data.getTestUser().subscribe(res => console.log('ciao',res));
   }
 
   getUsers() {
-    this.data.getUsers(fromFiltersToRequestUser(this.filters, this.take, this.skip)).subscribe(res => {
-      if (!res) {
-        this.success = false;
-      }
+    this.data.getUsers(fromFiltersToRequestUser(this.filters, this.limit, this.offset)).subscribe(res => {
       this.users = res.data;
       console.log('users', this.users);
-      this.totalPages = Math.ceil(res.total / this.take);
+      this.totalPages = Math.ceil(res.total / this.limit);
       console.log('totalPages', this.totalPages);
     })
   }
 
 
   onPageClick(page: number) {
-    this.skip = (page - 1) * this.take;
+    this.offset = (page - 1) * this.limit;
     this.actualPage = page;
     this.getUsers();
   }
 
   onPageSizeChange(size: number) {
-    this.take = size;
+    this.limit = size;
     this.getUsers();
   }
 

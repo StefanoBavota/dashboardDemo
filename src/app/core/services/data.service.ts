@@ -78,6 +78,7 @@ export class DataService {
   }
 
   getUsers(request: UserRequest) {
+    //debugger;
     return this.getQueryParams(request, environment.endpoints.user.url)
   }
 
@@ -243,5 +244,11 @@ export class DataService {
 
   editProfile(body: EditProfileRequest) {
     console.log(body)
+  }
+
+
+  getTestUser(){
+    return this.http.get('http://192.168.129.240:3000/users');
+
   }
 }

@@ -20,8 +20,8 @@ export class AreaListPageComponent implements OnInit {
 
   areas: Area[] = [];
 
-  skip: number = 0;
-  take: number = 10;
+  offset: number = 0;
+  limit: number = 10;
   totalPages: number = 1;
   actualPage: number = 1;
 
@@ -44,19 +44,19 @@ export class AreaListPageComponent implements OnInit {
   getAreas() {
     this.data.getAreas(this.generateAreaRequest()).subscribe(res => {
       this.areas = res.data;
-      this.totalPages = Math.ceil(res.total / this.take);
+      this.totalPages = Math.ceil(res.total / this.limit);
       console.log('totalPages', this.totalPages);
     })
   }
 
   onPageClick(page: number) {
-    this.skip = (page-1) * this.take;
+    this.offset = (page-1) * this.limit;
     this.actualPage = page;
     this.getAreas();
   }
 
   onPageSizeChange(size: number) {
-    this.take = size;
+    this.limit = size;
     this.getAreas();
   }
 
@@ -67,8 +67,8 @@ export class AreaListPageComponent implements OnInit {
 
   generateAreaRequest(): AreaRequest {
     let request: AreaRequest = {
-      skip: this.skip,
-      take: this.take
+      offset: this.offset,
+      limit: this.limit
     };
     if(this.search !== '') request.search = this.search;
     return request;
