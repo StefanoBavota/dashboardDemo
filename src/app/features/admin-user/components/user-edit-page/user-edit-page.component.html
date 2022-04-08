@@ -172,12 +172,13 @@
   </form>
 
   <div class="row btn-row">
-    <div class="btn-container">
+    <div class="btn-wrap">
+      <div class="btn-wrap_btn-container">
       <button type="button" class="btn button primary" (click)="goBack()">
         ANNULLA
       </button>
     </div>
-    <div class="btn-container">
+    <div class="btn-wrap_btn-container">
       <button class="btn button secondary" *ngIf="(mode$ | async) !== 'DETAIL'; else modifyButton" type="submit"
         (click)="saveModifies()" [disabled]="!editFormUser.valid">
         SALVA
@@ -189,5 +190,5 @@
       </ng-template>
     </div>
   </div>
-
+</div>
 </div>
