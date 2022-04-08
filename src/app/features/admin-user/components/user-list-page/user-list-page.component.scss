@@ -29,3 +29,24 @@
 }
 
 
+.btn-wrap {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-left: 5%;
+
+  &_btn-container {
+    width: 13rem;
+    height: 4rem;
+  }
+}
+
+
+
+
+.form-row {
+  margin-top: 2.5rem;
+  padding-left: 5%;
+}

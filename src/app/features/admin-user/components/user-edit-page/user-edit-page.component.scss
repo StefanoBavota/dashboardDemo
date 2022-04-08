@@ -22,3 +22,18 @@
 .btn-container {
   width: 200px;
 }
+
+.btn-wrap {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: auto;
+  //padding: 0% 5% 0% 5%;
+  padding-left: 5%;
+
+  &_btn-container {
+    width: 13rem;
+    height: 4rem;
+  }
+}
