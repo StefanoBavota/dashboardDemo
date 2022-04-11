@@ -20,12 +20,11 @@
 
         <!-- SELECT SOCIETY -->
         <div class="col-md-5">
-          <app-form-item label="Società">
-            <select class="form-select" formControlName="society">
-              <ng-container *ngFor="let society of allSociety">
-                <option value="{{ society.id }}">
-                  {{ society.id }} - {{ society.ragioneSociale }}
-                  {{ society.city }}
+          <app-form-item label="Settori">
+            <select class="form-select" formControlName="area">
+              <ng-container *ngFor="let area of allAreas">
+                <option value="{{ area.id }}">
+                  {{ area.id }} - {{ area.name }}
                 </option>
               </ng-container>
             </select>

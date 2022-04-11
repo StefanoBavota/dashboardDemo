@@ -8,6 +8,7 @@ export const environment = {
     area: { url: '' },
     society: { url: '' },
     user: { url: '' },
+    areaStats: { url: '' },
     monthStats: { url: '' },
   },
 };

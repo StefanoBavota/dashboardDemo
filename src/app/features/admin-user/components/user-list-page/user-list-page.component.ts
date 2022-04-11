@@ -1,13 +1,13 @@
-import { Router } from '@angular/router';
-import { UserFilters } from './../../model/filter.model';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { fromFiltersToRequestUser } from 'src/app/core/adapters';
 import { User } from 'src/app/core/models';
 import { DataService } from 'src/app/core/services/data.service';
-import { fromFiltersToRequestUser } from 'src/app/core/adapters';
-import { UserService } from '../../services/user.service';
-import { DeleteModalComponent } from 'src/app/shared/components/delete-modal/delete-modal.component';
 import { ToastService } from 'src/app/core/services/toast.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DeleteModalComponent } from 'src/app/shared/components/delete-modal/delete-modal.component';
+import { UserService } from '../../services/user.service';
+import { UserFilters } from './../../model/filter.model';
 
 @Component({
   selector: 'app-user-list-page',
@@ -25,14 +25,10 @@ export class UserListPageComponent implements OnInit {
     filterByRole: 'All'
   }
 
-
   offset: number = 0;
-  limit: number = 2;
+  limit: number = 10;
   totalPages: number = 1;
   actualPage: number = 1;
-
-
-
 
   constructor(private data: DataService,
              public userService: UserService,
@@ -42,7 +38,6 @@ export class UserListPageComponent implements OnInit {
 
   ngOnInit(): void {
      this.getUsers();
-    //this.data.getTestUser().subscribe(res => console.log('ciao',res));
   }
 
   getUsers() {
@@ -53,7 +48,6 @@ export class UserListPageComponent implements OnInit {
       console.log('totalPages', this.totalPages);
     })
   }
-
 
   onPageClick(page: number) {
     this.offset = (page - 1) * this.limit;

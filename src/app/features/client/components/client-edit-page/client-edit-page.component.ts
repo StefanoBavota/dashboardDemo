@@ -5,7 +5,6 @@ import { BehaviorSubject } from 'rxjs';
 import { Client } from 'src/app/core/models';
 import { DataService } from 'src/app/core/services/data.service';
 import { ClientService } from '../../services/client.service';
-import { getDateInputFormat } from './client-edit-utils';
 
 @Component({
   selector: 'app-client-edit-page',
@@ -51,6 +50,7 @@ export class ClientEditPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.client = this.clientService.getClient();
+    console.log('client', this.client)
     if(!this.client) {
       this.changeMode('NEW');
     } else this.populateFormControls();
@@ -58,10 +58,11 @@ export class ClientEditPageComponent implements OnInit {
 
   populateFormControls() {
     if(this.client && this.mode !== 'NEW') {
+      console.log('form', this.formGroup.value)
       this.formGroup.patchValue(this.client);
-      this.formGroup.patchValue({
-        born: getDateInputFormat(this.client.born)
-      })
+      // this.formGroup.patchValue({
+      //   born: getDateInputFormat(this.client.born)
+      // })
     }
     if(this.mode === 'DETAIL') {
       this.formGroup.disable();

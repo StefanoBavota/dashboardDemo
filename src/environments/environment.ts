@@ -6,10 +6,10 @@ export const environment = {
   production: false,
   restApiBasePathUrl: 'http://192.168.129.240:3000',
   endpoints: {
-    payment: { url: '' },
+    payment: { url: 'payments' },
     client: { url: '' },
     login: { url: '' },
-    area: { url: '' },
+    area: { url: 'areas' },
     society: { url: '' },
     monthStats: { url: '' },
     areaStats: { url: '' },

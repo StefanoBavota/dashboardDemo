@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, switchMap } from 'rxjs';
+import { Observable, of, switchMap, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import {
   Area,
@@ -54,14 +54,16 @@ export class DataService {
   getClients(request: ClientRequest) {
     return this.getQueryParams(request, environment.endpoints.client.url)
       .pipe(
+        tap(x => console.log('dataservice', x)),
         switchMap((res) =>
           of({
             total: res.total,
             data: res.data.map((client) => {
-              const splitted = client.born.split('/');
+              // const splitted = client.born.split('/');
               return {
                 ...client,
-                born: new Date(splitted[2], splitted[1], splitted[0]),
+                // born: new Date(splitted[2], splitted[1], splitted[0]),
+                born: new Date(client.born)
               };
             }),
           })
@@ -78,7 +80,6 @@ export class DataService {
   }
 
   getUsers(request: UserRequest) {
-    //debugger;
     return this.getQueryParams(request, environment.endpoints.user.url)
   }
 

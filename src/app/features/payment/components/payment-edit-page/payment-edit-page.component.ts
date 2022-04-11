@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Client, Society } from 'src/app/core/models';
+import { Area, Client } from 'src/app/core/models';
 import { DataService } from 'src/app/core/services/data.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class PaymentEditPageComponent implements OnInit {
   paymentForm: FormGroup;
 
   allClients: Client[] = [];
-  allSociety: Society[] = [];
+  allAreas: Area[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -22,7 +22,7 @@ export class PaymentEditPageComponent implements OnInit {
   ) {
     this.paymentForm = this.fb.group({
       client: [null, Validators.required],
-      society: [null, Validators.required],
+      area: [null, Validators.required],
       price: [null, Validators.required],
       annualPrice: [null, Validators.required],
       date: [null, Validators.required],
@@ -31,7 +31,7 @@ export class PaymentEditPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllClients();
-    this.getAllSociety();
+    this.getAllAreas();
   }
 
   getAllClients() {
@@ -40,9 +40,9 @@ export class PaymentEditPageComponent implements OnInit {
     });
   }
 
-  getAllSociety() {
-    this.dataService.getSocieties({}).subscribe((res) => {
-      this.allSociety = res.data;
+  getAllAreas() {
+    this.dataService.getAreas({}).subscribe((res) => {
+      this.allAreas = res.data;
     });
   }
 

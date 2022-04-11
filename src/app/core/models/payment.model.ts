@@ -1,15 +1,16 @@
 export interface Payment {
-  id: string
+  id: string;
   clientName: string;
   clientSurname: string;
-  total: number
-  annualFee: number
-  paymentDate: Date
-  paymentAreas: PaymentArea[]
+  total: number;
+  annualFee: number;
+  paymentDate: Date;
+  paymentAreas: PaymentArea[];
 }
 
 export interface PaymentArea {
-  areaId: string
-  total: number
-  type: string
+  areaName: string;
+  areaId: string;
+  total: number;
+  type: string;
 }
