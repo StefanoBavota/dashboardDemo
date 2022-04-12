@@ -14,6 +14,7 @@ import {
   LoginResponse,
   Page,
   Payment,
+  PaymentDTO,
   PaymentRequest,
   Society,
   User,
@@ -88,7 +89,7 @@ export class DataService {
   */
 
   modifyClient(client: ClientDTO) {
-    return this.http.post(
+    return this.http.put(
       `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}`,
       {
         client: client,
@@ -97,7 +98,7 @@ export class DataService {
   }
 
   modifyArea(area: Area) {
-    return this.http.post(
+    return this.http.put(
       `${environment.restApiBasePathUrl}/${environment.endpoints.area.url}`,
       {
         area: area,
@@ -106,7 +107,7 @@ export class DataService {
   }
 
   modifySociety(society: Society) {
-    return this.http.post(
+    return this.http.put(
       `${environment.restApiBasePathUrl}/${environment.endpoints.society.url}`,
       {
         society: society,
@@ -115,7 +116,7 @@ export class DataService {
   }
 
   modifyUser(user: User) {
-    return this.http.post(
+    return this.http.put(
       `${environment.restApiBasePathUrl}/${environment.endpoints.user.url}`,
       {
         user: user,
@@ -124,7 +125,7 @@ export class DataService {
   }
 
   modifyPayment(payment: Payment) {
-    return this.http.post(
+    return this.http.put(
       `${environment.restApiBasePathUrl}/${environment.endpoints.payment.url}`,
       {
         payment: payment,
@@ -137,7 +138,7 @@ export class DataService {
   */
 
   insertClient(client: ClientDTO) {
-    return this.http.put(
+    return this.http.post(
       `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}`,
       {
         client: client,
@@ -146,7 +147,7 @@ export class DataService {
   }
 
   insertArea(area: Area) {
-    return this.http.put(
+    return this.http.post(
       `${environment.restApiBasePathUrl}/${environment.endpoints.area.url}`,
       {
         area: area,
@@ -155,7 +156,7 @@ export class DataService {
   }
 
   insertSociety(society: Society) {
-    return this.http.put(
+    return this.http.post(
       `${environment.restApiBasePathUrl}/${environment.endpoints.society.url}`,
       {
         society: society,
@@ -164,7 +165,7 @@ export class DataService {
   }
 
   insertUser(user: User) {
-    return this.http.put(
+    return this.http.post(
       `${environment.restApiBasePathUrl}/${environment.endpoints.user.url}`,
       {
         user: user,
@@ -172,8 +173,8 @@ export class DataService {
     );
   }
 
-  insertPayment(payment: Payment) {
-    return this.http.put(
+  insertPayment(payment: PaymentDTO) {
+    return this.http.post(
       `${environment.restApiBasePathUrl}/${environment.endpoints.payment.url}`,
       {
         payment: payment,

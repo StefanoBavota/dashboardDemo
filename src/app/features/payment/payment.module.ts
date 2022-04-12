@@ -1,25 +1,27 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { PaymentRoutingModule } from './payment-routing.module';
-import { PaymentListPageComponent } from './components/payment-list-page/payment-list-page.component';
-import { PaymentEditPageComponent } from './components/payment-edit-page/payment-edit-page.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { FilterPaymentComponent } from './components/filter-payment/filter-payment.component';
+import { PaymentEditPageComponent } from './components/payment-edit-page/payment-edit-page.component';
+import { PaymentListPageComponent } from './components/payment-list-page/payment-list-page.component';
+import { PaymentRoutingModule } from './payment-routing.module';
+
 
 
 @NgModule({
   declarations: [
     PaymentListPageComponent,
     PaymentEditPageComponent,
-    FilterPaymentComponent,
+    FilterPaymentComponent
   ],
   imports: [
     CommonModule,
     PaymentRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ]
 })
 export class PaymentModule { }

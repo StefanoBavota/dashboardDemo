@@ -5,3 +5,7 @@ export interface User {
   email: string
   role: string
 }
+
+export interface NewUser extends User {
+  password: string
+}
