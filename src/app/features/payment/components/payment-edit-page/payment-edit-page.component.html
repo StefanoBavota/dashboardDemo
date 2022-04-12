@@ -8,26 +8,30 @@
         <!-- SELECT CLEINT -->
         <div class="col-md-5 me-5">
           <app-form-item label="Cliente">
-            <select class="form-select" formControlName="client">
-              <ng-container *ngFor="let client of allClients">
-                <option value="{{ client.id }}">
-                  {{ client.id }} - {{ client.name }} {{ client.surname }}
-                </option>
-              </ng-container>
-            </select>
+            <input
+              id="client-input"
+              type="text"
+              class="form-control"
+              formControlName="client"
+              [ngbTypeahead]="searchClient"
+              [inputFormatter]="formatterClient"
+              [resultFormatter]="formatterClient"
+              [editable]='false' />
           </app-form-item>
         </div>
 
-        <!-- SELECT SOCIETY -->
+        <!-- SELECT AREA -->
         <div class="col-md-5">
-          <app-form-item label="Settori">
-            <select class="form-select" formControlName="area">
-              <ng-container *ngFor="let area of allAreas">
-                <option value="{{ area.id }}">
-                  {{ area.id }} - {{ area.name }}
-                </option>
-              </ng-container>
-            </select>
+          <app-form-item label="Settore">
+            <input
+              id="area-input"
+              type="text"
+              class="form-control"
+              formControlName="area"
+              [ngbTypeahead]="searchArea"
+              [inputFormatter]="formatterArea"
+              [resultFormatter]="formatterArea"
+              [editable]='false' />
           </app-form-item>
         </div>
       </div>

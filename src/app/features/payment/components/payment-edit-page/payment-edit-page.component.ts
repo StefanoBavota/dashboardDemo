@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { debounceTime, distinctUntilChanged, Observable, of, OperatorFunction, switchMap, tap } from 'rxjs';
 import { Area, Client } from 'src/app/core/models';
 import { DataService } from 'src/app/core/services/data.service';
 
@@ -12,8 +13,24 @@ import { DataService } from 'src/app/core/services/data.service';
 export class PaymentEditPageComponent implements OnInit {
   paymentForm: FormGroup;
 
-  allClients: Client[] = [];
-  allAreas: Area[] = [];
+
+  formatterClient = (client: Client) => `${client.id} - ${client.name} ${client.surname}`
+  ;
+  searchClient: OperatorFunction<string, Client[]> = (text$: Observable<string>) => text$.pipe(
+    tap(text => console.log('sto in client', text)),
+    debounceTime(200),
+    distinctUntilChanged(),
+    switchMap(text => this.dataService.getClients({search: text})),
+    switchMap(res => (of(res.data)))
+  )
+
+  formatterArea = (area: Area) => `${area.id} - ${area.name}`
+  searchArea: OperatorFunction<string, Area[]> = (text$: Observable<string>) => text$.pipe(
+    debounceTime(200),
+    distinctUntilChanged(),
+    switchMap(text => this.dataService.getAreas({search: text})),
+    switchMap(res => (of(res.data)))
+  )
 
   constructor(
     private fb: FormBuilder,
@@ -30,25 +47,20 @@ export class PaymentEditPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllClients();
-    this.getAllAreas();
-  }
-
-  getAllClients() {
-    this.dataService.getClients({}).subscribe((res) => {
-      this.allClients = res.data;
-    });
-  }
-
-  getAllAreas() {
-    this.dataService.getAreas({}).subscribe((res) => {
-      this.allAreas = res.data;
-    });
   }
 
   onSave() {
     const body = this.paymentForm.value;
     console.log('form: ', body);
-    //this.router.navigate(['/section/payment'])
+    this.dataService.insertPayment({
+      idClient: this.paymentForm.get('client')?.value.id,
+      idArea: this.paymentForm.get('area')?.value.id,
+      total: this.paymentForm.get('price')?.value,
+      annualFee: this.paymentForm.get('annualPrice')?.value,
+      paymentDate: this.paymentForm.get('date')?.value
+    }).subscribe(res => {
+      console.log('save payment', res);
+      this.router.navigateByUrl('section/payment');
+    })
   }
 }

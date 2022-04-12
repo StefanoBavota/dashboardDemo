@@ -14,3 +14,11 @@ export interface PaymentArea {
   total: number;
   type: string;
 }
+
+export interface PaymentDTO {
+  idClient: string,
+  total: number,
+  annualFee: number,
+  paymentDate: Date,
+  idArea: string
+}

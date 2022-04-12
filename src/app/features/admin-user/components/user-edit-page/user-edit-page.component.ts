@@ -1,11 +1,10 @@
-import { UserService } from './../../services/user.service';
-import { User } from './../../../../core/models/user.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgModel, Validators } from '@angular/forms';
-import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { DataService } from 'src/app/core/services/data.service';
-import { ThisReceiver } from '@angular/compiler';
+import { NewUser, User } from './../../../../core/models/user.model';
+import { UserService } from './../../services/user.service';
 
 @Component({
   selector: 'app-user-edit-page',
@@ -46,21 +45,15 @@ export class UserEditPageComponent implements OnInit {
     );
   }
 
-
   checkPasswords(group: FormGroup) {
     const pass = group.controls['password']?.value;
     const confirmPass = group.controls['confirmPassword']?.value;
     return pass === confirmPass ? null : { notSame: true };
-
-
   }
-
-
 
   ngOnInit(): void {
     this.editFormUser.statusChanges.subscribe(status => {
       console.log(status);
-
       this.errorBS.next(status === 'INVALID')
     })
 
@@ -105,10 +98,7 @@ export class UserEditPageComponent implements OnInit {
         });
       }
       else {
-        this.data.insertUser({
-          id: '',
-          ...this.editFormUser.value
-        }).subscribe(res => {
+        this.data.insertUser(<NewUser>this.editFormUser.value).subscribe(res => {
           this.router.navigateByUrl('user');
         });
       }
@@ -126,7 +116,6 @@ export class UserEditPageComponent implements OnInit {
 
   submitHandler(formData: any) {
     console.log(formData);
-
   }
 
 
