@@ -18,7 +18,8 @@ export function generateButtons(total: number, actual: number): PaginationButton
 
   let indexes: number[] = [];
   if(total <= 5) {
-    indexes = [...Array(total).keys()]
+    indexes = [...Array(total).keys()].map(i => i+1)
+
   } else {
     if(actual < 4) {
       indexes = [1, 2, 3, 0, total];

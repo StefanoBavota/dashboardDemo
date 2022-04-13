@@ -21,12 +21,10 @@ export class TablePaginationComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    console.log('pagination', this.totalPages, this.actualPage)
     this.buttons = generateButtons(this.totalPages, this.actualPage);
   }
 
   onClick(index: number) {
-    console.log('on click', index);
     if(index !== 0) {
       this.clickEvent.emit(index);
     }
