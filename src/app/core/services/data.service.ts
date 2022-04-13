@@ -18,7 +18,7 @@ import {
   PaymentRequest,
   Society,
   User,
-  UserRequest
+  UserRequest,
 } from '../models';
 
 @Injectable({
@@ -38,10 +38,16 @@ export class DataService {
   }
 
   getQueryParams(request: BaseRequest, url: string): Observable<Page> {
-    const queryString = '?' + Object.entries(request).map(([key, value]) => `${key}=${value}`).join('&');
+    const queryString =
+      '?' +
+      Object.entries(request)
+        .map(([key, value]) => `${key}=${value}`)
+        .join('&');
     return this.http.get<Page>(
-      `${environment.restApiBasePathUrl}/${url}${queryString === '?' ? '' : queryString}`
-    )
+      `${environment.restApiBasePathUrl}/${url}${
+        queryString === '?' ? '' : queryString
+      }`
+    );
   }
 
   /*
@@ -49,39 +55,38 @@ export class DataService {
   */
 
   getPayments(request: PaymentRequest) {
-    return this.getQueryParams(request, environment.endpoints.payment.url)
+    return this.getQueryParams(request, environment.endpoints.payment.url);
   }
 
   getClients(request: ClientRequest) {
-    return this.getQueryParams(request, environment.endpoints.client.url)
-      .pipe(
-        tap(x => console.log('dataservice', x)),
-        switchMap((res) =>
-          of({
-            total: res.total,
-            data: res.data.map((client) => {
-              // const splitted = client.born.split('/');
-              return {
-                ...client,
-                // born: new Date(splitted[2], splitted[1], splitted[0]),
-                born: new Date(client.born)
-              };
-            }),
-          })
-        )
-      );
+    return this.getQueryParams(request, environment.endpoints.client.url).pipe(
+      tap((x) => console.log('dataservice', x)),
+      switchMap((res) =>
+        of({
+          total: res.total,
+          data: res.data.map((client) => {
+            // const splitted = client.born.split('/');
+            return {
+              ...client,
+              // born: new Date(splitted[2], splitted[1], splitted[0]),
+              born: new Date(client.born),
+            };
+          }),
+        })
+      )
+    );
   }
 
   getAreas(request: AreaRequest) {
-    return this.getQueryParams(request, environment.endpoints.area.url)
+    return this.getQueryParams(request, environment.endpoints.area.url);
   }
 
   getSocieties(request: BaseRequest) {
-    return this.getQueryParams(request, environment.endpoints.society.url)
+    return this.getQueryParams(request, environment.endpoints.society.url);
   }
 
   getUsers(request: UserRequest) {
-    return this.getQueryParams(request, environment.endpoints.user.url)
+    return this.getQueryParams(request, environment.endpoints.user.url);
   }
 
   /*
@@ -176,9 +181,7 @@ export class DataService {
   insertPayment(payment: PaymentDTO) {
     return this.http.post(
       `${environment.restApiBasePathUrl}/${environment.endpoints.payment.url}`,
-      {
-        payment: payment,
-      }
+      payment
     );
   }
 
@@ -197,7 +200,7 @@ export class DataService {
     return this.http.delete(
       `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}/${area.id}`,
       { observe: 'response' }
-    )
+    );
   }
 
   deleteSociety(society: Society) {
@@ -216,7 +219,7 @@ export class DataService {
 
   deletePayment(paymentId: string) {
     return this.http.delete(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}/${paymentId}`,
+      `${environment.restApiBasePathUrl}/${environment.endpoints.payment.url}/${paymentId}`,
       { observe: 'response' }
     );
   }
@@ -241,22 +244,22 @@ export class DataService {
 
   //TODO implement function
   changePassword(body: ChangePasswordRequest) {
-    console.log(body)
+    console.log(body);
   }
 
   editProfile(body: EditProfileRequest) {
-    console.log(body)
+    console.log(body);
   }
 
   getMonthStats(request: any) {
-    return this.getQueryParams(request, environment.endpoints.monthStats.url)
+    return this.getQueryParams(request, environment.endpoints.monthStats.url);
   }
 
   getAreaStats(request: any) {
-    return this.getQueryParams(request, environment.endpoints.areaStats.url)
+    return this.getQueryParams(request, environment.endpoints.areaStats.url);
   }
 
-  getTestUser(){
+  getTestUser() {
     return this.http.get('http://192.168.129.240:3000/users');
   }
 }

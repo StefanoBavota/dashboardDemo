@@ -16,9 +16,9 @@ export interface PaymentArea {
 }
 
 export interface PaymentDTO {
-  idClient: string,
+  client: string,
   total: number,
   annualFee: number,
   paymentDate: Date,
-  idArea: string
+  area: string
 }

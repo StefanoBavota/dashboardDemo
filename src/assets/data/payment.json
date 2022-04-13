@@ -7,7 +7,7 @@
       "total": 100,
       "annualFee": 100,
       "paymentDate": "15/02/2022",
-      "paymentAreas": ["area 1", "area 2"]
+      "paymentAreas": ["area 1"]
     },
     {
       "id": "P2",

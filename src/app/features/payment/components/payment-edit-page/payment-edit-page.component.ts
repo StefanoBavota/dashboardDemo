@@ -53,8 +53,8 @@ export class PaymentEditPageComponent implements OnInit {
     const body = this.paymentForm.value;
     console.log('form: ', body);
     this.dataService.insertPayment({
-      idClient: this.paymentForm.get('client')?.value.id,
-      idArea: this.paymentForm.get('area')?.value.id,
+      client: this.paymentForm.get('client')?.value.id,
+      area: this.paymentForm.get('area')?.value.id,
       total: this.paymentForm.get('price')?.value,
       annualFee: this.paymentForm.get('annualPrice')?.value,
       paymentDate: this.paymentForm.get('date')?.value
