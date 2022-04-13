@@ -89,7 +89,7 @@ export class ClientEditPageComponent implements OnInit {
       }
       else {
         this.data.insertClient({
-          id: '',
+          // id: '',
           ...this.formGroup.value
         }).subscribe(res => {
           this.router.navigateByUrl('client');

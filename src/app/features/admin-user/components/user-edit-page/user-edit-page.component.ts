@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, NgModel, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  NgModel,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { DataService } from 'src/app/core/services/data.service';
@@ -12,12 +18,10 @@ import { UserService } from './../../services/user.service';
   styleUrls: ['./user-edit-page.component.scss'],
 })
 export class UserEditPageComponent implements OnInit {
-
-
   editFormUser: FormGroup;
   user?: User;
   visible: boolean = false;
-  readOnly : boolean = false;
+  readOnly: boolean = false;
 
   errorBS = new BehaviorSubject<boolean>(false);
   error$ = this.errorBS.asObservable();
@@ -32,16 +36,22 @@ export class UserEditPageComponent implements OnInit {
     private data: DataService,
     private UserService: UserService
   ) {
-    this.editFormUser = this.fb.group({
-      name: ['', Validators.required],
-      surname: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      ruolo: ['All', Validators.required],
-      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-      confirmPassword: new FormControl('', [Validators.required, Validators.minLength(8)])
-    },
+    this.editFormUser = this.fb.group(
+      {
+        name: ['', Validators.required],
+        surname: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        ruolo: ['All', Validators.required],
+        password: new FormControl('', [
+          Validators.required,
+          Validators.minLength(8),
+        ]),
+        confirmPassword: new FormControl('', [
+          Validators.required,
+          Validators.minLength(8),
+        ]),
+      },
       { validator: this.checkPasswords }
-
     );
   }
 
@@ -52,10 +62,10 @@ export class UserEditPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.editFormUser.statusChanges.subscribe(status => {
+    this.editFormUser.statusChanges.subscribe((status) => {
       console.log(status);
-      this.errorBS.next(status === 'INVALID')
-    })
+      this.errorBS.next(status === 'INVALID');
+    });
 
     this.user = this.UserService.getUser();
     if (!this.user) {
@@ -68,7 +78,6 @@ export class UserEditPageComponent implements OnInit {
   populateFormControls() {
     if (this.user && this.mode !== 'NEW') {
       this.editFormUser.patchValue(this.user);
-
     }
     if (this.mode === 'DETAIL') {
       this.editFormUser.disable();
@@ -85,22 +94,24 @@ export class UserEditPageComponent implements OnInit {
   }
 
   saveModifies() {
-    console.log('formGroup', this.editFormUser.value);
+    delete this.editFormUser.value.confirmPassword;
+
     if (this.editFormUser.valid) {
       if (this.mode === 'EDIT' && this.user) {
-        const newUser: User = {
+        const newUser: NewUser = {
           id: this.user?.id,
-          ...this.editFormUser.value
+          ...this.editFormUser.value,
         };
-        this.data.modifyUser(newUser).subscribe(res => {
+        this.data.modifyUser(newUser).subscribe((res) => {
           console.log(res);
           this.router.navigateByUrl('user');
         });
-      }
-      else {
-        this.data.insertUser(<NewUser>this.editFormUser.value).subscribe(res => {
-          this.router.navigateByUrl('user');
-        });
+      } else {
+        this.data
+          .insertUser(<NewUser>this.editFormUser.value)
+          .subscribe((res) => {
+            this.router.navigateByUrl('user');
+          });
       }
     }
   }
@@ -117,7 +128,6 @@ export class UserEditPageComponent implements OnInit {
   submitHandler(formData: any) {
     console.log(formData);
   }
-
 
   goBack() {
     this.UserService.resetService();

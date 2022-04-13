@@ -95,46 +95,36 @@ export class DataService {
 
   modifyClient(client: ClientDTO) {
     return this.http.put(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}`,
-      {
-        client: client,
-      }
+      `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}/${client.id}`,
+      client
     );
   }
 
   modifyArea(area: Area) {
     return this.http.put(
       `${environment.restApiBasePathUrl}/${environment.endpoints.area.url}`,
-      {
-        area: area,
-      }
+      area
     );
   }
 
   modifySociety(society: Society) {
     return this.http.put(
       `${environment.restApiBasePathUrl}/${environment.endpoints.society.url}`,
-      {
-        society: society,
-      }
+      society
     );
   }
 
   modifyUser(user: User) {
     return this.http.put(
       `${environment.restApiBasePathUrl}/${environment.endpoints.user.url}`,
-      {
-        user: user,
-      }
+      user
     );
   }
 
   modifyPayment(payment: Payment) {
     return this.http.put(
       `${environment.restApiBasePathUrl}/${environment.endpoints.payment.url}`,
-      {
-        payment: payment,
-      }
+      payment
     );
   }
 
@@ -145,36 +135,28 @@ export class DataService {
   insertClient(client: ClientDTO) {
     return this.http.post(
       `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}`,
-      {
-        client: client,
-      }
+      client
     );
   }
 
   insertArea(area: Area) {
     return this.http.post(
       `${environment.restApiBasePathUrl}/${environment.endpoints.area.url}`,
-      {
-        area: area,
-      }
+      area
     );
   }
 
   insertSociety(society: Society) {
     return this.http.post(
       `${environment.restApiBasePathUrl}/${environment.endpoints.society.url}`,
-      {
-        society: society,
-      }
+      society
     );
   }
 
   insertUser(user: User) {
     return this.http.post(
       `${environment.restApiBasePathUrl}/${environment.endpoints.user.url}`,
-      {
-        user: user,
-      }
+      user
     );
   }
 
@@ -198,21 +180,21 @@ export class DataService {
 
   deleteArea(area: Area) {
     return this.http.delete(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}/${area.id}`,
+      `${environment.restApiBasePathUrl}/${environment.endpoints.area.url}/${area.id}`,
       { observe: 'response' }
     );
   }
 
   deleteSociety(society: Society) {
     return this.http.delete(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}/${society.id}`,
+      `${environment.restApiBasePathUrl}/${environment.endpoints.society.url}/${society.id}`,
       { observe: 'response' }
     );
   }
 
   deleteUser(user: User) {
     return this.http.delete(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.client.url}/${user.id}`,
+      `${environment.restApiBasePathUrl}/${environment.endpoints.user.url}/${user.id}`,
       { observe: 'response' }
     );
   }

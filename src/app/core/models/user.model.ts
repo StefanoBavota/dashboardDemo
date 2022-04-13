@@ -1,11 +1,12 @@
 export interface User {
-  id: string
-  name: string
-  surname: string
-  email: string
-  role: string
+  id: string;
+  name: string;
+  surname: string;
+  email: string;
+  role: string;
 }
 
 export interface NewUser extends User {
-  password: string
+  password: string;
+  confirmPassword?: string;
 }
