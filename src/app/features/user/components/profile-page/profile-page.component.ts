@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from 'src/app/core/services/data.service';
 import { ChangePasswordComponent } from 'src/app/shared/components/change-password/change-password.component';
@@ -17,11 +18,12 @@ export class ProfilePageComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
-    private dataService: DataService
+    private dataService: DataService,
+    private router: Router
   ) {
     this.profileForm = this.formBuilder.group({
-      name: ['Mario', [Validators.required]],
-      surname: ['Rossi', [Validators.required]],
+      firstName: ['Mario', [Validators.required]],
+      lastName: ['Rossi', [Validators.required]],
     });
 
     this.profileForm.disable();
@@ -39,7 +41,10 @@ export class ProfilePageComponent implements OnInit {
     this.isEnable = false;
 
     const body = this.profileForm.value;
-    this.dataService.editProfile(body);
+    this.dataService.modifyProfile(body).subscribe((res) => {
+      console.log(res);
+      this.router.navigateByUrl('profile');
+    });
   }
 
   openModalPassword() {

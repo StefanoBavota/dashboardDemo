@@ -69,7 +69,7 @@ export class AreaEditPageComponent implements OnInit {
       }
       else {
         this.data.insertArea({
-          id: '',
+          // id: '',
           ...this.formGroup.value
         }).subscribe(res => {
           this.areaService.resetService();

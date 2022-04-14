@@ -86,7 +86,7 @@ export class SocietyEditPageComponent implements OnInit {
       }
       else {
         this.data.insertSociety({
-          id: '',
+          // id: '',
           ...this.societyForm.value
         }).subscribe(res => {
           this.societyService.resetService();
