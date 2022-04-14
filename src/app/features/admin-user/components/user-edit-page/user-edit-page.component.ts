@@ -1,9 +1,13 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
   NgModel,
+  ValidationErrors,
+  ValidatorFn,
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -18,8 +22,9 @@ import { UserService } from './../../services/user.service';
   styleUrls: ['./user-edit-page.component.scss'],
 })
 export class UserEditPageComponent implements OnInit {
-  editFormUser: FormGroup;
+  editFormUser: FormGroup = new FormGroup({})
   user?: User;
+  user2?: NewUser;
   visible: boolean = false;
   readOnly: boolean = false;
 
@@ -36,55 +41,73 @@ export class UserEditPageComponent implements OnInit {
     private data: DataService,
     private UserService: UserService
   ) {
-    this.editFormUser = this.fb.group(
-      {
-        name: ['', Validators.required],
-        surname: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        ruolo: ['All', Validators.required],
-        password: new FormControl('', [
-          Validators.required,
-          Validators.minLength(8),
-        ]),
-        confirmPassword: new FormControl('', [
-          Validators.required,
-          Validators.minLength(8),
-        ]),
-      },
-      { validator: this.checkPasswords }
-    );
   }
 
-  checkPasswords(group: FormGroup) {
-    const pass = group.controls['password']?.value;
-    const confirmPass = group.controls['confirmPassword']?.value;
-    return pass === confirmPass ? null : { notSame: true };
+  checkPasswords(): ValidatorFn {
+    return (group: AbstractControl) : ValidationErrors | null => {
+      const pass = (<FormGroup>group).controls['password']?.value;
+      const confirmPass = (<FormGroup>group).controls['confirmPassword']?.value;
+      console.log('www', pass, confirmPass)
+      return pass === confirmPass ? null : { notSame: true };
+    }
   }
 
   ngOnInit(): void {
-    this.editFormUser.statusChanges.subscribe((status) => {
-      console.log(status);
-      this.errorBS.next(status === 'INVALID');
-    });
-
     this.user = this.UserService.getUser();
-    if (!this.user) {
+    console.log('user', this.user)
+    if(!this.user) {
       this.changeMode('NEW');
       this.visible = true;
-      this.readOnly = false;
-    } else this.populateFormControls();
+    }
+    this.createFormGroup();
+    if(this.mode === 'NEW') {
+      this.editFormUser.addValidators([this.checkPasswords()])
+    }
+    else this.populateFormControls();
+  }
+
+  createFormGroup() {
+    console.log('pre', this.editFormUser)
+    this.editFormUser = this.fb.group(
+      {
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        role: ['', Validators.required],
+      }
+    );
+    console.log('pre 2', this.editFormUser)
+
+    if(this.mode === 'NEW') {
+      this.editFormUser.addControl('password', new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]));
+      this.editFormUser.addControl('confirmPassword', new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]));
+
+      console.log('edit', this.editFormUser);
+
+    }
   }
 
   populateFormControls() {
-    if (this.user && this.mode !== 'NEW') {
-      this.editFormUser.patchValue(this.user);
+      if(this.user && this.mode !== 'NEW') {
+        console.log('form', this.editFormUser.value)
+        this.editFormUser.patchValue(this.user);
+        // this.formGroup.patchValue({
+        //   born: getDateInputFormat(this.client.born)
+        // })
+      }
+      if(this.mode === 'DETAIL') {
+        this.editFormUser.disable();
+        this.visible = false;
+        this.readOnly = true;
+      }
     }
-    if (this.mode === 'DETAIL') {
-      this.editFormUser.disable();
-      this.visible = false;
-      this.readOnly = true;
-    }
-  }
+
 
   enableModifies() {
     this.changeMode('EDIT');
@@ -95,26 +118,29 @@ export class UserEditPageComponent implements OnInit {
 
   saveModifies() {
     delete this.editFormUser.value.confirmPassword;
-
-    if (this.editFormUser.valid) {
-      if (this.mode === 'EDIT' && this.user) {
+    if(this.editFormUser.valid) {
+      console.log(this.mode)
+      if(this.mode === 'EDIT' && this.user) {
         const newUser: NewUser = {
           id: this.user?.id,
-          ...this.editFormUser.value,
+          ...this.editFormUser.value
         };
-        this.data.modifyUser(newUser).subscribe((res) => {
-          console.log(res);
-          this.router.navigateByUrl('user');
+        this.data.modifyUser(newUser).subscribe(res => {
+          this.router.navigateByUrl('section/user')
         });
-      } else {
-        this.data
-          .insertUser(<NewUser>this.editFormUser.value)
-          .subscribe((res) => {
-            this.router.navigateByUrl('user');
-          });
+      }
+      else {
+        this.data.insertUser({
+          // id: '',
+          ...this.editFormUser.value
+        }).subscribe(res => {
+          this.router.navigateByUrl('section/user');
+        });
       }
     }
   }
+
+
 
   changeMode(newMode: string) {
     this.mode = newMode;

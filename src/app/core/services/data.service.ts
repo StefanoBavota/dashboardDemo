@@ -116,7 +116,7 @@ export class DataService {
 
   modifyUser(user: User) {
     return this.http.put(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.user.url}`,
+      `${environment.restApiBasePathUrl}/${environment.endpoints.user.url}/${user.id}`,
       user
     );
   }
