@@ -22,7 +22,7 @@ export class UserListPageComponent implements OnInit {
 
   filters: UserFilters = {
     emailSearch: '',
-    filterByRole: 'All'
+    filterByRole: ''
   }
 
   offset: number = 0;
@@ -69,22 +69,27 @@ export class UserListPageComponent implements OnInit {
 
   onClickEdit(user: User) {
     this.userService.setUser(user);
-    this.router.navigateByUrl('user/edit/' + user.id)
+    this.router.navigateByUrl('section/user/edit/' + user.id)
   }
 
   onClickDelete(user: User) {
     const modalRef = this.modalService.open(DeleteModalComponent);
-    modalRef.componentInstance.item = `${user.id} - ${user.name}`;
+    modalRef.componentInstance.item = `${user.id} - ${user.firstName}`;
 
     modalRef.result.then(modalRes => {
       if(modalRes) {
         console.log('aaaa');
-        this.toastService.show('Utente rimosso', ` L'utente ${user.id}  ${user.name} ${user.surname} è stato rimosso`, true)
+        this.toastService.show('Utente rimosso', ` L'utente ${user.id}  ${user.firstName} ${user.lastName} è stato rimosso`, true)
         this.data.deleteUser(user).subscribe((res) => {
          console.log(res);
         });
       }
     })
+  }
+
+  onClickNew() {
+    this.userService.resetService()
+    this.router.navigateByUrl('section/user/new')
   }
 
 }

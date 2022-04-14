@@ -5,7 +5,7 @@
 
     </div>
     <div class="col-4 d-flex justify-content-end mt-4">
-      <button class="btn button primary w-50" routerLink="new">
+      <button class="btn button primary w-50" (click)="onClickNew()">
         NUOVO UTENTE
       </button>
     </div>
@@ -30,8 +30,8 @@
       <tbody>
         <tr *ngFor=" let user of users">
           <th scope="row">{{user.id}}</th>
-          <td>{{user.name}}</td>
-          <td>{{user.surname}}</td>
+          <td>{{user.firstName}}</td>
+          <td>{{user.lastName}}</td>
           <td>{{user.email}}</td>
           <td>{{user.role}}</td>
           <td class="buttons-col">
