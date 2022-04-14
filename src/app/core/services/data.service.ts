@@ -18,7 +18,7 @@ import {
   PaymentRequest,
   Society,
   User,
-  UserRequest,
+  UserRequest
 } from '../models';
 
 @Injectable({
@@ -226,8 +226,10 @@ export class DataService {
 
   //TODO implement function
   changePassword(body: ChangePasswordRequest) {
-    console.log(body);
-  }
+    return this.http.put(
+      `${environment.restApiBasePathUrl}/${environment.endpoints}`,
+      body
+    );  }
 
   editProfile(body: EditProfileRequest) {
     console.log(body);
