@@ -20,5 +20,6 @@ export interface PaymentDTO {
   total: number,
   annualFee: number,
   paymentDate: Date,
-  area: string
+  area: string,
+  society: string
 }

@@ -71,6 +71,20 @@
             />
           </app-form-item>
         </div>
+        <!-- SOCIETY -->
+        <div class="col-md-5">
+          <app-form-item label="Società">
+            <input
+              id="area-input"
+              type="text"
+              class="form-control"
+              formControlName="area"
+              [ngbTypeahead]="searchSociety"
+              [inputFormatter]="formatterSociety"
+              [resultFormatter]="formatterSociety"
+              [editable]='false' />
+          </app-form-item>
+        </div>
       </div>
     </div>
 

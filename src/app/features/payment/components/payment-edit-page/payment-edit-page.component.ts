@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { debounceTime, distinctUntilChanged, Observable, of, OperatorFunction, switchMap, tap } from 'rxjs';
-import { Area, Client } from 'src/app/core/models';
+import { Area, Client, Society } from 'src/app/core/models';
 import { DataService } from 'src/app/core/services/data.service';
 
 @Component({
@@ -32,6 +32,15 @@ export class PaymentEditPageComponent implements OnInit {
     switchMap(res => (of(res.data)))
   )
 
+  formatterSociety = (society: Society) => `${society.id} - ${society.ragioneSociale}`
+  searchSociety: OperatorFunction<string, Society[]> = (text$: Observable<string>) => text$.pipe(
+    debounceTime(200),
+    distinctUntilChanged(),
+    switchMap(text => this.dataService.getSocieties({})),
+    switchMap(res => (of(res.data)))
+  )
+
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -43,6 +52,7 @@ export class PaymentEditPageComponent implements OnInit {
       price: [null, Validators.required],
       annualPrice: [null, Validators.required],
       date: [null, Validators.required],
+      society: [null, Validators.required]
     });
   }
 
@@ -57,7 +67,8 @@ export class PaymentEditPageComponent implements OnInit {
       area: this.paymentForm.get('area')?.value.id,
       total: this.paymentForm.get('price')?.value,
       annualFee: this.paymentForm.get('annualPrice')?.value,
-      paymentDate: this.paymentForm.get('date')?.value
+      paymentDate: this.paymentForm.get('date')?.value,
+      society: this.paymentForm.get('society')?.value
     }).subscribe(res => {
       console.log('save payment', res);
       this.router.navigateByUrl('section/payment');
