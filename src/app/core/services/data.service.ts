@@ -102,14 +102,14 @@ export class DataService {
 
   modifyArea(area: Area) {
     return this.http.put(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.area.url}`,
+      `${environment.restApiBasePathUrl}/${environment.endpoints.area.url}/${area.id}`,
       area
     );
   }
 
   modifySociety(society: Society) {
     return this.http.put(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.society.url}`,
+      `${environment.restApiBasePathUrl}/${environment.endpoints.society.url}/${society.id}`,
       society
     );
   }
@@ -123,8 +123,16 @@ export class DataService {
 
   modifyPayment(payment: Payment) {
     return this.http.put(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.payment.url}`,
+      `${environment.restApiBasePathUrl}/${environment.endpoints.payment.url}/${payment.id}`,
       payment
+    );
+  }
+
+  //TODO: add profile id
+  modifyProfile(profile: EditProfileRequest) {
+    return this.http.put(
+      `${environment.restApiBasePathUrl}/${environment.endpoints.user.url}/3`,
+      profile
     );
   }
 
@@ -226,10 +234,6 @@ export class DataService {
 
   //TODO implement function
   changePassword(body: ChangePasswordRequest) {
-    console.log(body);
-  }
-
-  editProfile(body: EditProfileRequest) {
     console.log(body);
   }
 

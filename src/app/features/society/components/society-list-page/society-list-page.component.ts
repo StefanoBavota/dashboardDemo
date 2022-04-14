@@ -72,11 +72,10 @@ export class SocietyListPageComponent implements OnInit {
 
   onClickDelete(society: Society){
     const modalRef = this.modalService.open(DeleteModalComponent);
-    modalRef.componentInstance.item = `${society.id} - ${society.ragioneSociale} - ${society.cf}`;
+    modalRef.componentInstance.item = `${society.id} - ${society.ragioneSociale}`;
 
     modalRef.result.then(modalRes => {
       if(modalRes) {
-        console.log('aaaa');
         this.toastService.show('Società rimossa', `La società ${society.id} è stato rimossa`, true);
         this.data.deleteSociety(society).subscribe((res) => {
           if(res.status === 200) {
