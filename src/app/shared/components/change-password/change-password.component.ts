@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/core/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -6,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { NgbActiveModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { LoggedUser } from 'src/app/core/models';
 import { DataService } from 'src/app/core/services/data.service';
 import { validatePasswordMatch } from '../../validators/password-match.validator';
 
@@ -16,15 +18,20 @@ import { validatePasswordMatch } from '../../validators/password-match.validator
 })
 export class ChangePasswordComponent implements OnInit {
   changePassForm: FormGroup;
+  loggedInUser: LoggedUser;
 
   constructor(
     private activeModal: NgbActiveModal,
     public config: NgbModalConfig,
     private formBuilder: FormBuilder,
-    private dataService: DataService
+    private dataService: DataService,
+    private authService: AuthService
+
   ) {
     config.backdrop = 'static';
     config.keyboard = false;
+    this.loggedInUser = this.authService.getUser();
+    console.log('logged',this.loggedInUser);
 
     this.changePassForm = this.formBuilder.group(
       {
@@ -50,7 +57,7 @@ export class ChangePasswordComponent implements OnInit {
     debugger;
 
     // api call
-    this.dataService.changePassword(body, '2').subscribe(res => {
+    this.dataService.changePassword(body,  this.loggedInUser.id).subscribe(res => {
       console.log('res',res);
     });
 

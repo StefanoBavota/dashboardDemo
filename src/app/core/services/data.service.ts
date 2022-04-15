@@ -141,9 +141,9 @@ export class DataService {
   */
 
   //TODO implement function
-  changePassword(body: ChangePasswordRequest, id: string) {
+  changePassword(body: ChangePasswordRequest, userId: string) {
     return this.http.put(
-    `${environment.restApiBasePathUrl}/${environment.endpoints.changePassword.url}/2`, //${id}
+    `${environment.restApiBasePathUrl}/${environment.endpoints.changePassword.url}/${userId}`, //${id}
       body
     );
    }
