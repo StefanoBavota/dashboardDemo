@@ -12,41 +12,44 @@ import { UserFilters } from './../../model/filter.model';
 @Component({
   selector: 'app-user-list-page',
   templateUrl: './user-list-page.component.html',
-  styleUrls: ['./user-list-page.component.scss']
+  styleUrls: ['./user-list-page.component.scss'],
 })
 export class UserListPageComponent implements OnInit {
-
   users: User[] = [];
 
   success: boolean = true;
 
   filters: UserFilters = {
     emailSearch: '',
-    filterByRole: ''
-  }
+    filterByRole: '',
+  };
 
   offset: number = 0;
   limit: number = 10;
   totalPages: number = 1;
   actualPage: number = 1;
 
-  constructor(private data: DataService,
-             public userService: UserService,
-            private router: Router,
-            private modalService: NgbModal,
-            private toastService: ToastService) { }
+  constructor(
+    private data: DataService,
+    public userService: UserService,
+    private router: Router,
+    private modalService: NgbModal,
+    private toastService: ToastService
+  ) {}
 
   ngOnInit(): void {
-     this.getUsers();
+    this.getUsers();
   }
 
   getUsers() {
-    this.data.getUsers(fromFiltersToRequestUser(this.filters, this.limit, this.offset)).subscribe(res => {
-      this.users = res.data;
-      console.log('users', this.users);
-      this.totalPages = Math.ceil(res.total / this.limit);
-      console.log('totalPages', this.totalPages);
-    })
+    this.data
+      .getUsers(fromFiltersToRequestUser(this.filters, this.limit, this.offset))
+      .subscribe((res) => {
+        this.users = res.data;
+        console.log('users', this.users);
+        this.totalPages = Math.ceil(res.total / this.limit);
+        console.log('totalPages', this.totalPages);
+      });
   }
 
   onPageClick(page: number) {
@@ -66,30 +69,32 @@ export class UserListPageComponent implements OnInit {
     this.getUsers();
   }
 
-
   onClickEdit(user: User) {
     this.userService.setUser(user);
-    this.router.navigateByUrl('section/user/edit/' + user.id)
+    this.router.navigateByUrl('section/user/edit/' + user.id);
   }
 
   onClickDelete(user: User) {
     const modalRef = this.modalService.open(DeleteModalComponent);
     modalRef.componentInstance.item = `${user.id} - ${user.firstName}`;
 
-    modalRef.result.then(modalRes => {
-      if(modalRes) {
+    modalRef.result.then((modalRes) => {
+      if (modalRes) {
         console.log('aaaa');
-        this.toastService.show('Utente rimosso', ` L'utente ${user.id}  ${user.firstName} ${user.lastName} è stato rimosso`, true)
+        this.toastService.show(
+          'Utente rimosso',
+          ` L'utente ${user.id}  ${user.firstName} ${user.lastName} è stato rimosso`,
+          true
+        );
         this.data.deleteUser(user).subscribe((res) => {
-         console.log(res);
+          this.getUsers();
         });
       }
-    })
+    });
   }
 
   onClickNew() {
-    this.userService.resetService()
-    this.router.navigateByUrl('section/user/new')
+    this.userService.resetService();
+    this.router.navigateByUrl('section/user/new');
   }
-
 }

@@ -10,10 +10,9 @@ import { DeleteModalComponent } from 'src/app/shared/components/delete-modal/del
 @Component({
   selector: 'app-society-list-page',
   templateUrl: './society-list-page.component.html',
-  styleUrls: ['./society-list-page.component.scss']
+  styleUrls: ['./society-list-page.component.scss'],
 })
 export class SocietyListPageComponent implements OnInit {
-
   societies: Society[] = [];
 
   offset: number = 0;
@@ -23,72 +22,68 @@ export class SocietyListPageComponent implements OnInit {
 
   success: boolean = true;
 
-
-  constructor( private data: DataService,
+  constructor(
+    private data: DataService,
     private societyService: SocietiesService,
     private router: Router,
     private modalService: NgbModal,
-    private toastService: ToastService) { }
+    private toastService: ToastService
+  ) {}
 
   ngOnInit(): void {
     this.getSocieties();
   }
 
-
-
   getSocieties() {
-    this.data.getSocieties(this.generateSocietyRequest()).subscribe(res => {
-      if(!res){
+    this.data.getSocieties(this.generateSocietyRequest()).subscribe((res) => {
+      if (!res) {
         this.success = false;
       }
       this.societies = res.data;
-      console.log('society',this.societies);
+      console.log('society', this.societies);
       this.totalPages = Math.ceil(res.total / this.limit);
       console.log('totalPages', this.totalPages);
-    })
+    });
   }
 
-
-  generateSocietyRequest(){
+  generateSocietyRequest() {
     let request = {
       offset: this.offset,
-      limit: this.limit
+      limit: this.limit,
     };
     return request;
   }
 
-  onClickNewSociety(){
+  onClickNewSociety() {
     this.societyService.resetService();
     this.router.navigateByUrl('society/new');
   }
 
-
-  onClickEdit(society: Society){
+  onClickEdit(society: Society) {
     this.societyService.setSociety(society);
-    this.router.navigateByUrl('society/edit/' + society.id)
+    this.router.navigateByUrl('society/edit/' + society.id);
   }
 
-
-
-  onClickDelete(society: Society){
+  onClickDelete(society: Society) {
     const modalRef = this.modalService.open(DeleteModalComponent);
     modalRef.componentInstance.item = `${society.id} - ${society.ragioneSociale}`;
 
-    modalRef.result.then(modalRes => {
-      if(modalRes) {
-        this.toastService.show('Società rimossa', `La società ${society.id} è stato rimossa`, true);
+    modalRef.result.then((modalRes) => {
+      if (modalRes) {
+        this.toastService.show(
+          'Società rimossa',
+          `La società ${society.id} è stato rimossa`,
+          true
+        );
         this.data.deleteSociety(society).subscribe((res) => {
-          if(res.status === 200) {
-
-          }
+          this.getSocieties();
         });
       }
-    })
-
+    });
   }
 
   onPageClick(page: number) {
-    this.offset = (page-1) * this.limit;
+    this.offset = (page - 1) * this.limit;
     this.actualPage = page;
     this.getSocieties();
   }
@@ -97,6 +92,4 @@ export class SocietyListPageComponent implements OnInit {
     this.limit = size;
     this.getSocieties();
   }
-
-
 }

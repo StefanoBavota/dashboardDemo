@@ -11,6 +11,7 @@ import {
   ClientDTO,
   ClientRequest,
   EditProfileRequest,
+  LoggedUser,
   LoginResponse,
   Page,
   Payment,
@@ -87,6 +88,12 @@ export class DataService {
 
   getUsers(request: UserRequest) {
     return this.getQueryParams(request, environment.endpoints.user.url);
+  }
+
+  getUserById(userId: string): Observable<User> {
+    return this.http.get<User>(
+      `${environment.restApiBasePathUrl}/${environment.endpoints.user.url}/${userId}`
+    );
   }
 
   /*

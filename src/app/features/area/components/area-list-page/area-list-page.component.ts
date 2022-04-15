@@ -11,10 +11,9 @@ import { AreaService } from '../../services/area.service';
 @Component({
   selector: 'app-area-list-page',
   templateUrl: './area-list-page.component.html',
-  styleUrls: ['./area-list-page.component.scss']
+  styleUrls: ['./area-list-page.component.scss'],
 })
 export class AreaListPageComponent implements OnInit {
-
   search: string = '';
   searchControl = new FormControl('');
 
@@ -31,26 +30,26 @@ export class AreaListPageComponent implements OnInit {
     private areaService: AreaService,
     private modalService: NgbModal,
     private toastService: ToastService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getAreas();
-    this.searchControl.valueChanges.subscribe(res => {
+    this.searchControl.valueChanges.subscribe((res) => {
       this.search = res;
       this.getAreas();
-    })
+    });
   }
 
   getAreas() {
-    this.data.getAreas(this.generateAreaRequest()).subscribe(res => {
+    this.data.getAreas(this.generateAreaRequest()).subscribe((res) => {
       this.areas = res.data;
       this.totalPages = Math.ceil(res.total / this.limit);
       console.log('totalPages', this.totalPages);
-    })
+    });
   }
 
   onPageClick(page: number) {
-    this.offset = (page-1) * this.limit;
+    this.offset = (page - 1) * this.limit;
     this.actualPage = page;
     this.getAreas();
   }
@@ -62,15 +61,15 @@ export class AreaListPageComponent implements OnInit {
 
   onClickEdit(area: Area) {
     this.areaService.setArea(area);
-    this.router.navigateByUrl('area/edit/' + area.id)
+    this.router.navigateByUrl('area/edit/' + area.id);
   }
 
   generateAreaRequest(): AreaRequest {
     let request: AreaRequest = {
       offset: this.offset,
-      limit: this.limit
+      limit: this.limit,
     };
-    if(this.search !== '') request.search = this.search;
+    if (this.search !== '') request.search = this.search;
     return request;
   }
 
@@ -78,17 +77,19 @@ export class AreaListPageComponent implements OnInit {
     const modalRef = this.modalService.open(DeleteModalComponent);
     modalRef.componentInstance.item = `${area.id}-${area.name}`;
 
-    modalRef.result.then(modalRes => {
-      if(modalRes) {
+    modalRef.result.then((modalRes) => {
+      if (modalRes) {
         console.log('aaaa');
-        this.toastService.show('Settore rimosso', `Il settore ${area.name} è stato rimosso`, true);
+        this.toastService.show(
+          'Settore rimosso',
+          `Il settore ${area.name} è stato rimosso`,
+          true
+        );
         this.data.deleteArea(area).subscribe((res) => {
-          if(res.status === 200) {
-
-          }
+          this.getAreas();
         });
       }
-    })
+    });
   }
   onClickNewArea() {
     this.areaService.resetService();

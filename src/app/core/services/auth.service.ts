@@ -15,7 +15,7 @@ export class AuthService {
   constructor(private data: DataService) {
     let localString = window.localStorage.getItem('sports-board');
     if (localString) {
-      this.token = localString
+      this.token = localString;
       this.decodeAndSave(this.token);
     }
   }
@@ -63,7 +63,7 @@ export class AuthService {
   }
 
   getUser(): LoggedUser {
-    return this.user || {} as LoggedUser;
+    return this.user || ({} as LoggedUser);
   }
 
   isAdmin(): boolean {

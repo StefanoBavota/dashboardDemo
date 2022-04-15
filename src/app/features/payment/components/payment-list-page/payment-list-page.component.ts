@@ -49,10 +49,7 @@ export class PaymentListPageComponent implements OnInit {
           true
         );
         this.dataService.deletePayment(payment.id).subscribe((res) => {
-          if (res.status === 200) {
-            //toast
-            this.getPayments();
-          }
+          this.getPayments();
         });
       }
     });
