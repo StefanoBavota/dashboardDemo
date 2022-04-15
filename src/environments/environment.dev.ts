@@ -11,5 +11,6 @@ export const environment = {
     monthStats: { url: '' },
     areaStats: { url: '' },
     user: { url: 'users' },
+    changePassword: {url: 'users/change_password'}
   },
 };

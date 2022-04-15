@@ -136,6 +136,23 @@ export class DataService {
     );
   }
 
+
+  /*
+  EDIT PASSWORD
+  */
+
+  //TODO implement function
+  changePassword(body: ChangePasswordRequest, id: string) {
+    return this.http.put(
+    `${environment.restApiBasePathUrl}/${environment.endpoints.changePassword.url}/2`, //${id}
+      body
+    );
+   }
+
+
+
+
+
   /*
     PUT FUNCTIONS
   */
@@ -230,16 +247,7 @@ export class DataService {
     );
   }
 
-  /*
-  EDIT PASSWORD
-  */
 
-  //TODO implement function
-  changePassword(body: ChangePasswordRequest) {
-    return this.http.put(
-      `${environment.restApiBasePathUrl}/${environment.endpoints}`,
-      body
-    );  }
 
   getMonthStats(request: any) {
     return this.getQueryParams(request, environment.endpoints.monthStats.url);

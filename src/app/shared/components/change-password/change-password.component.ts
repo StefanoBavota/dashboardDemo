@@ -47,8 +47,12 @@ export class ChangePasswordComponent implements OnInit {
     const body = this.changePassForm.value;
     delete body.checkPassword;
 
+    debugger;
+
     // api call
-    this.dataService.changePassword(body);
+    this.dataService.changePassword(body, '2').subscribe(res => {
+      console.log('res',res);
+    });
 
     //TODO: subscribe and hanfle the response
     this.activeModal.close();
