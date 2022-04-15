@@ -1,12 +1,9 @@
 export interface LoginResponse {
-  token: string;
-  admin: boolean;
-  error: string;
+  access_token: string;
 }
 
 export interface LocalStorageObject {
   token: string;
-  admin: boolean;
 }
 
 export interface LoginRequest {

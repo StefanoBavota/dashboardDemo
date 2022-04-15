@@ -8,12 +8,13 @@ const routes: Routes = [
     path: '',
     redirectTo: 'section/home',
     pathMatch: 'full',
+    canActivate: [AuthGuard],
   },
   {
     path: 'section',
     loadChildren: () =>
       import('./features/feature.module').then((m) => m.FeatureModule),
-      // canActivate: [AuthGuard],
+      canActivate: [AuthGuard],
   },
   {
     path: 'login',

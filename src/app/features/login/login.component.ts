@@ -42,8 +42,7 @@ export class LoginComponent implements OnInit {
     console.log('body', body);
 
     this.authService.login(body).subscribe((res: boolean) => {
-      console.log("response", res)
-      this.router.navigate(['/client'])
+      this.router.navigate(['/section/home'])
     })
   }
 

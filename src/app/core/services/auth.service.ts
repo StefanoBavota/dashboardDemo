@@ -1,37 +1,35 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
-import { LoginRequest } from '../models';
+import { LoginRequest, User } from '../models';
 import { DataService } from './data.service';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private token: string = '';
-  private admin: boolean = false;
+  private user?: User;
 
   constructor(private data: DataService) {
     let localString = window.localStorage.getItem('sports-board');
     if (localString) {
-      this.token = JSON.parse(localString).token;
-      this.admin = JSON.parse(localString).admin;
+      this.token = localString
+      this.decodeAndSave(this.token);
     }
   }
 
   login(body: LoginRequest): Observable<boolean> {
     return this.data.login(body.email, body.password).pipe(
       tap((res) => {
-        if (res.token !== '') {
-          this.token = res.token;
-          this.admin = res.admin || false;
+        if (res.access_token !== '') {
+          this.token = res.access_token;
+          this.decodeAndSave(this.token);
           if (body.remember) {
             window.localStorage.setItem(
               'sports-board',
-              JSON.stringify({
-                token: res.token,
-                admin: res.admin,
-              })
+              JSON.stringify(res.access_token)
             );
           }
         }
@@ -44,19 +42,36 @@ export class AuthService {
     );
   }
 
-  getToken() {
+  getToken(): string {
     return this.token;
+  }
+
+  setToken(newToken: string): void {
+    this.token = newToken;
+  }
+
+  decodeAndSave(token: string) {
+    this.user = jwt_decode<User>(token);
+    console.log(this.user)
   }
 
   /*
     GUARD METHODS
   */
 
-  hasToken() {
+  hasToken(): boolean {
     return this.token !== '';
   }
 
-  isAdmin() {
-    return this.admin;
+  getUser(): User | undefined {
+    return this.user;
+  }
+
+  isAdmin(): boolean {
+    if (this.user) {
+      if (this.user.role === 'Admin') {
+        return false;
+      } else return false;
+    } else return false;
   }
 }
