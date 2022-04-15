@@ -6,17 +6,18 @@
     <div class="row form-row" [formGroup]="paymentForm">
       <div class="row input-row">
         <!-- SELECT CLEINT -->
-        <div class="col-md-5 me-5">
+        <div class="col-md-5">
           <app-form-item label="Cliente">
             <input
               id="client-input"
               type="text"
-              class="form-control"
+              class="form-control input"
               formControlName="client"
               [ngbTypeahead]="searchClient"
               [inputFormatter]="formatterClient"
               [resultFormatter]="formatterClient"
-              [editable]='false' />
+              [editable]="false"
+            />
           </app-form-item>
         </div>
 
@@ -26,17 +27,33 @@
             <input
               id="area-input"
               type="text"
-              class="form-control"
+              class="form-control input"
               formControlName="area"
               [ngbTypeahead]="searchArea"
               [inputFormatter]="formatterArea"
               [resultFormatter]="formatterArea"
-              [editable]='false' />
+              [editable]="false"
+            />
           </app-form-item>
         </div>
       </div>
 
       <div class="row input-row">
+        <!-- SOCIETY -->
+        <div class="col-md-5">
+          <app-form-item label="Società">
+            <input
+              id="area-input"
+              type="text"
+              class="form-control input"
+              formControlName="society"
+              [ngbTypeahead]="searchSociety"
+              [inputFormatter]="formatterSociety"
+              [resultFormatter]="formatterSociety"
+              [editable]="false"
+            />
+          </app-form-item>
+        </div>
         <!-- PRICE -->
         <div class="col-md-5 me-5">
           <app-form-item label="Importo">
@@ -47,7 +64,9 @@
             />
           </app-form-item>
         </div>
+      </div>
 
+      <div class="row input-row">
         <!-- ANNUAL PRICE -->
         <div class="col-md-5">
           <app-form-item label="Quota Annuale">
@@ -58,9 +77,6 @@
             />
           </app-form-item>
         </div>
-      </div>
-
-      <div class="row input-row">
         <!-- DATE -->
         <div class="col-md-5">
           <app-form-item label="Data Pagamento">
@@ -69,20 +85,6 @@
               class="form-control input"
               formControlName="date"
             />
-          </app-form-item>
-        </div>
-        <!-- SOCIETY -->
-        <div class="col-md-5">
-          <app-form-item label="Società">
-            <input
-              id="area-input"
-              type="text"
-              class="form-control"
-              formControlName="area"
-              [ngbTypeahead]="searchSociety"
-              [inputFormatter]="formatterSociety"
-              [resultFormatter]="formatterSociety"
-              [editable]='false' />
           </app-form-item>
         </div>
       </div>

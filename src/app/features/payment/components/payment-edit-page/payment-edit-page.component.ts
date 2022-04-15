@@ -68,7 +68,7 @@ export class PaymentEditPageComponent implements OnInit {
       total: this.paymentForm.get('price')?.value,
       annualFee: this.paymentForm.get('annualPrice')?.value,
       paymentDate: this.paymentForm.get('date')?.value,
-      society: this.paymentForm.get('society')?.value
+      society: this.paymentForm.get('society')?.value.id
     }).subscribe(res => {
       console.log('save payment', res);
       this.router.navigateByUrl('section/payment');
