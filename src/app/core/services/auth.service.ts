@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
-import { LoginRequest, User } from '../models';
+import { LoggedUser, LoginRequest, User } from '../models';
 import { DataService } from './data.service';
 import jwt_decode from 'jwt-decode';
 
@@ -10,7 +10,7 @@ import jwt_decode from 'jwt-decode';
 })
 export class AuthService {
   private token: string = '';
-  private user?: User;
+  private user?: LoggedUser;
 
   constructor(private data: DataService) {
     let localString = window.localStorage.getItem('sports-board');
@@ -51,8 +51,7 @@ export class AuthService {
   }
 
   decodeAndSave(token: string) {
-    this.user = jwt_decode<User>(token);
-    console.log(this.user)
+    this.user = jwt_decode<LoggedUser>(token);
   }
 
   /*
@@ -63,8 +62,8 @@ export class AuthService {
     return this.token !== '';
   }
 
-  getUser(): User | undefined {
-    return this.user;
+  getUser(): LoggedUser {
+    return this.user || {} as LoggedUser;
   }
 
   isAdmin(): boolean {

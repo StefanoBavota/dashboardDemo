@@ -128,10 +128,9 @@ export class DataService {
     );
   }
 
-  //TODO: add profile id
-  modifyProfile(profile: EditProfileRequest) {
+  modifyProfile(profile: EditProfileRequest, profileId: string) {
     return this.http.put(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.user.url}/3`,
+      `${environment.restApiBasePathUrl}/${environment.endpoints.user.url}/${profileId}`,
       profile
     );
   }

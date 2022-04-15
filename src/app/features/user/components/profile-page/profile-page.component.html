@@ -16,7 +16,6 @@
             <input
               type="text"
               class="form-control input"
-              placeholder="Mario"
               formControlName="firstName"
             />
           </app-form-item>
@@ -28,7 +27,6 @@
             <input
               type="text"
               class="form-control input"
-              placeholder="Rossi"
               formControlName="lastName"
             />
           </app-form-item>
@@ -40,7 +38,7 @@
             <input
               type="text"
               class="form-control input"
-              placeholder="mario.rossi@email.com"
+              [placeholder]="loggedInUser.email"
               disabled
             />
           </app-form-item>
@@ -52,7 +50,7 @@
             <input
               type="text"
               class="form-control input"
-              placeholder="Admin"
+              [placeholder]="loggedInUser.role"
               disabled
             />
           </app-form-item>
@@ -107,14 +105,16 @@
       <div class="container-card_wrap">
         <!-- INFO -->
         <div class="info">
-          <p class="info_name">Mario Rossi</p>
-          <p class="info_email">mario.rossi@email.com</p>
+          <p class="info_name">
+            {{ loggedInUser.name }} {{ loggedInUser.surname }}
+          </p>
+          <p class="info_email">{{ loggedInUser.email }}</p>
         </div>
 
         <!-- ROLE -->
         <div class="role">
           <p class="role_title">Ruolo:</p>
-          <p class="role_info">Amministratore</p>
+          <p class="role_info">{{ loggedInUser.role }}</p>
         </div>
       </div>
     </div>
