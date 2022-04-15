@@ -222,8 +222,10 @@ export class DataService {
     return this.http.post<LoginResponse>(
       `${environment.restApiBasePathUrl}/${environment.endpoints.login.url}`,
       {
-        email: email,
-        password: password,
+        user: {
+          email: email,
+          password: password,
+        },
       }
     );
   }

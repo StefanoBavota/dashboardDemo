@@ -41,10 +41,10 @@ export class LoginComponent implements OnInit {
     const body = this.loginForm.value;
     console.log('body', body);
 
-    // this.authService.login(body).subscribe((res: boolean) => {
-    //   console.log("response", res)
-    //   this.router.navigate(['/home'])
-    // })
+    this.authService.login(body).subscribe((res: boolean) => {
+      console.log("response", res)
+      this.router.navigate(['/client'])
+    })
   }
 
   get email() {
