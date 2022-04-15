@@ -1,3 +1,4 @@
+<div class="fullpage">
 <div class="container bg-light my-3 py-3 round-border">
 
   <div class="row title-row">
@@ -91,7 +92,7 @@
               </option>
               <option value="Operator">
                 Operator</option>
-              <option *ngIf="this.mode == 'DETAIL' || this.readOnly" value="{{editFormUser.value.role}}">
+              <option *ngIf="this.readOnly" value="{{editFormUser.value.role}}">
                 {{editFormUser.value.role}}</option>
             </select>
           </app-form-item>
@@ -196,4 +197,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>
