@@ -19,7 +19,7 @@ import {
   PaymentRequest,
   Society,
   User,
-  UserRequest
+  UserRequest,
 } from '../models';
 
 @Injectable({
@@ -142,7 +142,6 @@ export class DataService {
     );
   }
 
-
   /*
   EDIT PASSWORD
   */
@@ -150,14 +149,10 @@ export class DataService {
   //TODO implement function
   changePassword(body: ChangePasswordRequest, userId: string) {
     return this.http.put(
-    `${environment.restApiBasePathUrl}/${environment.endpoints.changePassword.url}/${userId}`, //${id}
+      `${environment.restApiBasePathUrl}/${environment.endpoints.changePassword.url}/${userId}`, //${id}
       body
     );
-   }
-
-
-
-
+  }
 
   /*
     PUT FUNCTIONS
@@ -252,8 +247,6 @@ export class DataService {
       }
     );
   }
-
-
 
   getMonthStats(request: any) {
     return this.getQueryParams(request, environment.endpoints.monthStats.url);
