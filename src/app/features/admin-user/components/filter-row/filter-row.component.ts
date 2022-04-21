@@ -20,7 +20,7 @@ export class FilterRowComponent implements OnInit {
 
   filterByEmail: string = "";
   filterByRole: string = "All";
-  filterByRoleOptions: string[] = ['All', 'Admin', 'Operator'];
+  filterByRoleOptions: string[] = ['All', 'admin', 'operator'];
 
   searchEmailControl = new FormControl(this.filterByEmail);
   filterByRoleControl = new FormControl(this.filterByRole);
