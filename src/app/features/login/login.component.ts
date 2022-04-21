@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     console.log('body', body);
 
     this.authService.login(body).subscribe((res: boolean) => {
-      this.router.navigate(['/section/home'])
+      this.router.navigate(['/section/user'])
     })
   }
 

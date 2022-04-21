@@ -9,9 +9,9 @@
       </div>
     </div>
     <div class="row filters-row">
-      <app-filter-payment>
+      <app-filter-payment
         [filters]="filters" (filtersEmitter)="onFiltersChange($event)"
-        [pageSize]="take" (pageSizeEmitter)="onPageSizeChange($event)"
+        [pageSize]="limit" (pageSizeEmitter)="onPageSizeChange($event)">
       </app-filter-payment>
     </div>
     <div class="row table-row">

@@ -3,12 +3,13 @@ import { PaymentRequest } from '../models';
 
 export function fromFiltersToRequestPayment(
   filter: PaymentFilters,
-  offset: number,
-  limit: number
+  limit: number,
+   offset: number,
 ) {
   let req: PaymentRequest = {
-    offset: offset,
     limit: limit,
+    offset: offset,
+
   };
   if (filter.client !== '') {
     req.client = filter.client;

@@ -22,8 +22,8 @@ export class PaymentListPageComponent implements OnInit {
 
   payments: Payment[] = [];
 
-  skip: number = 0;
-  take: number = 10;
+  offset: number = 0;
+  limit: number = 10;
   totalPages: number = 1;
   actualPage: number = 1;
 
@@ -58,18 +58,34 @@ export class PaymentListPageComponent implements OnInit {
   getPayments() {
     this.dataService
       .getPayments(
-        fromFiltersToRequestPayment(this.filters, this.skip, this.take)
+        fromFiltersToRequestPayment(this.filters, this.limit, this.offset)
       )
       .subscribe((res: Page) => {
         this.payments = res.data;
-        this.totalPages = Math.ceil(res.total / this.take);
-        //console.log('Payments', this.payments, 'totalPages', this.totalPages);
+        this.totalPages = Math.ceil(res.total / this.limit);
+        console.log('Payments', this.payments, 'totalPages', this.totalPages);
       });
   }
 
+
+  onFiltersChange(filters: PaymentFilters) {
+    console.log('filters', filters);
+    this.filters = filters;
+    this.getPayments();
+  }
+
+
+
   onPageClick(page: number) {
-    this.skip = (page - 1) * this.take;
+    this.offset = (page - 1) * this.limit;
     this.actualPage = page;
     this.getPayments();
   }
+
+
+  onPageSizeChange(size: number) {
+    this.limit = size;
+    this.getPayments();
+  }
+
 }

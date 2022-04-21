@@ -88,9 +88,9 @@
         <div class="col-md-5">
           <app-form-item label="Ruolo">
             <select class="form-select" formControlName="role" [disabled]='readOnly'>
-              <option value="Admin">Admin
+              <option value="admin">Admin
               </option>
-              <option value="Operator">
+              <option value="operator">
                 Operator</option>
               <option *ngIf="this.readOnly" value="{{editFormUser.value.role}}">
                 {{editFormUser.value.role}}</option>
