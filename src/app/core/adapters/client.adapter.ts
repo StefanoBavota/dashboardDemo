@@ -1,13 +1,14 @@
 import { ClientFilters } from "src/app/features/client/model/filter.model";
 import { ClientRequest } from "../models";
 
-export function fromFiltersToRequestClient(filter: ClientFilters, offset: number, limit: number): ClientRequest {
+export function fromFiltersToRequestClient(filter: ClientFilters, limit: number, offset: number): ClientRequest {
   let req: ClientRequest = {
+    limit: limit,
     offset: offset,
-    limit: limit
+
   };
   console.log('filter', filter)
-  if(filter.active !== '-') {
+  if(filter.active !== '-' && filter.active !== '') {
     req.active = filter.active === 'SI';
   }
   if(filter.born !== 0) {

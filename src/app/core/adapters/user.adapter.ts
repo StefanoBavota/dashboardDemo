@@ -8,7 +8,7 @@ export function fromFiltersToRequestUser(filter: UserFilters, limit: number, off
   };
 
 
-  if(filter.filterByRole !== 'ALL') {
+  if(filter.filterByRole !== 'All' && filter.filterByRole !== '') {
     req.role = filter.filterByRole;
   }
 
