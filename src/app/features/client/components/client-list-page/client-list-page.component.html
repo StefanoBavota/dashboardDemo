@@ -12,7 +12,7 @@
     <app-filter-row
       [filters]="filters"
       (filtersEmitter)="onFiltersChange($event)"
-      [pageSize]="take"
+      [pageSize]="limit"
       (pageSizeEmitter)="onPageSizeChange($event)"
     ></app-filter-row>
   </div>
