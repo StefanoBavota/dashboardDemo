@@ -121,7 +121,7 @@
   </div>
   <div class="btn-row">
     <button type="button" class="btn button primary" (click)="onClickBack()">ANNULLA</button>
-    <button class="btn button secondary" *ngIf="(mode$ | async) !== 'DETAIL'; else modifyButton" type="submit" (click)="saveModifies()">SALVA</button>
+    <button class="btn button secondary" *ngIf="(mode$ | async) !== 'DETAIL'; else modifyButton" type="submit" (click)="saveModifies()" [disabled]="formGroup.invalid">SALVA</button>
     <ng-template #modifyButton>
       <button class="btn button secondary" (click)="enableModifies()">ABILITA MODIFICHE</button>
     </ng-template>

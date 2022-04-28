@@ -107,7 +107,7 @@
           type="button"
           class="btn button primary"
           (click)="onSave()"
-          [disabled]="!paymentForm.valid"
+          [disabled]="paymentForm.invalid"
         >
           Salva
         </button>

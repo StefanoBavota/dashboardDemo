@@ -64,7 +64,7 @@ export class AreaEditPageComponent implements OnInit {
         this.data.modifyArea(newArea).subscribe(res => {
           console.log(res);
           this.areaService.resetService();
-          this.router.navigateByUrl('area')
+          this.router.navigateByUrl('/section/area')
         });
       }
       else {
@@ -73,7 +73,7 @@ export class AreaEditPageComponent implements OnInit {
           ...this.formGroup.value
         }).subscribe(res => {
           this.areaService.resetService();
-          this.router.navigateByUrl('area');
+          this.router.navigateByUrl('/section/area');
         });
       }
     }

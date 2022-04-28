@@ -186,7 +186,7 @@
       </div>
       <div class="btn-wrap_btn-container">
         <button class="btn button secondary" *ngIf="(mode$ | async) !== 'DETAIL'; else modifyButton" type="submit"
-          (click)="saveModifies()">
+          (click)="saveModifies()" [disabled]="editFormUser.invalid">
           SALVA
         </button>
         <ng-template #modifyButton>

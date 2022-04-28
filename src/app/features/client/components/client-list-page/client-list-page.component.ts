@@ -72,12 +72,12 @@ export class ClientListPageComponent implements OnInit {
 
   onClickEdit(client: Client) {
     this.clientService.setClient(client);
-    this.router.navigateByUrl('client/edit/' + client.id);
+    this.router.navigateByUrl('/section/client/edit/' + client.id);
   }
 
   onClickNewClient() {
     this.clientService.resetService();
-    this.router.navigateByUrl('client/new');
+    this.router.navigateByUrl('/section/client/new');
   }
 
   onClickDelete(client: Client) {
