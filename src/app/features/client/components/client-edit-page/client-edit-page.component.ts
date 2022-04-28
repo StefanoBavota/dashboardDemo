@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Client } from 'src/app/core/models';
 import { DataService } from 'src/app/core/services/data.service';
 import { ClientService } from '../../services/client.service';
+import { getDateInputFormat } from './client-edit-utils';
 
 @Component({
   selector: 'app-client-edit-page',
@@ -38,7 +39,7 @@ export class ClientEditPageComponent implements OnInit {
       address: ['', Validators.required],
       cap: ['', Validators.required],
       city: ['', Validators.required],
-      born: [{}, Validators.required],
+      born: ['', Validators.required],
       bornPlace: ['', Validators.required],
       cardNumber: ['', Validators.required],
       cardYear: ['', Validators.required],
@@ -60,9 +61,11 @@ export class ClientEditPageComponent implements OnInit {
     if(this.client && this.mode !== 'NEW') {
       console.log('form', this.formGroup.value)
       this.formGroup.patchValue(this.client);
-      // this.formGroup.patchValue({
-      //   born: getDateInputFormat(this.client.born)
-      // })
+
+      this.formGroup.patchValue({
+        born: getDateInputFormat(this.client.born)
+      })
+      console.log('client',this.client);
     }
     if(this.mode === 'DETAIL') {
       this.formGroup.disable();
@@ -82,9 +85,10 @@ export class ClientEditPageComponent implements OnInit {
           id: this.client?.id,
           ...this.formGroup.value
         };
+
         this.data.modifyClient(newClient).subscribe(res => {
           console.log(res);
-          this.router.navigateByUrl('client')
+          this.router.navigateByUrl('/section/client')
         });
       }
       else {
@@ -92,7 +96,7 @@ export class ClientEditPageComponent implements OnInit {
           // id: '',
           ...this.formGroup.value
         }).subscribe(res => {
-          this.router.navigateByUrl('client');
+          this.router.navigateByUrl('/section/client');
         });
       }
     }

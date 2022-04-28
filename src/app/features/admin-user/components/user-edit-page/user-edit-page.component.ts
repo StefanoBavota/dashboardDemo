@@ -73,7 +73,7 @@ export class UserEditPageComponent implements OnInit {
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
-        role: ['', Validators.required],
+        role: ['All', Validators.required],
       }
     );
     console.log('pre 2', this.editFormUser)
@@ -112,6 +112,7 @@ export class UserEditPageComponent implements OnInit {
   enableModifies() {
     this.changeMode('EDIT');
     this.editFormUser.enable();
+    this.editFormUser.controls['role'].disable();
     this.visible = false;
     this.readOnly = true;
   }

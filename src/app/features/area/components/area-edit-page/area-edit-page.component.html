@@ -42,7 +42,7 @@
         *ngIf="(mode$ | async) !== 'DETAIL'; else modifyButton"
         type="submit"
         (click)="saveModifies()"
-        [disabled]="!formGroup.valid"
+        [disabled]="formGroup.invalid"
       >
         SALVA
       </button>

@@ -56,12 +56,12 @@ export class SocietyListPageComponent implements OnInit {
 
   onClickNewSociety() {
     this.societyService.resetService();
-    this.router.navigateByUrl('society/new');
+    this.router.navigateByUrl('/section/society/new');
   }
 
   onClickEdit(society: Society) {
     this.societyService.setSociety(society);
-    this.router.navigateByUrl('society/edit/' + society.id);
+    this.router.navigateByUrl('/section/society/edit/' + society.id);
   }
 
   onClickDelete(society: Society) {

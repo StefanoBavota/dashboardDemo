@@ -81,7 +81,7 @@ export class SocietyEditPageComponent implements OnInit {
         this.data.modifySociety(newSociety).subscribe(res => {
           console.log('prova',res);
           this.societyService.resetService();
-          this.router.navigateByUrl('society')
+          this.router.navigateByUrl('/section/society')
         });
       }
       else {
@@ -90,7 +90,7 @@ export class SocietyEditPageComponent implements OnInit {
           ...this.societyForm.value
         }).subscribe(res => {
           this.societyService.resetService();
-          this.router.navigateByUrl('society');
+          this.router.navigateByUrl('/section/society');
         });
       }
     }
