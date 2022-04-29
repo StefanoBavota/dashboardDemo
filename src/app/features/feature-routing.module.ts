@@ -12,6 +12,7 @@ const routes: Routes = [
         path: 'home',
         loadChildren: () =>
           import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+          //canActivate: [AdminGuard],
       },
       {
         path: 'demo',
@@ -24,6 +25,7 @@ const routes: Routes = [
       {
         path: 'area',
         loadChildren: () => import('./area/area.module').then((m) => m.AreaModule),
+        canActivate: [AdminGuard],
       },
       {
         path: 'payment',
@@ -34,6 +36,7 @@ const routes: Routes = [
         path: 'society',
         loadChildren: () =>
           import('./society/society.module').then((m) => m.SocietyModule),
+          canActivate: [AdminGuard]
       },
       {
         path: 'user',

@@ -22,10 +22,11 @@ export class ProfilePageComponent implements OnInit {
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
     private dataService: DataService,
-    private authService: AuthService
+    private authService: AuthService,
+    private route: Router
   ) {
     this.loggedInUser = this.authService.getUser();
-    console.log(this.loggedInUser)
+    console.log('userLogged', this.loggedInUser)
 
     this.profileForm = this.formBuilder.group({
       firstName: [this.loggedInUser.name, [Validators.required]],
@@ -36,7 +37,7 @@ export class ProfilePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
 
   onEnableModifies() {
@@ -49,9 +50,9 @@ export class ProfilePageComponent implements OnInit {
     this.isEnable = false;
 
     const body = this.profileForm.value;
-    this.dataService.modifyProfile(body, this.loggedInUser.id).subscribe((res) => {
-      console.log(res)
-      //TODO: ricevere una nuova jwt e sovrascrivere la vecchia
+    this.dataService.modifyProfile(body, this.loggedInUser.id).subscribe(res => {
+      console.log('res', res);
+      this.route.navigateByUrl('/login');
     });
   }
 

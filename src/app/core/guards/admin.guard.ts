@@ -24,7 +24,7 @@ export class AdminGuard implements CanActivate {
     | UrlTree {
     let isAdmin = this.auth.isAdmin();
     if (!isAdmin) {
-      this.router.navigate(['/section/home']);
+      this.router.navigate(['section/home']);
       return false;
     }
     return true;

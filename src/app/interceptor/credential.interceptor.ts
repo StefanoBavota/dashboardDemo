@@ -17,8 +17,8 @@ export class CredentialInterceptor implements HttpInterceptor {
   constructor(private route: Router, public authService: AuthService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-  const token = this.authService.getToken();
-  //const token: string = JSON.parse(localStorage.getItem('sports-board')?? '{}')
+  //const token = this.authService.getToken();
+  const token: string = JSON.parse(localStorage.getItem('sports-board')?? '{}')
    console.log('token1', token);
   // const token2 = this.authService.getToken();
     if (token) {

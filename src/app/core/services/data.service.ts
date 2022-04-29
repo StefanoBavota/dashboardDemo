@@ -137,7 +137,7 @@ export class DataService {
 
   modifyProfile(profile: EditProfileRequest, profileId: string) {
     return this.http.put(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.user.url}/${profileId}`,
+      `${environment.restApiBasePathUrl}/${environment.endpoints.userProfile.url}/${profileId}`,
       profile
     );
   }
@@ -149,7 +149,7 @@ export class DataService {
   //TODO implement function
   changePassword(body: ChangePasswordRequest, userId: string) {
     return this.http.put(
-      `${environment.restApiBasePathUrl}/${environment.endpoints.changePassword.url}/${userId}`, //${id}
+      `${environment.restApiBasePathUrl}/${environment.endpoints.changePassword.url}/${userId}`,
       body
     );
   }
