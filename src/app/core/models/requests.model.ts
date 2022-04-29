@@ -21,6 +21,10 @@ export interface AreaRequest extends BaseRequest {
   search?: string,
 }
 
+export interface SocietyRequest extends BaseRequest {
+  search?: string,
+}
+
 export interface UserRequest extends BaseRequest {
   search?: string;
   role?: string;

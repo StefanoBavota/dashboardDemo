@@ -2,10 +2,11 @@ import { SocietiesService } from './../../services/societies.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Society } from 'src/app/core/models';
+import { Society, SocietyRequest } from 'src/app/core/models';
 import { DataService } from 'src/app/core/services/data.service';
 import { ToastService } from 'src/app/core/services/toast.service';
 import { DeleteModalComponent } from 'src/app/shared/components/delete-modal/delete-modal.component';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-society-list-page',
@@ -14,6 +15,9 @@ import { DeleteModalComponent } from 'src/app/shared/components/delete-modal/del
 })
 export class SocietyListPageComponent implements OnInit {
   societies: Society[] = [];
+
+  search: string = '';
+  searchControl = new FormControl('');
 
   offset: number = 0;
   limit: number = 10;
@@ -32,6 +36,10 @@ export class SocietyListPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSocieties();
+    this.searchControl.valueChanges.subscribe((res) => {
+      this.search = res;
+      this.getSocieties();
+    })
   }
 
   getSocieties() {
@@ -46,11 +54,12 @@ export class SocietyListPageComponent implements OnInit {
     });
   }
 
-  generateSocietyRequest() {
-    let request = {
+  generateSocietyRequest() : SocietyRequest {
+    let request : SocietyRequest = {
       offset: this.offset,
       limit: this.limit,
     };
+    if (this.search !== '') request.search = this.search;
     return request;
   }
 
