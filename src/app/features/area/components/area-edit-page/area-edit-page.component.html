@@ -12,7 +12,23 @@
       <form [formGroup]="formGroup">
         <div class="input-row input-field">
           <app-form-item label="Nome">
-            <input type="text" class="form-control" id="name" formControlName="name" />
+            <input type="text" class="form-control" id="name" formControlName="name"
+            [ngClass]="(formGroup.get('name')?.touched ||
+            formGroup.get('name')?.dirty) &&
+            formGroup.get('name')?.hasError('required')
+              ? 'is-invalid'
+              : '' ||
+             ((formGroup.get('name')?.touched ||
+             formGroup.get('name')?.dirty) &&
+               !formGroup.get('name')?.invalid)
+              ? 'is-valid'
+              : ''" />
+
+              <div class="invalid-feedback">
+                {{
+                  formGroup.get("name")?.hasError("required")? "Name is required" : ""
+                }}
+              </div>
           </app-form-item>
         </div>
         <div class="input-row">
@@ -23,7 +39,23 @@
               id="description"
               class="form-control"
               formControlName="description"
-            ></textarea>
+              [ngClass]="(formGroup.get('description')?.touched ||
+            formGroup.get('description')?.dirty) &&
+            formGroup.get('description')?.hasError('required')
+              ? 'is-invalid'
+              : '' ||
+             ((formGroup.get('description')?.touched ||
+             formGroup.get('description')?.dirty) &&
+               !formGroup.get('description')?.invalid)
+              ? 'is-valid'
+              : ''"
+              ></textarea>
+              <div class="invalid-feedback">
+                {{
+                  formGroup.get("description")?.hasError("required")? "Description is required" : ""
+                }}
+              </div>
+
           </app-form-item>
         </div>
       </form>

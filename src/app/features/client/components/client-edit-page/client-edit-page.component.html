@@ -8,30 +8,110 @@
       <div class="row">
         <div class="col-md-6">
           <app-form-item label="Nome">
-            <input type="text" class="form-control" id="name" formControlName="name" />
+            <input type="text" class="form-control" id="name" formControlName="name"
+            [ngClass]="(formGroup.get('name')?.touched ||
+            formGroup.get('name')?.dirty) &&
+            formGroup.get('name')?.hasError('required')
+              ? 'is-invalid'
+              : '' ||
+             ((formGroup.get('name')?.touched ||
+             formGroup.get('name')?.dirty) &&
+               !formGroup.get('name')?.invalid)
+              ? 'is-valid'
+              : ''"
+              />
+              <div class="invalid-feedback">
+                {{
+                  formGroup.get("name")?.hasError("required")? "Name is required" : ""
+                }}
+              </div>
           </app-form-item>
         </div>
         <div class="col-md-6">
           <app-form-item label="Cognome">
-            <input type="text" class="form-control" id="surname" formControlName="surname" />
+            <input type="text" class="form-control" id="surname" formControlName="surname"
+            [ngClass]="(formGroup.get('surname')?.touched ||
+            formGroup.get('surname')?.dirty) &&
+            formGroup.get('surname')?.hasError('required')
+              ? 'is-invalid'
+              : '' ||
+             ((formGroup.get('surname')?.touched ||
+             formGroup.get('surname')?.dirty) &&
+               !formGroup.get('surname')?.invalid)
+              ? 'is-valid'
+              : ''"
+              />
+              <div class="invalid-feedback">
+                {{
+                  formGroup.get("surname")?.hasError("required")? "Surname is required" : ""
+                }}
+              </div>
           </app-form-item>
         </div>
       </div>
       <div class="row field-row">
         <div class="col-md-6">
           <app-form-item label="Email">
-            <input type="email" class="form-control" id="email" formControlName="email" />
+            <input type="email" class="form-control" id="email" formControlName="email"
+            [ngClass]="(formGroup.get('email')?.touched ||
+            formGroup.get('email')?.dirty) &&
+            formGroup.get('email')?.hasError('required')
+              ? 'is-invalid'
+              : '' ||
+             ((formGroup.get('email')?.touched ||
+             formGroup.get('email')?.dirty) &&
+               !formGroup.get('email')?.invalid)
+              ? 'is-valid'
+              : ''"
+              />
+              <div class="invalid-feedback">
+                {{
+                  formGroup.get("email")?.hasError("required")? "Email is required" : ""
+                }}
+              </div>
           </app-form-item>
         </div>
         <div class="col-md-6">
           <app-form-item label="Codice Fiscale">
-            <input type="text" class="form-control" id="cf" formControlName="cf" />
+            <input type="text" class="form-control" id="cf" formControlName="cf"
+            [ngClass]="(formGroup.get('cf')?.touched ||
+            formGroup.get('cf')?.dirty) &&
+            formGroup.get('cf')?.hasError('required')
+              ? 'is-invalid'
+              : '' ||
+             ((formGroup.get('cf')?.touched ||
+             formGroup.get('cf')?.dirty) &&
+               !formGroup.get('cf')?.invalid)
+              ? 'is-valid'
+              : ''"
+              />
+              <div class="invalid-feedback">
+                {{
+                  formGroup.get("cf")?.hasError("required")? "CF is required" : ""
+                }}
+              </div>
           </app-form-item>
         </div>
         <div class="row field-row">
           <div class="col-md-6">
             <app-form-item label="Telefono">
-              <input type="text" class="form-control" id="phone" formControlName="phone" />
+              <input type="text" class="form-control" id="phone" formControlName="phone"
+              [ngClass]="(formGroup.get('phone')?.touched ||
+              formGroup.get('phone')?.dirty) &&
+              formGroup.get('phone')?.hasError('required')
+                ? 'is-invalid'
+                : '' ||
+               ((formGroup.get('phone')?.touched ||
+               formGroup.get('phone')?.dirty) &&
+                 !formGroup.get('phone')?.invalid)
+                ? 'is-valid'
+                : ''"
+                />
+                <div class="invalid-feedback">
+                  {{
+                    formGroup.get("phone")?.hasError("required")? "Phone is required" : ""
+                  }}
+                </div>
             </app-form-item>
           </div>
         </div>
@@ -57,12 +137,44 @@
         <div class="row section-row">
           <div class="col-md-6">
             <app-form-item label="Indirizzo">
-              <input type="text" class="form-control" id="address" formControlName="address" />
+              <input type="text" class="form-control" id="address" formControlName="address"
+              [ngClass]="(formGroup.get('phone')?.touched ||
+              formGroup.get('phone')?.dirty) &&
+              formGroup.get('phone')?.hasError('required')
+                ? 'is-invalid'
+                : '' ||
+               ((formGroup.get('phone')?.touched ||
+               formGroup.get('phone')?.dirty) &&
+                 !formGroup.get('phone')?.invalid)
+                ? 'is-valid'
+                : ''"
+                />
+                <div class="invalid-feedback">
+                  {{
+                    formGroup.get("phone")?.hasError("required")? "Phone is required" : ""
+                  }}
+                </div>
             </app-form-item>
           </div>
           <div class="col-md-6">
             <app-form-item label="CAP">
-              <input type="text" class="form-control" id="cap" formControlName="cap" />
+              <input type="text" class="form-control" id="cap" formControlName="cap"
+              [ngClass]="(formGroup.get('cap')?.touched ||
+              formGroup.get('cap')?.dirty) &&
+              formGroup.get('cap')?.hasError('required')
+                ? 'is-invalid'
+                : '' ||
+               ((formGroup.get('cap')?.touched ||
+               formGroup.get('cap')?.dirty) &&
+                 !formGroup.get('cap')?.invalid)
+                ? 'is-valid'
+                : ''"
+                />
+                <div class="invalid-feedback">
+                  {{
+                    formGroup.get("cap")?.hasError("required")? "Cap is required" : ""
+                  }}
+                </div>
             </app-form-item>
           </div>
         </div>

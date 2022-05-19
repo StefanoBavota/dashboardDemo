@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Area } from 'src/app/core/models';
 import { DataService } from 'src/app/core/services/data.service';
 import { AreaService } from '../../services/area.service';
+import { ToastService } from 'src/app/core/services/toast.service';
 
 @Component({
   selector: 'app-area-edit-page',
@@ -25,7 +26,9 @@ export class AreaEditPageComponent implements OnInit {
     private router: Router,
     private data: DataService,
     private areaService: AreaService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastService: ToastService
+
   ) {
     this.formGroup = this.fb.group({
       name: ['', Validators.required],
@@ -68,6 +71,11 @@ export class AreaEditPageComponent implements OnInit {
         });
       }
       else {
+        this.toastService.show(
+          'Settore Aggiunto',
+          ` Il settore ${this.formGroup.value.name} è stato aggiunto`,
+          true
+        );
         this.data.insertArea({
           // id: '',
           ...this.formGroup.value

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  restApiBasePathUrl: 'http://192.168.129.240:3000',
+  //restApiBasePathUrl: 'http://192.168.130.43:3000',
+  restApiBasePathUrl: 'http://localhost:3000',
   endpoints: {
     payment: { url: 'payments' },
     client: { url: '' },
@@ -14,6 +15,7 @@ export const environment = {
     monthStats: { url: '' },
     areaStats: { url: '' },
     user: { url: 'users' },
+    userProfile: {url: 'profile'},
     changePassword: {url: 'users/change_password'}
   }
 }
