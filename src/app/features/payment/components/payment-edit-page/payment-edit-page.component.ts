@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { debounceTime, distinctUntilChanged, Observable, of, OperatorFunction, switchMap, tap } from 'rxjs';
 import { Area, Client, Society } from 'src/app/core/models';
 import { DataService } from 'src/app/core/services/data.service';
+import { ToastService } from 'src/app/core/services/toast.service';
 
 @Component({
   selector: 'app-payment-edit-page',
@@ -44,7 +45,8 @@ export class PaymentEditPageComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private dataService: DataService
+    private dataService: DataService,
+    private toastService: ToastService
   ) {
     this.paymentForm = this.fb.group({
       client: [null, Validators.required],
@@ -62,6 +64,11 @@ export class PaymentEditPageComponent implements OnInit {
   onSave() {
     const body = this.paymentForm.value;
     console.log('form: ', body);
+    this.toastService.show(
+      'Pagamento Aggiunto',
+      `Pagamento aggiunto con successo`,
+      true
+    );
     this.dataService.insertPayment({
       client: this.paymentForm.get('client')?.value.id,
       area: this.paymentForm.get('area')?.value.id,

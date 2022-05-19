@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/core/services/data.service';
+import { ToastService } from 'src/app/core/services/toast.service';
 
 
 @Component({
@@ -28,7 +29,8 @@ export class SocietyEditPageComponent implements OnInit {
     private router: Router,
     private data: DataService,
     private societyService: SocietiesService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastService: ToastService
   ) {
     this.societyForm = this.fb.group({
       ragioneSociale: ['', Validators.required],
@@ -85,6 +87,11 @@ export class SocietyEditPageComponent implements OnInit {
         });
       }
       else {
+        this.toastService.show(
+        'Società Aggiunta',
+        `La società ${this.societyForm.value.ragioneSociale} è stato aggiunta`,
+        true
+      );
         this.data.insertSociety({
           // id: '',
           ...this.societyForm.value

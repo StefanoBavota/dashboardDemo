@@ -15,6 +15,8 @@ import { BehaviorSubject } from 'rxjs';
 import { DataService } from 'src/app/core/services/data.service';
 import { NewUser, User } from './../../../../core/models/user.model';
 import { UserService } from './../../services/user.service';
+import { ToastService } from 'src/app/core/services/toast.service';
+
 
 @Component({
   selector: 'app-user-edit-page',
@@ -39,7 +41,8 @@ export class UserEditPageComponent implements OnInit {
     private fb: FormBuilder,
     public router: Router,
     private data: DataService,
-    private UserService: UserService
+    private UserService: UserService,
+    private toastService: ToastService
   ) {
   }
 
@@ -73,7 +76,7 @@ export class UserEditPageComponent implements OnInit {
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
-        role: ['All', Validators.required],
+        role: ['', Validators.required],
       }
     );
     console.log('pre 2', this.editFormUser)
@@ -131,6 +134,11 @@ export class UserEditPageComponent implements OnInit {
         });
       }
       else {
+        this.toastService.show(
+          'Utente Aggiunto',
+          ` L'utente  ${this.editFormUser.value.firstName} ${this.editFormUser.value.lastName} è stato aggiunto`,
+          true
+        );
         this.data.insertUser({
           // id: '',
           ...this.editFormUser.value

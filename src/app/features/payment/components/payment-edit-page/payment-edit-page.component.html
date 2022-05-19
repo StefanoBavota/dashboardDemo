@@ -17,7 +17,24 @@
               [inputFormatter]="formatterClient"
               [resultFormatter]="formatterClient"
               [editable]="false"
-            />
+              [ngClass]="(paymentForm.get('client')?.touched ||
+              paymentForm.get('client')?.dirty) &&
+              paymentForm.get('client')?.hasError('required')
+              ? 'is-invalid'
+              : '' ||
+             ((paymentForm.get('client')?.touched ||
+             paymentForm.get('client')?.dirty) &&
+               !paymentForm.get('client')?.invalid)
+              ? 'is-valid'
+              : ''" />
+
+
+              <div class="invalid-feedback">
+                {{
+                  paymentForm.get("client")?.hasError("required")? "Client is required" : ""
+                }}
+              </div>
+
           </app-form-item>
         </div>
 
@@ -33,7 +50,21 @@
               [inputFormatter]="formatterArea"
               [resultFormatter]="formatterArea"
               [editable]="false"
-            />
+              [ngClass]="(paymentForm.get('area')?.touched ||
+              paymentForm.get('area')?.dirty) &&
+              paymentForm.get('area')?.hasError('required')
+              ? 'is-invalid'
+              : '' ||
+             ((paymentForm.get('area')?.touched ||
+             paymentForm.get('area')?.dirty) &&
+               !paymentForm.get('area')?.invalid)
+              ? 'is-valid'
+              : ''" />
+              <div class="invalid-feedback">
+                {{
+                  paymentForm.get("area")?.hasError("required")? "Area is required" : ""
+                }}
+              </div>
           </app-form-item>
         </div>
       </div>
@@ -51,7 +82,22 @@
               [inputFormatter]="formatterSociety"
               [resultFormatter]="formatterSociety"
               [editable]="false"
-            />
+              [ngClass]="(paymentForm.get('society')?.touched ||
+              paymentForm.get('society')?.dirty) &&
+              paymentForm.get('society')?.hasError('required')
+              ? 'is-invalid'
+              : '' ||
+             ((paymentForm.get('society')?.touched ||
+             paymentForm.get('society')?.dirty) &&
+               !paymentForm.get('society')?.invalid)
+              ? 'is-valid'
+              : ''" />
+
+              <div class="invalid-feedback">
+                {{
+                  paymentForm.get("society")?.hasError("required")? "Area is required" : ""
+                }}
+              </div>
           </app-form-item>
         </div>
         <!-- PRICE -->
@@ -61,7 +107,22 @@
               type="number"
               class="form-control input"
               formControlName="price"
-            />
+              [ngClass]="(paymentForm.get('price')?.touched ||
+              paymentForm.get('price')?.dirty) &&
+              paymentForm.get('price')?.hasError('required')
+              ? 'is-invalid'
+              : '' ||
+             ((paymentForm.get('price')?.touched ||
+             paymentForm.get('price')?.dirty) &&
+               !paymentForm.get('price')?.invalid)
+              ? 'is-valid'
+              : ''" />
+
+              <div class="invalid-feedback">
+                {{
+                  paymentForm.get("price")?.hasError("required")? "Price is required" : ""
+                }}
+              </div>
           </app-form-item>
         </div>
       </div>
@@ -74,7 +135,22 @@
               type="number"
               class="form-control input"
               formControlName="annualPrice"
-            />
+              [ngClass]="(paymentForm.get('annualPrice')?.touched ||
+              paymentForm.get('annualPrice')?.dirty) &&
+              paymentForm.get('annualPrice')?.hasError('required')
+              ? 'is-invalid'
+              : '' ||
+             ((paymentForm.get('annualPrice')?.touched ||
+             paymentForm.get('annualPrice')?.dirty) &&
+               !paymentForm.get('annualPrice')?.invalid)
+              ? 'is-valid'
+              : ''" />
+
+              <div class="invalid-feedback">
+                {{
+                  paymentForm.get("annualPrice")?.hasError("required")? "AnnualPrice is required" : ""
+                }}
+              </div>
           </app-form-item>
         </div>
         <!-- DATE -->
@@ -84,7 +160,22 @@
               type="date"
               class="form-control input"
               formControlName="date"
-            />
+              [ngClass]="(paymentForm.get('date')?.touched ||
+              paymentForm.get('date')?.dirty) &&
+              paymentForm.get('date')?.hasError('required')
+              ? 'is-invalid'
+              : '' ||
+             ((paymentForm.get('date')?.touched ||
+             paymentForm.get('date')?.dirty) &&
+               !paymentForm.get('date')?.invalid)
+              ? 'is-valid'
+              : ''" />
+
+              <div class="invalid-feedback">
+                {{
+                  paymentForm.get("date")?.hasError("required")? "date is required" : ""
+                }}
+              </div>
           </app-form-item>
         </div>
       </div>

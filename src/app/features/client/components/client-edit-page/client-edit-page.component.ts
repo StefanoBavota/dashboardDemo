@@ -6,6 +6,7 @@ import { Client } from 'src/app/core/models';
 import { DataService } from 'src/app/core/services/data.service';
 import { ClientService } from '../../services/client.service';
 import { getDateInputFormat } from './client-edit-utils';
+import { ToastService } from 'src/app/core/services/toast.service';
 
 @Component({
   selector: 'app-client-edit-page',
@@ -25,7 +26,8 @@ export class ClientEditPageComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private data: DataService,
-    private clientService: ClientService
+    private clientService: ClientService,
+    private toastService: ToastService
   ) {
     this.formGroup = this.fb.group({
       name: ['', Validators.required],
@@ -92,6 +94,11 @@ export class ClientEditPageComponent implements OnInit {
         });
       }
       else {
+        this.toastService.show(
+          'Cliente Aggiunto',
+          ` Il Cliente  ${this.formGroup.value.name} ${this.formGroup.value.surname} è stato aggiunto`,
+          true
+        );
         this.data.insertClient({
           // id: '',
           ...this.formGroup.value
